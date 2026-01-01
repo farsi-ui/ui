@@ -247,7 +247,7 @@ export default function App() {
       {/* Hero Section - Improved responsive padding and text sizes */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-piccolo/5 via-transparent to-transparent" />
-        <div className="pointer-events-none absolute -top-40 start-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-piccolo/10 blur-3xl" />
+        <div className="pointer-events-none absolute -top-40 start-1/2 h-125 w-200 -translate-x-1/2 rounded-full bg-piccolo/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-32 lg:pt-32">
           <div className="text-center">

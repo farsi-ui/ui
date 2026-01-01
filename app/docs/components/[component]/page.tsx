@@ -1,32 +1,32 @@
-import { notFound } from "next/navigation"
-import { getComponentBySlug, allComponents, componentCategories } from "@/lib/components-data"
-import { ComponentPreview } from "@/components/docs/component-preview"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { notFound } from "next/navigation";
+import { getComponentBySlug, allComponents, componentCategories } from "@/lib/components-data";
+import { ComponentPreview } from "@/components/docs/component-preview";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PageProps {
-  params: Promise<{ component: string }>
+  params: Promise<{ component: string }>;
 }
 
 export async function generateStaticParams() {
   return allComponents.map((component) => ({
     component: component.slug,
-  }))
+  }));
 }
 
 export default async function ComponentPage({ params }: PageProps) {
-  const { component: slug } = await params
-  const componentData = getComponentBySlug(slug)
+  const { component: slug } = await params;
+  const componentData = getComponentBySlug(slug);
 
   if (!componentData) {
-    notFound()
+    notFound();
   }
 
   // Get previous and next components for navigation
-  const currentIndex = allComponents.findIndex((c) => c.slug === slug)
-  const prevComponent = currentIndex > 0 ? allComponents[currentIndex - 1] : null
-  const nextComponent = currentIndex < allComponents.length - 1 ? allComponents[currentIndex + 1] : null
+  const currentIndex = allComponents.findIndex((c) => c.slug === slug);
+  const prevComponent = currentIndex > 0 ? allComponents[currentIndex - 1] : null;
+  const nextComponent = currentIndex < allComponents.length - 1 ? allComponents[currentIndex + 1] : null;
 
   return (
     <div className="space-y-10">
@@ -48,7 +48,9 @@ export default async function ComponentPage({ params }: PageProps) {
           <section key={example.id} className="space-y-4">
             <div className="space-y-1">
               <h2 className="text-xl font-semibold">{example.title}</h2>
-              {example.description && <p className="text-sm text-muted-foreground">{example.description}</p>}
+              {example.description && (
+                <p className="text-sm text-muted-foreground">{example.description}</p>
+              )}
             </div>
             <ComponentPreview code={example.code}>{example.preview}</ComponentPreview>
           </section>
@@ -87,5 +89,5 @@ export default async function ComponentPage({ params }: PageProps) {
         )}
       </div>
     </div>
-  )
+  );
 }
