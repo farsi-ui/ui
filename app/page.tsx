@@ -165,10 +165,10 @@ export default function App() {
             href="/"
             className="flex items-center gap-2 text-base font-bold tracking-tight transition-all hover:opacity-80 sm:text-lg"
           >
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo to-hit sm:h-8 sm:w-8">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br from-piccolo to-hit sm:h-8 sm:w-8">
               <Sparkles className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
             </div>
-            <span>Ein UI</span>
+            <span>Farsi UI</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -241,7 +241,7 @@ export default function App() {
 
       {/* Hero Section - Improved responsive padding and text sizes */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-piccolo/5 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-piccolo/5 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -top-40 start-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-piccolo/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-10 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-28 lg:pt-24">
@@ -260,7 +260,7 @@ export default function App() {
               className={`opacity-0-init mx-auto max-w-4xl text-balance text-2xl font-bold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl ${mounted ? "animate-fade-in-up delay-100" : ""}`}
             >
               کتابخانه کامپوننت{" "}
-              <span className="animate-gradient bg-gradient-to-l from-piccolo via-hit to-frieza bg-clip-text text-transparent">
+              <span className="animate-gradient bg-linear-to-l from-piccolo via-hit to-frieza bg-clip-text text-transparent">
                 React فارسی
               </span>
             </h1>
@@ -268,7 +268,7 @@ export default function App() {
             <p
               className={`opacity-0-init mx-auto mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-trunks sm:mt-6 sm:text-base lg:text-lg ${mounted ? "animate-fade-in-up delay-200" : ""}`}
             >
-              مجموعه‌ای جامع از کامپوننت‌های React با پشتیبانی کامل RTL، طراحی شده بر اساس سیستم طراحی Moon برای
+              مجموعه‌ای جامع از کامپوننت‌های React با پشتیبانی کامل RTL، طراحی شده بر اساس سیستم طراحی فارسی برای
               توسعه‌دهندگان ایرانی
             </p>
 
@@ -402,11 +402,11 @@ export default function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-beerus bg-gradient-to-b from-hales/30 to-transparent py-12 sm:py-16 lg:py-24">
+      <section className="border-t border-beerus bg-linear-to-b from-hales/30 to-transparent py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-balance text-xl font-bold sm:text-2xl lg:text-3xl">آماده شروع هستید؟</h2>
           <p className="mx-auto mt-3 max-w-xl text-pretty text-sm text-trunks sm:mt-4 sm:text-base">
-            همین حالا از کامپوننت‌های Ein UI در پروژه خود استفاده کنید و تجربه‌ای یکپارچه برای کاربران فارسی‌زبان بسازید
+            همین حالا از کامپوننت‌های Farsi UI در پروژه خود استفاده کنید و تجربه‌ای یکپارچه برای کاربران فارسی‌زبان بسازید
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
             <Button

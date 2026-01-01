@@ -11,15 +11,15 @@ const vazirmatn = Vazirmatn({
 })
 
 export const metadata: Metadata = {
-  title: "Ein UI - کتابخانه کامپوننت فارسی",
+  title: "Farsi UI - کتابخانه کامپوننت فارسی",
   description: "مجموعه کامپوننت‌های React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی",
   keywords: ["React", "Next.js", "RTL", "Persian", "Farsi", "UI Components", "کامپوننت", "فارسی"],
-  authors: [{ name: "Ein UI Team" }],
-  creator: "Ein UI",
-  publisher: "Ein UI",
+  authors: [{ name: "Farsi UI Team" }],
+  creator: "Farsi UI",
+  publisher: "Farsi UI",
   generator: "v0.app",
   openGraph: {
-    title: "Ein UI - کتابخانه کامپوننت فارسی",
+    title: "Farsi UI - کتابخانه کامپوننت فارسی",
     description: "مجموعه کامپوننت‌های React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی",
     type: "website",
     locale: "fa_IR",

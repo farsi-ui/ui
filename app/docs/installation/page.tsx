@@ -3,7 +3,7 @@ export default function InstallationPage() {
     <div className="space-y-8">
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight">نصب</h1>
-        <p className="text-base text-muted-foreground">راهنمای نصب و راه‌اندازی Ein UI در پروژه شما</p>
+        <p className="text-base text-muted-foreground">راهنمای نصب و راه‌اندازی Farsi UI در پروژه شما</p>
       </div>
 
       <div className="space-y-3">

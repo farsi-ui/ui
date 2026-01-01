@@ -10,7 +10,7 @@ export default function DocsPage() {
         <Badge variant="outline" className="mb-2 border-beerus">
           نسخه 1.0
         </Badge>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">معرفی Ein UI</h1>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">معرفی Farsi UI</h1>
         <p className="text-lg leading-relaxed text-trunks">
           کتابخانه کامپوننت‌های React با پشتیبانی کامل RTL برای زبان فارسی
         </p>
@@ -18,7 +18,7 @@ export default function DocsPage() {
 
       <div className="space-y-6">
         <p className="text-base leading-relaxed">
-          <strong className="font-semibold text-foreground">Ein UI</strong> یک کتابخانه کامپوننت متن‌باز است که بر پایه{" "}
+          <strong className="font-semibold text-foreground">Farsi UI</strong> یک کتابخانه کامپوننت متن‌باز است که بر پایه{" "}
           <a
             href="https://ui.shadcn.com"
             target="_blank"
@@ -58,7 +58,7 @@ export default function DocsPage() {
       <div className="not-prose mt-12 rounded-xl border border-beerus bg-hales/50 p-8">
         <h2 className="mb-3 text-xl font-semibold">آماده برای شروع؟</h2>
         <p className="mb-6 text-sm leading-relaxed text-trunks">
-          با نصب Ein UI در پروژه خود، شروع به ساخت رابط‌های کاربری زیبا و قابل دسترس کنید.
+          با نصب Farsi UI در پروژه خود، شروع به ساخت رابط‌های کاربری زیبا و قابل دسترس کنید.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="default" className="bg-piccolo font-medium text-goku hover:bg-piccolo/90">

@@ -41,7 +41,7 @@ export function DocsHeader() {
           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo to-hit sm:h-8 sm:w-8">
             <Sparkles className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" aria-hidden="true" />
           </div>
-          <span className="hidden xs:inline">Ein UI</span>
+          <span className="hidden xs:inline">Farsi UI</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -97,7 +97,7 @@ export function DocsHeader() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo to-hit">
                     <Sparkles className="h-4 w-4 text-white" />
                   </div>
-                  <span>Ein UI</span>
+                  <span>Farsi UI</span>
                 </SheetTitle>
               </SheetHeader>
 
