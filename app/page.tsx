@@ -145,7 +145,7 @@ export default function Home() {
     setMounted(true)
   }, [])
 
-  const installCode = `npx shadcn@latest add https://einui.dev/r/button.json`
+  const installCode = `npx shadcn@latest add https://farsiui.dev/r/button.json`
   const usageCode = `import { Button } from "@/components/ui/button"
 
 export default function App() {
@@ -305,7 +305,7 @@ export default function App() {
             >
               <Terminal className="h-3.5 w-3.5 text-trunks sm:h-4 sm:w-4" />
               <code className="font-mono text-xs text-trunks sm:text-sm" dir="ltr">
-                npm install @einui/react
+                npm install @farsiui/react
               </code>
             </div>
           </div>
