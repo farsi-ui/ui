@@ -21,7 +21,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   Dialog,
@@ -80,6 +80,7 @@ import {
   Copy,
   Share,
   Menu,
+  Calendar,
 } from "lucide-react"
 
 export interface ComponentExample {
@@ -379,6 +380,19 @@ export const allComponents: ComponentData[] = [
   <span>۰/۲۵۰</span>
 </div>`,
       },
+      {
+        id: "disabled",
+        title: "غیرفعال",
+        description: "متن چندخطی در حالت غیرفعال",
+        preview: (
+          <div className="w-full max-w-sm space-y-2">
+            <Label className="text-muted-foreground">یادداشت</Label>
+            <Textarea placeholder="این فیلد غیرفعال است..." disabled rows={3} />
+          </div>
+        ),
+        code: `<Label className="text-muted-foreground">یادداشت</Label>
+<Textarea placeholder="این فیلد غیرفعال است..." disabled rows={3} />`,
+      },
     ],
   },
   {
@@ -436,6 +450,33 @@ export const allComponents: ComponentData[] = [
 <div className="flex items-center gap-2">
   <Checkbox id="opt3" disabled />
   <Label htmlFor="opt3" className="text-muted-foreground">غیرفعال</Label>
+</div>`,
+      },
+      {
+        id: "with-description",
+        title: "با توضیحات",
+        description: "چک‌باکس همراه با متن توضیحی",
+        preview: (
+          <div className="flex flex-col gap-4 max-w-sm">
+            <div className="flex items-start gap-3 rounded-lg border p-4">
+              <Checkbox id="terms-desc" className="mt-1" />
+              <div className="space-y-1">
+                <Label htmlFor="terms-desc">شرایط و قوانین</Label>
+                <p className="text-xs text-muted-foreground">
+                  با علامت‌گذاری این گزینه، شرایط استفاده از خدمات را می‌پذیرم
+                </p>
+              </div>
+            </div>
+          </div>
+        ),
+        code: `<div className="flex items-start gap-3 rounded-lg border p-4">
+  <Checkbox id="terms-desc" className="mt-1" />
+  <div className="space-y-1">
+    <Label htmlFor="terms-desc">شرایط و قوانین</Label>
+    <p className="text-xs text-muted-foreground">
+      با علامت‌گذاری این گزینه، شرایط استفاده از خدمات را می‌پذیرم
+    </p>
+  </div>
 </div>`,
       },
     ],
@@ -505,6 +546,45 @@ export const allComponents: ComponentData[] = [
   </div>
 </RadioGroup>`,
       },
+      {
+        id: "with-description",
+        title: "با توضیحات",
+        description: "دکمه‌های رادیویی همراه با متن توضیحی",
+        preview: (
+          <RadioGroup defaultValue="plan-basic" className="gap-4 max-w-sm">
+            <div className="flex items-start gap-3 rounded-lg border p-4">
+              <RadioGroupItem value="plan-basic" id="plan-basic" className="mt-1" />
+              <div className="space-y-1">
+                <Label htmlFor="plan-basic" className="font-medium">پایه</Label>
+                <p className="text-xs text-muted-foreground">مناسب برای استفاده شخصی</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 rounded-lg border p-4">
+              <RadioGroupItem value="plan-pro" id="plan-pro" className="mt-1" />
+              <div className="space-y-1">
+                <Label htmlFor="plan-pro" className="font-medium">حرفه‌ای</Label>
+                <p className="text-xs text-muted-foreground">مناسب برای تیم‌های کوچک</p>
+              </div>
+            </div>
+          </RadioGroup>
+        ),
+        code: `<RadioGroup defaultValue="plan-basic" className="gap-4">
+  <div className="flex items-start gap-3 rounded-lg border p-4">
+    <RadioGroupItem value="plan-basic" id="plan-basic" className="mt-1" />
+    <div className="space-y-1">
+      <Label htmlFor="plan-basic" className="font-medium">پایه</Label>
+      <p className="text-xs text-muted-foreground">مناسب برای استفاده شخصی</p>
+    </div>
+  </div>
+  <div className="flex items-start gap-3 rounded-lg border p-4">
+    <RadioGroupItem value="plan-pro" id="plan-pro" className="mt-1" />
+    <div className="space-y-1">
+      <Label htmlFor="plan-pro" className="font-medium">حرفه‌ای</Label>
+      <p className="text-xs text-muted-foreground">مناسب برای تیم‌های کوچک</p>
+    </div>
+  </div>
+</RadioGroup>`,
+      },
     ],
   },
   {
@@ -549,6 +629,53 @@ export const allComponents: ComponentData[] = [
   </div>
   <Switch id="notif" />
 </div>`,
+      },
+      {
+        id: "group",
+        title: "گروه تنظیمات",
+        description: "چندین کلید در یک کارت تنظیمات",
+        preview: (
+          <Card className="w-full max-w-sm">
+            <CardHeader>
+              <CardTitle className="text-base">اعلان‌ها</CardTitle>
+              <CardDescription>تنظیمات اعلان‌های خود را مدیریت کنید</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="email-notif">اعلان ایمیل</Label>
+                <Switch id="email-notif" defaultChecked />
+              </div>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="push-notif">اعلان پوش</Label>
+                <Switch id="push-notif" />
+              </div>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="sms-notif" className="text-muted-foreground">پیامک</Label>
+                <Switch id="sms-notif" disabled />
+              </div>
+            </CardContent>
+          </Card>
+        ),
+        code: `<Card>
+  <CardHeader>
+    <CardTitle className="text-base">اعلان‌ها</CardTitle>
+    <CardDescription>تنظیمات اعلان‌های خود را مدیریت کنید</CardDescription>
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="flex items-center justify-between">
+      <Label htmlFor="email-notif">اعلان ایمیل</Label>
+      <Switch id="email-notif" defaultChecked />
+    </div>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="push-notif">اعلان پوش</Label>
+      <Switch id="push-notif" />
+    </div>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="sms-notif" className="text-muted-foreground">پیامک</Label>
+      <Switch id="sms-notif" disabled />
+    </div>
+  </CardContent>
+</Card>`,
       },
     ],
   },
@@ -620,6 +747,35 @@ export const allComponents: ComponentData[] = [
   </Select>
 </div>`,
       },
+      {
+        id: "disabled",
+        title: "غیرفعال",
+        description: "انتخاب در حالت غیرفعال",
+        preview: (
+          <div className="w-50 space-y-2">
+            <Label className="text-muted-foreground">دسته‌بندی</Label>
+            <Select disabled>
+              <SelectTrigger>
+                <SelectValue placeholder="انتخاب غیرفعال" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="opt1">گزینه اول</SelectItem>
+                <SelectItem value="opt2">گزینه دوم</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        ),
+        code: `<Label className="text-muted-foreground">دسته‌بندی</Label>
+<Select disabled>
+  <SelectTrigger>
+    <SelectValue placeholder="انتخاب غیرفعال" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="opt1">گزینه اول</SelectItem>
+    <SelectItem value="opt2">گزینه دوم</SelectItem>
+  </SelectContent>
+</Select>`,
+      },
     ],
   },
   {
@@ -665,6 +821,35 @@ export const allComponents: ComponentData[] = [
 </div>
 <Slider defaultValue={[25, 75]} max={100} step={1} />`,
       },
+      {
+        id: "with-steps",
+        title: "با مقادیر مشخص",
+        description: "اسلایدر با گام‌های بزرگ‌تر",
+        preview: (
+          <div className="w-full max-w-sm space-y-4">
+            <div className="space-y-1">
+              <Label>میزان صدا</Label>
+            </div>
+            <Slider defaultValue={[50]} max={100} step={25} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>۰</span>
+              <span>۲۵</span>
+              <span>۵۰</span>
+              <span>۷۵</span>
+              <span>۱۰۰</span>
+            </div>
+          </div>
+        ),
+        code: `<Label>میزان صدا</Label>
+<Slider defaultValue={[50]} max={100} step={25} />
+<div className="flex justify-between text-xs text-muted-foreground">
+  <span>۰</span>
+  <span>۲۵</span>
+  <span>۵۰</span>
+  <span>۷۵</span>
+  <span>۱۰۰</span>
+</div>`,
+      },
     ],
   },
   {
@@ -707,6 +892,27 @@ export const allComponents: ComponentData[] = [
         code: `<div className="relative">
   <Search className="absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2" />
   <Input placeholder="جستجو..." className="ps-10" />
+</div>`,
+      },
+      {
+        id: "with-button",
+        title: "با دکمه",
+        description: "فیلد جستجو همراه با دکمه ارسال",
+        preview: (
+          <div className="flex w-full max-w-sm gap-2">
+            <div className="relative flex-1">
+              <Search className="absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input placeholder="جستجو..." className="ps-10" />
+            </div>
+            <Button>جستجو</Button>
+          </div>
+        ),
+        code: `<div className="flex gap-2">
+  <div className="relative flex-1">
+    <Search className="absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2" />
+    <Input placeholder="جستجو..." className="ps-10" />
+  </div>
+  <Button>جستجو</Button>
 </div>`,
       },
     ],
@@ -784,6 +990,64 @@ export const allComponents: ComponentData[] = [
     <Input placeholder="جستجو..." className="border-0" />
   </div>
 </div>`,
+      },
+      {
+        id: "dropdown",
+        title: "کشویی",
+        description: "انتخاب چندگانه با منوی کشویی",
+        preview: (
+          <div className="w-full max-w-sm">
+            <Label className="mb-2 block">مهارت‌ها</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className="w-full justify-between">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="secondary" className="text-xs">React</Badge>
+                    <Badge variant="secondary" className="text-xs">TypeScript</Badge>
+                  </div>
+                  <ChevronDown className="h-4 w-4 shrink-0" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-full p-2">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Checkbox id="skill-react" defaultChecked />
+                    <Label htmlFor="skill-react">React</Label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Checkbox id="skill-ts" defaultChecked />
+                    <Label htmlFor="skill-ts">TypeScript</Label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Checkbox id="skill-node" />
+                    <Label htmlFor="skill-node">Node.js</Label>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ),
+        code: `<Label className="mb-2 block">مهارت‌ها</Label>
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline" className="w-full justify-between">
+      <div className="flex flex-wrap gap-1">
+        <Badge variant="secondary" className="text-xs">React</Badge>
+        <Badge variant="secondary" className="text-xs">TypeScript</Badge>
+      </div>
+      <ChevronDown className="h-4 w-4 shrink-0" />
+    </Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-full p-2">
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <Checkbox id="skill-react" defaultChecked />
+        <Label htmlFor="skill-react">React</Label>
+      </div>
+      ...
+    </div>
+  </PopoverContent>
+</Popover>`,
       },
     ],
   },
@@ -926,6 +1190,39 @@ export const allComponents: ComponentData[] = [
   <button><X className="h-3 w-3" /></button>
 </Badge>`,
       },
+      {
+        id: "status",
+        title: "وضعیت",
+        description: "نشان‌ها برای نمایش وضعیت‌های مختلف",
+        preview: (
+          <div className="flex flex-wrap gap-2">
+            <Badge className="gap-1 bg-green-500 hover:bg-green-600">
+              <CheckCircle className="h-3 w-3" />
+              تایید شده
+            </Badge>
+            <Badge className="gap-1 bg-amber-500 hover:bg-amber-600">
+              <Loader2 className="h-3 w-3 animate-spin" />
+              در حال بررسی
+            </Badge>
+            <Badge variant="destructive" className="gap-1">
+              <AlertCircle className="h-3 w-3" />
+              رد شده
+            </Badge>
+          </div>
+        ),
+        code: `<Badge className="gap-1 bg-green-500 hover:bg-green-600">
+  <CheckCircle className="h-3 w-3" />
+  تایید شده
+</Badge>
+<Badge className="gap-1 bg-amber-500 hover:bg-amber-600">
+  <Loader2 className="h-3 w-3 animate-spin" />
+  در حال بررسی
+</Badge>
+<Badge variant="destructive" className="gap-1">
+  <AlertCircle className="h-3 w-3" />
+  رد شده
+</Badge>`,
+      },
     ],
   },
   {
@@ -982,6 +1279,32 @@ export const allComponents: ComponentData[] = [
   <button className="rounded-full p-1 hover:bg-foreground/10">
     <X className="h-3 w-3" />
   </button>
+</Badge>`,
+      },
+      {
+        id: "selectable",
+        title: "انتخابی",
+        description: "چیپس‌های قابل انتخاب",
+        preview: (
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="default" className="cursor-pointer gap-1.5 rounded-full px-3 py-1">
+              <CheckCircle className="h-3.5 w-3.5" />
+              انتخاب شده
+            </Badge>
+            <Badge variant="outline" className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent">
+              توسعه
+            </Badge>
+            <Badge variant="outline" className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent">
+              طراحی
+            </Badge>
+          </div>
+        ),
+        code: `<Badge variant="default" className="cursor-pointer gap-1.5 rounded-full px-3 py-1">
+  <CheckCircle className="h-3.5 w-3.5" />
+  انتخاب شده
+</Badge>
+<Badge variant="outline" className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent">
+  توسعه
 </Badge>`,
       },
     ],
@@ -1042,6 +1365,41 @@ export const allComponents: ComponentData[] = [
   <CardContent className="space-y-4">
     <p className="text-2xl font-bold">۹۹,۰۰۰ تومان</p>
     <Button className="w-full">خرید اشتراک</Button>
+  </CardContent>
+</Card>`,
+      },
+      {
+        id: "with-image",
+        title: "با تصویر",
+        description: "کارت همراه با تصویر و محتوا",
+        preview: (
+          <Card className="w-full max-w-sm overflow-hidden">
+            <div className="aspect-video bg-muted flex items-center justify-center">
+              <Star className="h-12 w-12 text-muted-foreground" />
+            </div>
+            <CardHeader>
+              <CardTitle>عنوان مقاله</CardTitle>
+              <CardDescription>نویسنده: نام نویسنده</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                این یک متن آزمایشی برای توضیحات کارت است که می‌تواند شامل اطلاعات بیشتری باشد.
+              </p>
+            </CardContent>
+          </Card>
+        ),
+        code: `<Card className="overflow-hidden">
+  <div className="aspect-video bg-muted flex items-center justify-center">
+    <Star className="h-12 w-12 text-muted-foreground" />
+  </div>
+  <CardHeader>
+    <CardTitle>عنوان مقاله</CardTitle>
+    <CardDescription>نویسنده: نام نویسنده</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm text-muted-foreground">
+      این یک متن آزمایشی برای توضیحات کارت است.
+    </p>
   </CardContent>
 </Card>`,
       },
@@ -1146,6 +1504,81 @@ export const allComponents: ComponentData[] = [
   </button>
 </TableHead>`,
       },
+      {
+        id: "with-actions",
+        title: "با عملیات",
+        description: "جدول همراه با دکمه‌های عملیاتی",
+        preview: (
+          <div className="w-full max-w-lg">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>نام</TableHead>
+                  <TableHead>وضعیت</TableHead>
+                  <TableHead className="text-end">عملیات</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">محصول اول</TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">فعال</Badge>
+                  </TableCell>
+                  <TableCell className="text-end">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem>
+                          <Edit className="h-4 w-4 me-2" />
+                          ویرایش
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-destructive">
+                          <Trash2 className="h-4 w-4 me-2" />
+                          حذف
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        ),
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>نام</TableHead>
+      <TableHead>وضعیت</TableHead>
+      <TableHead className="text-end">عملیات</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">محصول اول</TableCell>
+      <TableCell>
+        <Badge variant="secondary">فعال</Badge>
+      </TableCell>
+      <TableCell className="text-end">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>ویرایش</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive">حذف</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`,
+      },
     ],
   },
   {
@@ -1223,6 +1656,43 @@ export const allComponents: ComponentData[] = [
   </TooltipContent>
 </Tooltip>`,
       },
+      {
+        id: "with-delay",
+        title: "با محتوای غنی",
+        description: "راهنمای ابزار با محتوای بیشتر",
+        preview: (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="secondary">
+                  <User className="h-4 w-4 me-2" />
+                  کاربر
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-xs">
+                <div className="space-y-1">
+                  <p className="font-medium">نام کاربر</p>
+                  <p className="text-xs text-muted-foreground">این یک توضیح طولانی‌تر درباره کاربر است.</p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ),
+        code: `<Tooltip>
+  <TooltipTrigger asChild>
+    <Button variant="secondary">
+      <User className="h-4 w-4 me-2" />
+      کاربر
+    </Button>
+  </TooltipTrigger>
+  <TooltipContent className="max-w-xs">
+    <div className="space-y-1">
+      <p className="font-medium">نام کاربر</p>
+      <p className="text-xs text-muted-foreground">این یک توضیح طولانی‌تر درباره کاربر است.</p>
+    </div>
+  </TooltipContent>
+</Tooltip>`,
+      },
     ],
   },
   // ===== FEEDBACK =====
@@ -1290,6 +1760,37 @@ export const allComponents: ComponentData[] = [
   </div>
 </div>`,
       },
+      {
+        id: "steps",
+        title: "مراحل",
+        description: "نمایش پیشرفت مرحله‌ای",
+        preview: (
+          <div className="w-full max-w-sm space-y-3">
+            <div className="flex justify-between text-sm">
+              <span>مرحله ۲ از ۴</span>
+              <span>٪۵۰</span>
+            </div>
+            <Progress value={50} />
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>اطلاعات</span>
+              <span>پرداخت</span>
+              <span>تایید</span>
+              <span>پایان</span>
+            </div>
+          </div>
+        ),
+        code: `<div className="flex justify-between text-sm">
+  <span>مرحله ۲ از ۴</span>
+  <span>٪۵۰</span>
+</div>
+<Progress value={50} />
+<div className="flex justify-between text-xs text-muted-foreground">
+  <span>اطلاعات</span>
+  <span>پرداخت</span>
+  <span>تایید</span>
+  <span>پایان</span>
+</div>`,
+      },
     ],
   },
   {
@@ -1340,6 +1841,27 @@ export const allComponents: ComponentData[] = [
   <circle cx="50" cy="50" r="40" strokeWidth="8" fill="none" strokeLinecap="round"
     className="stroke-primary" strokeDasharray="80 170" />
 </svg>`,
+      },
+      {
+        id: "dots",
+        title: "نقطه‌ای",
+        description: "نشانگر بارگذاری با نقاط متحرک",
+        preview: (
+          <div className="flex items-center gap-2">
+            <div className="flex gap-1">
+              <span className="h-2 w-2 animate-bounce rounded-full bg-primary [animation-delay:-0.3s]" />
+              <span className="h-2 w-2 animate-bounce rounded-full bg-primary [animation-delay:-0.15s]" />
+              <span className="h-2 w-2 animate-bounce rounded-full bg-primary" />
+            </div>
+            <span className="text-sm text-muted-foreground">در حال بارگذاری</span>
+          </div>
+        ),
+        code: `<div className="flex gap-1">
+  <span className="h-2 w-2 animate-bounce rounded-full bg-primary [animation-delay:-0.3s]" />
+  <span className="h-2 w-2 animate-bounce rounded-full bg-primary [animation-delay:-0.15s]" />
+  <span className="h-2 w-2 animate-bounce rounded-full bg-primary" />
+</div>
+<span className="text-sm text-muted-foreground">در حال بارگذاری</span>`,
       },
     ],
   },
@@ -1403,6 +1925,27 @@ export const allComponents: ComponentData[] = [
   <p>خطایی رخ داده است</p>
 </div>`,
       },
+      {
+        id: "with-action",
+        title: "با عمل",
+        description: "اسنک‌بار همراه با دکمه عمل",
+        preview: (
+          <div className="flex items-center justify-between gap-4 rounded-lg border bg-background p-4 shadow-lg max-w-sm">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
+              <p className="text-sm">فایل با موفقیت آپلود شد</p>
+            </div>
+            <Button variant="outline" size="sm">مشاهده</Button>
+          </div>
+        ),
+        code: `<div className="flex items-center justify-between gap-4 rounded-lg border bg-background p-4 shadow-lg">
+  <div className="flex items-center gap-3">
+    <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
+    <p className="text-sm">فایل با موفقیت آپلود شد</p>
+  </div>
+  <Button variant="outline" size="sm">مشاهده</Button>
+</div>`,
+      },
     ],
   },
   {
@@ -1461,6 +2004,37 @@ export const allComponents: ComponentData[] = [
   </CardContent>
 </Card>`,
       },
+      {
+        id: "list",
+        title: "لیست",
+        description: "اسکلت برای لیست آیتم‌ها",
+        preview: (
+          <div className="w-full max-w-sm space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex items-center gap-4">
+                <Skeleton className="h-10 w-10 rounded-full" />
+                <div className="flex-1 space-y-2">
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-3 w-1/2" />
+                </div>
+                <Skeleton className="h-8 w-16" />
+              </div>
+            ))}
+          </div>
+        ),
+        code: `<div className="space-y-4">
+  {[1, 2, 3].map((i) => (
+    <div key={i} className="flex items-center gap-4">
+      <Skeleton className="h-10 w-10 rounded-full" />
+      <div className="flex-1 space-y-2">
+        <Skeleton className="h-4 w-3/4" />
+        <Skeleton className="h-3 w-1/2" />
+      </div>
+      <Skeleton className="h-8 w-16" />
+    </div>
+  ))}
+</div>`,
+      },
     ],
   },
   {
@@ -1513,6 +2087,35 @@ export const allComponents: ComponentData[] = [
   <div className="flex-1 space-y-1">
     <p className="text-sm font-medium text-amber-900">توجه</p>
     <p className="text-sm text-amber-800">این یک پیام هشدار است.</p>
+  </div>
+</div>`,
+      },
+      {
+        id: "with-action",
+        title: "با عمل",
+        description: "بنر همراه با دکمه عمل",
+        preview: (
+          <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950 max-w-md">
+            <Info className="h-5 w-5 text-blue-600 mt-0.5 shrink-0" />
+            <div className="flex-1 space-y-2">
+              <p className="text-sm font-medium text-blue-900 dark:text-blue-100">به‌روزرسانی جدید</p>
+              <p className="text-sm text-blue-800 dark:text-blue-200">نسخه جدید اپلیکیشن آماده نصب است.</p>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" className="h-7">بعداً</Button>
+                <Button size="sm" className="h-7">به‌روزرسانی</Button>
+              </div>
+            </div>
+          </div>
+        ),
+        code: `<div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4">
+  <Info className="h-5 w-5 text-blue-600 mt-0.5 shrink-0" />
+  <div className="flex-1 space-y-2">
+    <p className="text-sm font-medium text-blue-900">به‌روزرسانی جدید</p>
+    <p className="text-sm text-blue-800">نسخه جدید اپلیکیشن آماده نصب است.</p>
+    <div className="flex gap-2">
+      <Button size="sm" variant="outline" className="h-7">بعداً</Button>
+      <Button size="sm" className="h-7">به‌روزرسانی</Button>
+    </div>
   </div>
 </div>`,
       },
@@ -1582,6 +2185,49 @@ export const allComponents: ComponentData[] = [
     <TabsTrigger value="opt1" className="flex-1">عنوان</TabsTrigger>
     <TabsTrigger value="opt2" className="flex-1">عنوان</TabsTrigger>
   </TabsList>
+</Tabs>`,
+      },
+      {
+        id: "with-badge",
+        title: "با نشان",
+        description: "زبانه‌ها همراه با نشان تعداد",
+        preview: (
+          <Tabs defaultValue="inbox" className="w-full max-w-md">
+            <TabsList>
+              <TabsTrigger value="inbox" className="gap-2">
+                <Mail className="h-4 w-4" />
+                صندوق ورودی
+                <Badge variant="secondary" className="h-5 px-1.5 text-xs">۳</Badge>
+              </TabsTrigger>
+              <TabsTrigger value="sent" className="gap-2">
+                ارسال شده
+              </TabsTrigger>
+              <TabsTrigger value="draft" className="gap-2">
+                پیش‌نویس
+                <Badge variant="outline" className="h-5 px-1.5 text-xs">۱</Badge>
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="inbox" className="mt-4">
+              <p className="text-sm text-muted-foreground">پیام‌های دریافتی</p>
+            </TabsContent>
+          </Tabs>
+        ),
+        code: `<Tabs defaultValue="inbox">
+  <TabsList>
+    <TabsTrigger value="inbox" className="gap-2">
+      <Mail className="h-4 w-4" />
+      صندوق ورودی
+      <Badge variant="secondary" className="h-5 px-1.5 text-xs">۳</Badge>
+    </TabsTrigger>
+    <TabsTrigger value="sent" className="gap-2">
+      ارسال شده
+    </TabsTrigger>
+    <TabsTrigger value="draft" className="gap-2">
+      پیش‌نویس
+      <Badge variant="outline" className="h-5 px-1.5 text-xs">۱</Badge>
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="inbox">پیام‌های دریافتی</TabsContent>
 </Tabs>`,
       },
     ],
@@ -1693,6 +2339,61 @@ export const allComponents: ComponentData[] = [
   </BreadcrumbList>
 </Breadcrumb>`,
       },
+      {
+        id: "styled",
+        title: "استایل‌دار",
+        description: "مسیر راهنما با پس‌زمینه",
+        preview: (
+          <div className="rounded-lg bg-muted px-4 py-2">
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#" className="flex items-center gap-1">
+                    <Home className="h-4 w-4" />
+                    خانه
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>
+                  <ChevronLeft className="h-4 w-4" />
+                </BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#">محصولات</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator>
+                  <ChevronLeft className="h-4 w-4" />
+                </BreadcrumbSeparator>
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="font-medium">لباس</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        ),
+        code: `<div className="rounded-lg bg-muted px-4 py-2">
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#" className="flex items-center gap-1">
+          <Home className="h-4 w-4" />
+          خانه
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator>
+        <ChevronLeft className="h-4 w-4" />
+      </BreadcrumbSeparator>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">محصولات</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator>
+        <ChevronLeft className="h-4 w-4" />
+      </BreadcrumbSeparator>
+      <BreadcrumbItem>
+        <BreadcrumbPage className="font-medium">لباس</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</div>`,
+      },
     ],
   },
   {
@@ -1800,6 +2501,54 @@ export const allComponents: ComponentData[] = [
   </PaginationContent>
 </Pagination>`,
       },
+      {
+        id: "with-info",
+        title: "با اطلاعات",
+        description: "صفحه‌بندی همراه با نمایش تعداد",
+        preview: (
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+            <p className="text-sm text-muted-foreground">نمایش ۱-۱۰ از ۱۰۰ نتیجه</p>
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>۱</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">۲</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">۳</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        ),
+        code: `<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+  <p className="text-sm text-muted-foreground">نمایش ۱-۱۰ از ۱۰۰ نتیجه</p>
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious href="#" />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#" isActive>۱</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#">۲</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext href="#" />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
+</div>`,
+      },
     ],
   },
   {
@@ -1879,6 +2628,46 @@ export const allComponents: ComponentData[] = [
   ...
 </div>`,
       },
+      {
+        id: "with-badge",
+        title: "با نشان",
+        description: "ناوبری پایین با نشان اعلان",
+        preview: (
+          <div className="w-full max-w-sm rounded-lg border bg-background p-2">
+            <div className="flex items-center justify-around">
+              <button className="flex flex-col items-center gap-1 p-2 text-primary">
+                <Home className="h-5 w-5" />
+                <span className="text-xs">خانه</span>
+              </button>
+              <button className="flex flex-col items-center gap-1 p-2 text-muted-foreground">
+                <Search className="h-5 w-5" />
+                <span className="text-xs">جستجو</span>
+              </button>
+              <button className="relative flex flex-col items-center gap-1 p-2 text-muted-foreground">
+                <Bell className="h-5 w-5" />
+                <span className="absolute top-1 end-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] text-destructive-foreground">۳</span>
+                <span className="text-xs">اعلان‌ها</span>
+              </button>
+              <button className="flex flex-col items-center gap-1 p-2 text-muted-foreground">
+                <User className="h-5 w-5" />
+                <span className="text-xs">پروفایل</span>
+              </button>
+            </div>
+          </div>
+        ),
+        code: `<div className="flex items-center justify-around">
+  <button className="flex flex-col items-center gap-1 p-2 text-primary">
+    <Home className="h-5 w-5" />
+    <span className="text-xs">خانه</span>
+  </button>
+  <button className="relative flex flex-col items-center gap-1 p-2 text-muted-foreground">
+    <Bell className="h-5 w-5" />
+    <span className="absolute top-1 end-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] text-destructive-foreground">۳</span>
+    <span className="text-xs">اعلان‌ها</span>
+  </button>
+  ...
+</div>`,
+      },
     ],
   },
   {
@@ -1949,6 +2738,45 @@ export const allComponents: ComponentData[] = [
   ...
 </div>`,
       },
+      {
+        id: "with-description",
+        title: "با توضیحات",
+        description: "آیتم منو با زیرعنوان",
+        preview: (
+          <div className="w-full max-w-xs divide-y rounded-lg border bg-background">
+            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <User className="h-5 w-5" />
+              </div>
+              <div className="flex flex-col items-start gap-0.5">
+                <span className="text-sm font-medium">حساب کاربری</span>
+                <span className="text-xs text-muted-foreground">مدیریت اطلاعات شخصی</span>
+              </div>
+            </button>
+            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Settings className="h-5 w-5" />
+              </div>
+              <div className="flex flex-col items-start gap-0.5">
+                <span className="text-sm font-medium">تنظیمات</span>
+                <span className="text-xs text-muted-foreground">پیکربندی برنامه</span>
+              </div>
+            </button>
+          </div>
+        ),
+        code: `<div className="divide-y rounded-lg border bg-background">
+  <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+      <User className="h-5 w-5" />
+    </div>
+    <div className="flex flex-col items-start gap-0.5">
+      <span className="text-sm font-medium">حساب کاربری</span>
+      <span className="text-xs text-muted-foreground">مدیریت اطلاعات شخصی</span>
+    </div>
+  </button>
+  ...
+</div>`,
+      },
     ],
   },
   // ===== LAYOUT =====
@@ -2015,6 +2843,54 @@ export const allComponents: ComponentData[] = [
     <AccordionTrigger>سوال دوم</AccordionTrigger>
     <AccordionContent>پاسخ سوال دوم</AccordionContent>
   </AccordionItem>
+</Accordion>`,
+      },
+      {
+        id: "with-icon",
+        title: "با آیکون",
+        description: "آکاردئون با آیکون در عنوان",
+        preview: (
+          <Accordion type="single" collapsible className="w-full max-w-md">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <div className="flex items-center gap-2">
+                  <Settings className="h-4 w-4" />
+                  <span>تنظیمات عمومی</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>تنظیمات کلی برنامه در اینجا قرار می‌گیرد.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                <div className="flex items-center gap-2">
+                  <User className="h-4 w-4" />
+                  <span>حساب کاربری</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>اطلاعات حساب کاربری شما در اینجا نمایش داده می‌شود.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                <div className="flex items-center gap-2">
+                  <Bell className="h-4 w-4" />
+                  <span>اعلان‌ها</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>تنظیمات اعلان‌ها و هشدارها</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        ),
+        code: `<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>
+      <div className="flex items-center gap-2">
+        <Settings className="h-4 w-4" />
+        <span>تنظیمات عمومی</span>
+      </div>
+    </AccordionTrigger>
+    <AccordionContent>تنظیمات کلی برنامه</AccordionContent>
+  </AccordionItem>
+  ...
 </Accordion>`,
       },
     ],
@@ -2093,6 +2969,42 @@ export const allComponents: ComponentData[] = [
   <span className="h-2 w-2 rounded-full bg-primary" />
   <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
   <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
+</div>`,
+      },
+      {
+        id: "card-carousel",
+        title: "کارت کاروسل",
+        description: "کاروسل با کارت‌های محتوا",
+        preview: (
+          <div className="w-full max-w-md">
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
+                <div className="h-24 rounded-md bg-muted mb-3" />
+                <h4 className="font-medium text-sm">عنوان کارت</h4>
+                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+              </div>
+              <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
+                <div className="h-24 rounded-md bg-muted mb-3" />
+                <h4 className="font-medium text-sm">عنوان کارت</h4>
+                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+              </div>
+              <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
+                <div className="h-24 rounded-md bg-muted mb-3" />
+                <h4 className="font-medium text-sm">عنوان کارت</h4>
+                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+              </div>
+            </div>
+          </div>
+        ),
+        code: `<div className="flex gap-4 overflow-x-auto pb-4">
+  <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
+    <div className="h-24 rounded-md bg-muted mb-3" />
+    <h4 className="font-medium text-sm">عنوان کارت</h4>
+    <p className="text-xs text-muted-foreground mt-1">توضیحات</p>
+  </div>
+  <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
+    ...
+  </div>
 </div>`,
       },
     ],
@@ -2174,6 +3086,53 @@ export const allComponents: ComponentData[] = [
   ...
 </DropdownMenuContent>`,
       },
+      {
+        id: "with-icons",
+        title: "با آیکون",
+        description: "منوی کشویی با آیکون و جداکننده",
+        preview: (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <Edit className="h-4 w-4 me-2" />
+                ویرایش
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Copy className="h-4 w-4 me-2" />
+                کپی
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-destructive">
+                <Trash2 className="h-4 w-4 me-2" />
+                حذف
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ),
+        code: `<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline" size="icon">
+      <MoreHorizontal className="h-4 w-4" />
+    </Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent align="end">
+    <DropdownMenuItem>
+      <Edit className="h-4 w-4 me-2" />
+      ویرایش
+    </DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem className="text-destructive">
+      <Trash2 className="h-4 w-4 me-2" />
+      حذف
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`,
+      },
     ],
   },
   {
@@ -2247,6 +3206,58 @@ export const allComponents: ComponentData[] = [
       <SheetTitle>عنوان</SheetTitle>
       <SheetDescription>این کشو از پایین صفحه باز می‌شود.</SheetDescription>
     </SheetHeader>
+  </SheetContent>
+</Sheet>`,
+      },
+      {
+        id: "with-nav",
+        title: "با ناوبری",
+        description: "کشو همراه با منوی ناوبری",
+        preview: (
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72">
+              <SheetHeader>
+                <SheetTitle>منو</SheetTitle>
+              </SheetHeader>
+              <nav className="mt-6 space-y-1">
+                <a href="#" className="flex items-center gap-3 rounded-md bg-accent px-3 py-2 text-sm font-medium">
+                  <Home className="h-4 w-4" />
+                  خانه
+                </a>
+                <a href="#" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent">
+                  <User className="h-4 w-4" />
+                  پروفایل
+                </a>
+                <a href="#" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent">
+                  <Settings className="h-4 w-4" />
+                  تنظیمات
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        ),
+        code: `<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="ghost" size="icon">
+      <Menu className="h-5 w-5" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent side="right" className="w-72">
+    <SheetHeader>
+      <SheetTitle>منو</SheetTitle>
+    </SheetHeader>
+    <nav className="mt-6 space-y-1">
+      <a href="#" className="flex items-center gap-3 rounded-md bg-accent px-3 py-2 text-sm font-medium">
+        <Home className="h-4 w-4" />
+        خانه
+      </a>
+      ...
+    </nav>
   </SheetContent>
 </Sheet>`,
       },
@@ -2343,6 +3354,53 @@ export const allComponents: ComponentData[] = [
   </DialogContent>
 </Dialog>`,
       },
+      {
+        id: "scrollable",
+        title: "قابل اسکرول",
+        description: "دیالوگ با محتوای طولانی",
+        preview: (
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">قوانین و شرایط</Button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>قوانین و شرایط استفاده</DialogTitle>
+                <DialogDescription>لطفاً قوانین زیر را به دقت مطالعه کنید.</DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 py-4 text-sm text-muted-foreground">
+                <p>۱. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است.</p>
+                <p>۲. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است.</p>
+                <p>۳. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است.</p>
+                <p>۴. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است.</p>
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline">انصراف</Button>
+                <Button>پذیرش</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+        code: `<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">قوانین و شرایط</Button>
+  </DialogTrigger>
+  <DialogContent className="max-h-[80vh] overflow-y-auto">
+    <DialogHeader>
+      <DialogTitle>قوانین و شرایط استفاده</DialogTitle>
+      <DialogDescription>لطفاً قوانین زیر را مطالعه کنید.</DialogDescription>
+    </DialogHeader>
+    <div className="space-y-4 py-4 text-sm text-muted-foreground">
+      <p>۱. متن قانون اول...</p>
+      <p>۲. متن قانون دوم...</p>
+    </div>
+    <div className="flex justify-end gap-2">
+      <Button variant="outline">انصراف</Button>
+      <Button>پذیرش</Button>
+    </div>
+  </DialogContent>
+</Dialog>`,
+      },
     ],
   },
   {
@@ -2427,6 +3485,57 @@ export const allComponents: ComponentData[] = [
   </AlertDialogDescription>
 </AlertDialogHeader>`,
       },
+      {
+        id: "destructive",
+        title: "خطرناک",
+        description: "دیالوگ تایید عملیات خطرناک",
+        preview: (
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="destructive">حذف حساب</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle className="flex items-center gap-2 text-destructive">
+                  <Trash2 className="h-5 w-5" />
+                  حذف حساب کاربری
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  این عملیات غیرقابل بازگشت است. تمام داده‌ها، فایل‌ها و اطلاعات شما برای همیشه حذف خواهند شد.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter className="gap-2">
+                <AlertDialogCancel>انصراف</AlertDialogCancel>
+                <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+                  حذف حساب
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        ),
+        code: `<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="destructive">حذف حساب</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle className="flex items-center gap-2 text-destructive">
+        <Trash2 className="h-5 w-5" />
+        حذف حساب کاربری
+      </AlertDialogTitle>
+      <AlertDialogDescription>
+        این عملیات غیرقابل بازگشت است.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter className="gap-2">
+      <AlertDialogCancel>انصراف</AlertDialogCancel>
+      <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+        حذف حساب
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>`,
+      },
     ],
   },
   {
@@ -2505,6 +3614,72 @@ export const allComponents: ComponentData[] = [
         <Label htmlFor="dark">حالت تاریک</Label>
         <Switch id="dark" />
       </div>
+    </div>
+  </PopoverContent>
+</Popover>`,
+      },
+      {
+        id: "date-picker",
+        title: "انتخاب تاریخ",
+        description: "پاپ‌اور برای انتخاب تاریخ",
+        preview: (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="justify-start gap-2">
+                <Calendar className="h-4 w-4" />
+                انتخاب تاریخ
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <div className="p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <Button variant="ghost" size="icon" className="h-7 w-7">
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                  <span className="text-sm font-medium">اردیبهشت ۱۴۰۳</span>
+                  <Button variant="ghost" size="icon" className="h-7 w-7">
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="grid grid-cols-7 gap-1 text-center text-xs">
+                  <span className="text-muted-foreground">ش</span>
+                  <span className="text-muted-foreground">ی</span>
+                  <span className="text-muted-foreground">د</span>
+                  <span className="text-muted-foreground">س</span>
+                  <span className="text-muted-foreground">چ</span>
+                  <span className="text-muted-foreground">پ</span>
+                  <span className="text-muted-foreground">ج</span>
+                  <span className="p-1.5">۱</span>
+                  <span className="p-1.5">۲</span>
+                  <span className="p-1.5 rounded bg-primary text-primary-foreground">۳</span>
+                  <span className="p-1.5">۴</span>
+                  <span className="p-1.5">۵</span>
+                  <span className="p-1.5">۶</span>
+                  <span className="p-1.5">۷</span>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        ),
+        code: `<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline" className="justify-start gap-2">
+      <Calendar className="h-4 w-4" />
+      انتخاب تاریخ
+    </Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-auto p-0" align="start">
+    <div className="p-4 space-y-3">
+      <div className="flex items-center justify-between">
+        <Button variant="ghost" size="icon">
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+        <span className="text-sm font-medium">اردیبهشت ۱۴۰۳</span>
+        <Button variant="ghost" size="icon">
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+      </div>
+      {/* Calendar grid */}
     </div>
   </PopoverContent>
 </Popover>`,
@@ -2602,6 +3777,61 @@ export const allComponents: ComponentData[] = [
     </Button>
   </div>
 </SheetContent>`,
+      },
+      {
+        id: "with-handle",
+        title: "با دستگیره",
+        description: "صفحه پایین با دستگیره کشیدن",
+        preview: (
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline">فیلترها</Button>
+            </SheetTrigger>
+            <SheetContent side="bottom" className="h-auto">
+              <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted" />
+              <SheetHeader className="mt-4">
+                <SheetTitle>فیلترها</SheetTitle>
+              </SheetHeader>
+              <div className="space-y-4 py-4">
+                <div className="flex items-center justify-between">
+                  <Label>فقط موجود</Label>
+                  <Switch />
+                </div>
+                <div className="flex items-center justify-between">
+                  <Label>ارسال رایگان</Label>
+                  <Switch defaultChecked />
+                </div>
+                <div className="space-y-2">
+                  <Label>محدوده قیمت</Label>
+                  <Slider defaultValue={[25, 75]} max={100} step={1} />
+                </div>
+              </div>
+              <Button className="w-full">اعمال فیلتر</Button>
+            </SheetContent>
+          </Sheet>
+        ),
+        code: `<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">فیلترها</Button>
+  </SheetTrigger>
+  <SheetContent side="bottom" className="h-auto">
+    <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted" />
+    <SheetHeader className="mt-4">
+      <SheetTitle>فیلترها</SheetTitle>
+    </SheetHeader>
+    <div className="space-y-4 py-4">
+      <div className="flex items-center justify-between">
+        <Label>فقط موجود</Label>
+        <Switch />
+      </div>
+      <div className="space-y-2">
+        <Label>محدوده قیمت</Label>
+        <Slider defaultValue={[25, 75]} max={100} step={1} />
+      </div>
+    </div>
+    <Button className="w-full">اعمال فیلتر</Button>
+  </SheetContent>
+</Sheet>`,
       },
     ],
   },

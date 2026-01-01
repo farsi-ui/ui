@@ -29,3 +29,5 @@ next-env.d.ts
 .DS_Store
 .idea
 .vscode
+
+notion.instructions.md
