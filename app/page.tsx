@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Badge } from "@/components/ui/badge"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft,
   Github,
@@ -22,32 +22,32 @@ import {
   Menu,
   X,
   MousePointerClick,
-} from "lucide-react"
-import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { FarsiUILogo } from "@/components/app-logo"
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { FarsiUILogo } from "@/components/app-logo";
 
 function CodeBlock({ code, filename }: { code: string; filename: string }) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const copyCode = async () => {
-    await navigator.clipboard.writeText(code)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const highlightCode = (code: string) => {
     return code
       .replace(
         /(import|export|from|const|function|return|default|async|await)/g,
-        '<span class="token-keyword">$1</span>',
+        '<span class="token-keyword">$1</span>'
       )
       .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="token-string">$1</span>')
       .replace(/(\w+)(?=\s*\()/g, '<span class="token-function">$1</span>')
       .replace(/(\d+)/g, '<span class="token-number">$1</span>')
       .replace(/(\/\/.*$)/gm, '<span class="token-comment">$1</span>')
-      .replace(/(&lt;\/?[\w-]+|\/&gt;|&gt;)/g, '<span class="token-tag">$1</span>')
-  }
+      .replace(/(&lt;\/?[\w-]+|\/&gt;|&gt;)/g, '<span class="token-tag">$1</span>');
+  };
 
   return (
     <div className="code-block group rounded-lg border border-beerus overflow-hidden transition-all hover:border-piccolo/20 hover:shadow-lg">
@@ -67,11 +67,7 @@ function CodeBlock({ code, filename }: { code: string; filename: string }) {
           onClick={copyCode}
           aria-label={copied ? "کپی شد" : "کپی کن"}
         >
-          {copied ? (
-            <Check className="h-4 w-4 text-roshi" />
-          ) : (
-            <Copy className="h-4 w-4" />
-          )}
+          {copied ? <Check className="h-4 w-4 text-roshi" /> : <Copy className="h-4 w-4" />}
         </Button>
       </div>
       <pre className="overflow-x-auto p-4 bg-background" dir="ltr">
@@ -81,24 +77,24 @@ function CodeBlock({ code, filename }: { code: string; filename: string }) {
         />
       </pre>
     </div>
-  )
+  );
 }
 
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let startTime: number | null = null
+    let startTime: number | null = null;
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      setCount(Math.floor(progress * end))
-      if (progress < 1) requestAnimationFrame(animate)
-    }
-    requestAnimationFrame(animate)
-  }, [end, duration])
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [end, duration]);
 
-  return <span>{count}+</span>
+  return <span>{count}+</span>;
 }
 
 const features = [
@@ -132,23 +128,23 @@ const features = [
     title: "قابل سفارشی‌سازی",
     description: "استایل‌دهی آسان با Tailwind CSS",
   },
-]
+];
 
 const stats = [
   { label: "کامپوننت", value: 31 },
   { label: "مثال کد", value: 60 },
   { label: "توسعه‌دهنده", value: 500 },
-]
+];
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  const installCode = `npx shadcn@latest add https://farsiui.dev/r/button.json`
+  const installCode = `npx shadcn@latest add https://farsiui.dev/r/button.json`;
   const usageCode = `import { Button } from "@/components/ui/button"
 
 export default function App() {
@@ -157,7 +153,7 @@ export default function App() {
       شروع کنید
     </Button>
   )
-}`
+}`;
 
   return (
     <main className="min-h-screen bg-background pb-20 md:pb-0">
@@ -262,7 +258,9 @@ export default function App() {
             </div>
 
             <h1
-              className={`opacity-0-init mx-auto max-w-4xl text-balance leading-tight sm:text-5xl lg:text-6xl xl:text-7xl ${mounted ? "animate-fade-in-up delay-100" : ""}`}
+              className={`opacity-0-init mx-auto max-w-4xl text-balance leading-tight sm:text-5xl lg:text-6xl xl:text-7xl ${
+                mounted ? "animate-fade-in-up delay-100" : ""
+              }`}
             >
               کتابخانه کامپوننت
               <br />
@@ -272,14 +270,19 @@ export default function App() {
             </h1>
 
             <p
-              className={`opacity-0-init mx-auto mt-6 max-w-3xl text-balance text-lg leading-relaxed text-trunks sm:mt-8 ${mounted ? "animate-fade-in-up delay-200" : ""}`}
+              className={`opacity-0-init mx-auto mt-6 max-w-3xl text-balance text-lg leading-relaxed text-trunks sm:mt-8 ${
+                mounted ? "animate-fade-in-up delay-200" : ""
+              }`}
             >
-              مجموعه‌ای جامع و حرفه‌ای از کامپوننت‌های React با پشتیبانی کامل RTL، مخصوص توسعه‌دهندگان ایرانی که می‌خواهند رابط کاربری زیبا و قابل دسترس بسازند
+              مجموعه‌ای جامع و حرفه‌ای از کامپوننت‌های React با پشتیبانی کامل RTL، مخصوص
+              توسعه‌دهندگان ایرانی که می‌خواهند رابط کاربری زیبا و قابل دسترس بسازند
             </p>
 
             {/* CTAs - Stack on mobile, row on tablet+ */}
             <div
-              className={`opacity-0-init mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5 ${mounted ? "animate-fade-in-up delay-300" : ""}`}
+              className={`opacity-0-init mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5 ${
+                mounted ? "animate-fade-in-up delay-300" : ""
+              }`}
             >
               <Button
                 asChild
@@ -306,7 +309,9 @@ export default function App() {
 
             {/* Install command with better styling */}
             <div
-              className={`opacity-0-init mt-8 inline-flex items-center gap-3 rounded-full border border-beerus bg-card px-5 py-2.5 transition-all hover:border-piccolo/20 hover:shadow-md sm:mt-10 ${mounted ? "animate-fade-in-up delay-400" : ""}`}
+              className={`opacity-0-init mt-8 inline-flex items-center gap-3 rounded-full border border-beerus bg-card px-5 py-2.5 transition-all hover:border-piccolo/20 hover:shadow-md sm:mt-10 ${
+                mounted ? "animate-fade-in-up delay-400" : ""
+              }`}
             >
               <Terminal className="h-4 w-4 shrink-0 text-piccolo" />
               <code className="font-mono text-sm text-trunks" dir="ltr">
@@ -318,12 +323,18 @@ export default function App() {
 
           {/* Stats - Improved mobile spacing */}
           <div
-            className={`opacity-0-init mt-16 flex items-center justify-center gap-8 sm:mt-20 sm:gap-16 lg:gap-20 ${mounted ? "animate-fade-in-up delay-500" : ""}`}
+            className={`opacity-0-init mt-16 flex items-center justify-center gap-8 sm:mt-20 sm:gap-16 lg:gap-20 ${
+              mounted ? "animate-fade-in-up delay-500" : ""
+            }`}
           >
             {stats.map((stat, i) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-                  {mounted ? <AnimatedCounter end={stat.value} duration={1500 + i * 200} /> : `${stat.value}+`}
+                  {mounted ? (
+                    <AnimatedCounter end={stat.value} duration={1500 + i * 200} />
+                  ) : (
+                    `${stat.value}+`
+                  )}
                 </div>
                 <div className="mt-2 text-sm font-medium text-trunks sm:mt-3">{stat.label}</div>
               </div>
@@ -337,25 +348,33 @@ export default function App() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
-              <Badge variant="outline" className="mb-4 w-fit border-hit/30 bg-hit/5 text-hit font-semibold transition-all hover:bg-hit/10">
+              <Badge
+                variant="outline"
+                className="mb-4 w-fit border-hit/30 bg-hit/5 text-hit font-semibold transition-all hover:bg-hit/10"
+              >
                 <Code2 className="me-2 h-3.5 w-3.5" />
                 نصب آسان
               </Badge>
-              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl leading-tight">شروع سریع در چند ثانیه</h2>
+              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl leading-tight">
+                شروع سریع در چند ثانیه
+              </h2>
               <p className="mt-5 text-lg leading-relaxed text-trunks sm:mt-6">
-                با یک دستور ساده، کامپوننت‌های مورد نیاز خود را به پروژه اضافه کنید. تمام کامپوننت‌ها کاملاً از TypeScript و Tailwind CSS پشتیبانی می‌کنند.
+                با یک دستور ساده، کامپوننت‌های مورد نیاز خود را به پروژه اضافه کنید. تمام
+                کامپوننت‌ها کاملاً از TypeScript و Tailwind CSS پشتیبانی می‌کنند.
               </p>
               <div className="mt-8 space-y-4 sm:mt-10">
-                {["پشتیبانی کامل از TypeScript", "سازگار با Next.js و React", "استایل‌دهی آسان با Tailwind CSS"].map(
-                  (item) => (
-                    <div key={item} className="flex items-start gap-4">
-                      <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-roshi/15 text-roshi">
-                        <Check className="h-4 w-4 font-bold" />
-                      </div>
-                      <span className="text-base leading-relaxed">{item}</span>
+                {[
+                  "پشتیبانی کامل از TypeScript",
+                  "سازگار با Next.js و React",
+                  "استایل‌دهی آسان با Tailwind CSS",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-4">
+                    <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-roshi/15 text-roshi">
+                      <Check className="h-4 w-4 font-bold" />
                     </div>
-                  ),
-                )}
+                    <span className="text-base leading-relaxed">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -371,7 +390,10 @@ export default function App() {
       <section className="py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <Badge variant="outline" className="mb-4 border-frieza/30 bg-frieza/5 text-frieza font-semibold inline-flex items-center gap-2">
+            <Badge
+              variant="outline"
+              className="mb-4 border-frieza/30 bg-frieza/5 text-frieza font-semibold inline-flex items-center gap-2"
+            >
               <Layers className="h-3.5 w-3.5" />
               ویژگی‌ها
             </Badge>
@@ -379,17 +401,20 @@ export default function App() {
               همه چیز برای ساخت رابط کاربری حرفه‌ای
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-trunks">
-              کامپوننت‌هایی که با دقت طراحی شده‌اند تا بهترین تجربه کاربری و توسعه‌دهندگی را برای کاربران و توسعه‌دهندگان فارسی‌زبان فراهم کنند
+              کامپوننت‌هایی که با دقت طراحی شده‌اند تا بهترین تجربه کاربری و توسعه‌دهندگی را برای
+              کاربران و توسعه‌دهندگان فارسی‌زبان فراهم کنند
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => {
-              const Icon = feature.icon
+              const Icon = feature.icon;
               return (
                 <article
                   key={feature.title}
-                  className={`opacity-0-init group relative overflow-hidden rounded-xl border border-beerus bg-card p-6 sm:p-7 lg:p-8 transition-all duration-300 hover:border-piccolo/40 hover:shadow-lg hover:shadow-piccolo/10 ${mounted ? `animate-fade-in-up delay-${(index + 1) * 100}` : ""}`}
+                  className={`opacity-0-init group relative overflow-hidden rounded-xl border border-beerus bg-card p-6 sm:p-7 lg:p-8 transition-all duration-300 hover:border-piccolo/40 hover:shadow-lg hover:shadow-piccolo/10 ${
+                    mounted ? `animate-fade-in-up delay-${(index + 1) * 100}` : ""
+                  }`}
                 >
                   <div className="absolute -end-8 -top-8 h-24 w-24 rounded-full bg-piccolo/5 transition-transform duration-500 group-hover:scale-150 sm:h-32 sm:w-32" />
                   <div className="relative z-10">
@@ -400,7 +425,7 @@ export default function App() {
                     <p className="text-sm leading-relaxed text-trunks">{feature.description}</p>
                   </div>
                 </article>
-              )
+              );
             })}
           </div>
         </div>
@@ -409,9 +434,12 @@ export default function App() {
       {/* CTA Section */}
       <section className="border-t border-beerus bg-linear-to-b from-hales/40 via-hales/20 to-background py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">آماده شروع هستید؟</h2>
+          <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
+            آماده شروع هستید؟
+          </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-trunks">
-            همین حالا از کامپوننت‌های Farsi UI در پروژه خود استفاده کنید و تجربه‌ای بی‌نظیر برای کاربران فارسی‌زبان بسازید
+            همین حالا از کامپوننت‌های Farsi UI در پروژه خود استفاده کنید و تجربه‌ای بی‌نظیر برای
+            کاربران فارسی‌زبان بسازید
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5">
             <Button
@@ -430,7 +458,11 @@ export default function App() {
               size="lg"
               className="h-12 w-full border-beerus bg-background px-8 text-base font-semibold transition-all hover:bg-hover-bg hover:border-piccolo/30 focus-visible:ring-offset-2 sm:w-auto"
             >
-              <Link href="https://github.com/ehsanghaffar" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://github.com/ehsanghaffar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="ms-2 h-5 w-5" />
                 مشاهده در GitHub
               </Link>
@@ -448,7 +480,12 @@ export default function App() {
                 <span>ساخته شده با</span>
                 <span className="text-lg text-chichi animate-pulse">♥</span>
                 <span>توسط</span>
-                <Link href="https://ehsanghaffarii.ir" target="_blank" rel="noopener noreferrer" className="font-semibold text-piccolo hover:text-hit transition-colors focus-visible:ring-2 focus-visible:ring-ring rounded px-1">
+                <Link
+                  href="https://ehsanghaffarii.ir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-piccolo hover:text-hit transition-colors focus-visible:ring-2 focus-visible:ring-ring rounded px-1"
+                >
                   Ein Ghaffar
                 </Link>
                 <span>برای توسعه‌دهندگان ایرانی</span>
@@ -463,10 +500,16 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 text-xs text-trunks sm:text-sm">
                 <div className="flex items-center gap-6">
-                  <Link href="/docs" className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1">
+                  <Link
+                    href="/docs"
+                    className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1"
+                  >
                     مستندات
                   </Link>
-                  <Link href="/docs/components" className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1">
+                  <Link
+                    href="/docs/components"
+                    className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1"
+                  >
                     کامپوننت‌ها
                   </Link>
                 </div>
@@ -505,5 +548,5 @@ export default function App() {
         </div>
       </footer>
     </main>
-  )
+  );
 }

@@ -1,18 +1,23 @@
-import type { ReactNode } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Switch } from "@/components/ui/switch"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Progress } from "@/components/ui/progress"
-import { Slider } from "@/components/ui/slider"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Progress } from "@/components/ui/progress";
+import { Slider } from "@/components/ui/slider";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,9 +25,21 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+} from "@/components/ui/breadcrumb";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -30,10 +47,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@/components/ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Pagination,
   PaginationContent,
@@ -41,8 +65,8 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import { Skeleton } from "@/components/ui/skeleton"
+} from "@/components/ui/pagination";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -53,8 +77,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+} from "@/components/ui/alert-dialog";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import {
   Search,
   Plus,
@@ -81,23 +112,24 @@ import {
   Share,
   Menu,
   Calendar,
-} from "lucide-react"
+} from "lucide-react";
 
 export interface ComponentExample {
-  id: string
-  title: string
-  description?: string
-  preview: ReactNode
-  code: string
+  id: string;
+  title: string;
+  description?: string;
+  preview: ReactNode;
+  code: string;
 }
 
 export interface ComponentData {
-  slug: string
-  name: string
-  nameEn: string
-  description: string
-  category: "inputs" | "display" | "feedback" | "navigation" | "layout" | "overlay"
-  examples: ComponentExample[]
+  slug: string;
+  name: string;
+  nameEn: string;
+  description: string;
+  category: "inputs" | "display" | "feedback" | "navigation" | "layout" | "overlay";
+  examples: ComponentExample[];
+  isNew?: boolean;
 }
 
 export const componentCategories = {
@@ -107,16 +139,16 @@ export const componentCategories = {
   navigation: "ناوبری",
   layout: "چیدمان",
   overlay: "روکش",
-}
+};
 
 // Helper function to get component by slug
 export function getComponentBySlug(slug: string): ComponentData | undefined {
-  return allComponents.find((c) => c.slug === slug)
+  return allComponents.find((c) => c.slug === slug);
 }
 
 // Helper function to get components by category
 export function getComponentsByCategory(category: string): ComponentData[] {
-  return allComponents.filter((c) => c.category === category)
+  return allComponents.filter((c) => c.category === category);
 }
 
 export const allComponents: ComponentData[] = [
@@ -321,7 +353,10 @@ export const allComponents: ComponentData[] = [
             </div>
             <div className="space-y-2">
               <Label className="text-destructive">خطا</Label>
-              <Input placeholder="فیلد اجباری" className="border-destructive focus-visible:ring-destructive" />
+              <Input
+                placeholder="فیلد اجباری"
+                className="border-destructive focus-visible:ring-destructive"
+              />
               <p className="text-xs text-destructive">این فیلد اجباری است</p>
             </div>
           </div>
@@ -555,14 +590,18 @@ export const allComponents: ComponentData[] = [
             <div className="flex items-start gap-3 rounded-lg border p-4">
               <RadioGroupItem value="plan-basic" id="plan-basic" className="mt-1" />
               <div className="space-y-1">
-                <Label htmlFor="plan-basic" className="font-medium">پایه</Label>
+                <Label htmlFor="plan-basic" className="font-medium">
+                  پایه
+                </Label>
                 <p className="text-xs text-muted-foreground">مناسب برای استفاده شخصی</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-lg border p-4">
               <RadioGroupItem value="plan-pro" id="plan-pro" className="mt-1" />
               <div className="space-y-1">
-                <Label htmlFor="plan-pro" className="font-medium">حرفه‌ای</Label>
+                <Label htmlFor="plan-pro" className="font-medium">
+                  حرفه‌ای
+                </Label>
                 <p className="text-xs text-muted-foreground">مناسب برای تیم‌های کوچک</p>
               </div>
             </div>
@@ -650,7 +689,9 @@ export const allComponents: ComponentData[] = [
                 <Switch id="push-notif" />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="sms-notif" className="text-muted-foreground">پیامک</Label>
+                <Label htmlFor="sms-notif" className="text-muted-foreground">
+                  پیامک
+                </Label>
                 <Switch id="sms-notif" disabled />
               </div>
             </CardContent>
@@ -1002,8 +1043,12 @@ export const allComponents: ComponentData[] = [
               <PopoverTrigger asChild>
                 <Button variant="outline" className="w-full justify-between">
                   <div className="flex flex-wrap gap-1">
-                    <Badge variant="secondary" className="text-xs">React</Badge>
-                    <Badge variant="secondary" className="text-xs">TypeScript</Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      React
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      TypeScript
+                    </Badge>
                   </div>
                   <ChevronDown className="h-4 w-4 shrink-0" />
                 </Button>
@@ -1291,10 +1336,16 @@ export const allComponents: ComponentData[] = [
               <CheckCircle className="h-3.5 w-3.5" />
               انتخاب شده
             </Badge>
-            <Badge variant="outline" className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent">
+            <Badge
+              variant="outline"
+              className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent"
+            >
               توسعه
             </Badge>
-            <Badge variant="outline" className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent">
+            <Badge
+              variant="outline"
+              className="cursor-pointer gap-1.5 rounded-full px-3 py-1 hover:bg-accent"
+            >
               طراحی
             </Badge>
           </div>
@@ -1327,7 +1378,9 @@ export const allComponents: ComponentData[] = [
               <CardDescription>توضیحات مختصر درباره محتوای کارت</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground">محتوای اصلی کارت در اینجا قرار می‌گیرد.</p>
+              <p className="text-sm text-muted-foreground">
+                محتوای اصلی کارت در اینجا قرار می‌گیرد.
+              </p>
             </CardContent>
           </Card>
         ),
@@ -1672,7 +1725,9 @@ export const allComponents: ComponentData[] = [
               <TooltipContent className="max-w-xs">
                 <div className="space-y-1">
                   <p className="font-medium">نام کاربر</p>
-                  <p className="text-xs text-muted-foreground">این یک توضیح طولانی‌تر درباره کاربر است.</p>
+                  <p className="text-xs text-muted-foreground">
+                    این یک توضیح طولانی‌تر درباره کاربر است.
+                  </p>
                 </div>
               </TooltipContent>
             </Tooltip>
@@ -1730,7 +1785,14 @@ export const allComponents: ComponentData[] = [
           <div className="flex flex-col items-center gap-2">
             <div className="relative h-24 w-24">
               <svg className="h-24 w-24 -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" strokeWidth="8" fill="none" className="stroke-muted" />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  strokeWidth="8"
+                  fill="none"
+                  className="stroke-muted"
+                />
                 <circle
                   cx="50"
                   cy="50"
@@ -1935,7 +1997,9 @@ export const allComponents: ComponentData[] = [
               <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
               <p className="text-sm">فایل با موفقیت آپلود شد</p>
             </div>
-            <Button variant="outline" size="sm">مشاهده</Button>
+            <Button variant="outline" size="sm">
+              مشاهده
+            </Button>
           </div>
         ),
         code: `<div className="flex items-center justify-between gap-4 rounded-lg border bg-background p-4 shadow-lg">
@@ -2098,11 +2162,19 @@ export const allComponents: ComponentData[] = [
           <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950 max-w-md">
             <Info className="h-5 w-5 text-blue-600 mt-0.5 shrink-0" />
             <div className="flex-1 space-y-2">
-              <p className="text-sm font-medium text-blue-900 dark:text-blue-100">به‌روزرسانی جدید</p>
-              <p className="text-sm text-blue-800 dark:text-blue-200">نسخه جدید اپلیکیشن آماده نصب است.</p>
+              <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+                به‌روزرسانی جدید
+              </p>
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                نسخه جدید اپلیکیشن آماده نصب است.
+              </p>
               <div className="flex gap-2">
-                <Button size="sm" variant="outline" className="h-7">بعداً</Button>
-                <Button size="sm" className="h-7">به‌روزرسانی</Button>
+                <Button size="sm" variant="outline" className="h-7">
+                  بعداً
+                </Button>
+                <Button size="sm" className="h-7">
+                  به‌روزرسانی
+                </Button>
               </div>
             </div>
           </div>
@@ -2197,14 +2269,18 @@ export const allComponents: ComponentData[] = [
               <TabsTrigger value="inbox" className="gap-2">
                 <Mail className="h-4 w-4" />
                 صندوق ورودی
-                <Badge variant="secondary" className="h-5 px-1.5 text-xs">۳</Badge>
+                <Badge variant="secondary" className="h-5 px-1.5 text-xs">
+                  ۳
+                </Badge>
               </TabsTrigger>
               <TabsTrigger value="sent" className="gap-2">
                 ارسال شده
               </TabsTrigger>
               <TabsTrigger value="draft" className="gap-2">
                 پیش‌نویس
-                <Badge variant="outline" className="h-5 px-1.5 text-xs">۱</Badge>
+                <Badge variant="outline" className="h-5 px-1.5 text-xs">
+                  ۱
+                </Badge>
               </TabsTrigger>
             </TabsList>
             <TabsContent value="inbox" className="mt-4">
@@ -2514,7 +2590,9 @@ export const allComponents: ComponentData[] = [
                   <PaginationPrevious href="#" />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>۱</PaginationLink>
+                  <PaginationLink href="#" isActive>
+                    ۱
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationLink href="#">۲</PaginationLink>
@@ -2645,7 +2723,9 @@ export const allComponents: ComponentData[] = [
               </button>
               <button className="relative flex flex-col items-center gap-1 p-2 text-muted-foreground">
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-1 end-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] text-destructive-foreground">۳</span>
+                <span className="absolute top-1 end-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] text-destructive-foreground">
+                  ۳
+                </span>
                 <span className="text-xs">اعلان‌ها</span>
               </button>
               <button className="flex flex-col items-center gap-1 p-2 text-muted-foreground">
@@ -2867,7 +2947,9 @@ export const allComponents: ComponentData[] = [
                   <span>حساب کاربری</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent>اطلاعات حساب کاربری شما در اینجا نمایش داده می‌شود.</AccordionContent>
+              <AccordionContent>
+                اطلاعات حساب کاربری شما در اینجا نمایش داده می‌شود.
+              </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>
@@ -2981,17 +3063,23 @@ export const allComponents: ComponentData[] = [
               <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
                 <div className="h-24 rounded-md bg-muted mb-3" />
                 <h4 className="font-medium text-sm">عنوان کارت</h4>
-                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  توضیحات کارت اینجا نوشته می‌شود
+                </p>
               </div>
               <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
                 <div className="h-24 rounded-md bg-muted mb-3" />
                 <h4 className="font-medium text-sm">عنوان کارت</h4>
-                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  توضیحات کارت اینجا نوشته می‌شود
+                </p>
               </div>
               <div className="min-w-50 shrink-0 rounded-lg border bg-card p-4">
                 <div className="h-24 rounded-md bg-muted mb-3" />
                 <h4 className="font-medium text-sm">عنوان کارت</h4>
-                <p className="text-xs text-muted-foreground mt-1">توضیحات کارت اینجا نوشته می‌شود</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  توضیحات کارت اینجا نوشته می‌شود
+                </p>
               </div>
             </div>
           </div>
@@ -3157,7 +3245,9 @@ export const allComponents: ComponentData[] = [
             <SheetContent side="right">
               <SheetHeader>
                 <SheetTitle>عنوان</SheetTitle>
-                <SheetDescription>محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.</SheetDescription>
+                <SheetDescription>
+                  محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.
+                </SheetDescription>
               </SheetHeader>
             </SheetContent>
           </Sheet>
@@ -3225,15 +3315,24 @@ export const allComponents: ComponentData[] = [
                 <SheetTitle>منو</SheetTitle>
               </SheetHeader>
               <nav className="mt-6 space-y-1">
-                <a href="#" className="flex items-center gap-3 rounded-md bg-accent px-3 py-2 text-sm font-medium">
+                <a
+                  href="#"
+                  className="flex items-center gap-3 rounded-md bg-accent px-3 py-2 text-sm font-medium"
+                >
                   <Home className="h-4 w-4" />
                   خانه
                 </a>
-                <a href="#" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent">
+                <a
+                  href="#"
+                  className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent"
+                >
                   <User className="h-4 w-4" />
                   پروفایل
                 </a>
-                <a href="#" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent">
+                <a
+                  href="#"
+                  className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent"
+                >
                   <Settings className="h-4 w-4" />
                   تنظیمات
                 </a>
@@ -3282,7 +3381,9 @@ export const allComponents: ComponentData[] = [
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>عنوان</DialogTitle>
-                <DialogDescription>محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.</DialogDescription>
+                <DialogDescription>
+                  محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.
+                </DialogDescription>
               </DialogHeader>
             </DialogContent>
           </Dialog>
@@ -3466,7 +3567,9 @@ export const allComponents: ComponentData[] = [
                   <AlertCircle className="h-5 w-5 text-amber-500" />
                   خروج از حساب کاربری
                 </AlertDialogTitle>
-                <AlertDialogDescription>آیا می‌خواهید از حساب کاربری خود خارج شوید؟</AlertDialogDescription>
+                <AlertDialogDescription>
+                  آیا می‌خواهید از حساب کاربری خود خارج شوید؟
+                </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter className="gap-2">
                 <AlertDialogCancel>انصراف</AlertDialogCancel>
@@ -3501,7 +3604,8 @@ export const allComponents: ComponentData[] = [
                   حذف حساب کاربری
                 </AlertDialogTitle>
                 <AlertDialogDescription>
-                  این عملیات غیرقابل بازگشت است. تمام داده‌ها، فایل‌ها و اطلاعات شما برای همیشه حذف خواهند شد.
+                  این عملیات غیرقابل بازگشت است. تمام داده‌ها، فایل‌ها و اطلاعات شما برای همیشه حذف
+                  خواهند شد.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter className="gap-2">
@@ -3557,7 +3661,9 @@ export const allComponents: ComponentData[] = [
             <PopoverContent className="w-80">
               <div className="space-y-2">
                 <h4 className="font-medium">عنوان</h4>
-                <p className="text-sm text-muted-foreground">محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.</p>
+                <p className="text-sm text-muted-foreground">
+                  محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.
+                </p>
               </div>
             </PopoverContent>
           </Popover>
@@ -3707,7 +3813,9 @@ export const allComponents: ComponentData[] = [
                 <SheetTitle>عنوان</SheetTitle>
               </SheetHeader>
               <div className="py-4">
-                <p className="text-sm text-muted-foreground">محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.</p>
+                <p className="text-sm text-muted-foreground">
+                  محل قرارگیری محتوا که می‌تواند با کامپوننت جایگزین شود.
+                </p>
               </div>
             </SheetContent>
           </Sheet>
@@ -3835,4 +3943,4 @@ export const allComponents: ComponentData[] = [
       },
     ],
   },
-]
+];
