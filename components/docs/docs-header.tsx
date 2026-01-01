@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
-import { Github, Sparkles, Menu, X, ChevronLeft, Search, Home, BookOpen, Component, Layers } from "lucide-react"
+import { Github, Sparkles, Menu, X, ChevronLeft, Search, Home, BookOpen, Component, Layers, MousePointerClick } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Input } from "@/components/ui/input"
@@ -38,8 +38,8 @@ export function DocsHeader() {
           className="flex items-center gap-2 text-base font-bold tracking-tight transition-colors hover:text-piccolo sm:text-lg"
           aria-label="بازگشت به صفحه اصلی"
         >
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo to-hit sm:h-8 sm:w-8">
-            <Sparkles className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" aria-hidden="true" />
+          <div className="flex h-7 w-7">
+            <MousePointerClick />
           </div>
           <span className="hidden xs:inline">Farsi UI</span>
         </Link>

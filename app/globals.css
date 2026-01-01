@@ -197,6 +197,63 @@
 }
 
 @layer base {
+  /* Typography - Persian-First */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Base text styles with improved readability */
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    letter-spacing: 0.3px;
+    word-spacing: 0.1em;
+  }
+
+  /* Improve heading hierarchy for Persian text */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1 {
+    @apply text-4xl leading-tight;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  h2 {
+    @apply text-2xl leading-normal;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  h3 {
+    @apply text-xl leading-normal;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  /* Better focus states for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    border-radius: inherit;
+  }
+
+  /* Code blocks with better contrast */
+  code {
+    @apply rounded-md bg-muted px-1.5 py-0.5 font-mono text-sm;
+  }
+
+  pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto;
+  }
+
+  pre code {
+    @apply bg-transparent p-0 px-0 py-0;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
