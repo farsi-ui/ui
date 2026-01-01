@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Documentation
+    url: https://farsi-ui.ir
+    about: View the Farsi UI documentation
+  - name: 💬 Discussions
+    url: https://github.com/ehsanghaffar/farsi-ui/discussions
+    about: Join community discussions and ask questions
+  - name: 🐦 Twitter
+    url: https://twitter.com/ehsanghaffar
+    about: Follow for updates and announcements
