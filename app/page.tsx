@@ -266,7 +266,7 @@ export default function App() {
             >
               کتابخانه کامپوننت
               <br />
-              <span className="animate-gradient bg-linear-to-l from-piccolo via-hit to-frieza bg-clip-text text-transparent">
+              <span className="animate-linear bg-linear-to-l from-piccolo via-hit to-frieza bg-clip-text text-transparent">
                 React فارسی
               </span>
             </h1>
@@ -308,11 +308,11 @@ export default function App() {
             <div
               className={`opacity-0-init mt-8 inline-flex items-center gap-3 rounded-full border border-beerus bg-card px-5 py-2.5 transition-all hover:border-piccolo/20 hover:shadow-md sm:mt-10 ${mounted ? "animate-fade-in-up delay-400" : ""}`}
             >
-              <Terminal className="h-4 w-4 flex-shrink-0 text-piccolo" />
+              <Terminal className="h-4 w-4 shrink-0 text-piccolo" />
               <code className="font-mono text-sm text-trunks" dir="ltr">
                 npm install @farsiui/react
               </code>
-              <Check className="h-4 w-4 flex-shrink-0 text-roshi" />
+              <Check className="h-4 w-4 shrink-0 text-roshi" />
             </div>
           </div>
 
@@ -333,7 +333,7 @@ export default function App() {
       </section>
 
       {/* Code Preview Section - Improved mobile layout */}
-      <section className="border-y border-beerus bg-gradient-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
+      <section className="border-y border-beerus bg-linear-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
@@ -393,7 +393,7 @@ export default function App() {
                 >
                   <div className="absolute -end-8 -top-8 h-24 w-24 rounded-full bg-piccolo/5 transition-transform duration-500 group-hover:scale-150 sm:h-32 sm:w-32" />
                   <div className="relative z-10">
-                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo/20 to-hit/20 text-piccolo transition-all group-hover:scale-110 sm:h-14 sm:w-14">
+                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-piccolo/20 to-hit/20 text-piccolo transition-all group-hover:scale-110 sm:h-14 sm:w-14">
                       <Icon className="h-6 w-6" />
                     </div>
                     <h3 className="mb-2 text-lg font-semibold sm:text-xl">{feature.title}</h3>
@@ -407,7 +407,7 @@ export default function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-beerus bg-gradient-to-b from-hales/40 via-hales/20 to-background py-16 sm:py-24 lg:py-32">
+      <section className="border-t border-beerus bg-linear-to-b from-hales/40 via-hales/20 to-background py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">آماده شروع هستید؟</h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-trunks">
@@ -461,7 +461,7 @@ export default function App() {
               <div className="text-xs text-trunks/70 sm:text-sm">
                 © 2026 Farsi UI. تمام حقوق محفوظ است.
               </div>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 text-xs text-trunks sm:gap-8 sm:text-sm">
+              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 text-xs text-trunks sm:text-sm">
                 <div className="flex items-center gap-6">
                   <Link href="/docs" className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1">
                     مستندات

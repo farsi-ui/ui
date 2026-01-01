@@ -94,7 +94,7 @@ export function DocsHeader() {
             <SheetContent side="right" className="w-full max-w-sm overflow-y-auto p-0">
               <SheetHeader className="border-b border-beerus p-4">
                 <SheetTitle className="flex items-center gap-2 text-start">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-piccolo to-hit">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-piccolo to-hit">
                     <Sparkles className="h-4 w-4 text-white" />
                   </div>
                   <span>Farsi UI</span>
