@@ -87,6 +87,21 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import {
   Search,
   Plus,
   ChevronDown,
@@ -112,6 +127,10 @@ import {
   Share,
   Menu,
   Calendar,
+  FileText,
+  Inbox,
+  FolderOpen,
+  Package,
 } from "lucide-react";
 
 export interface ComponentExample {
@@ -3940,6 +3959,268 @@ export const allComponents: ComponentData[] = [
     <Button className="w-full">اعمال فیلتر</Button>
   </SheetContent>
 </Sheet>`,
+      },
+    ],
+  },
+  // ===== INPUTS - Field Component =====
+  {
+    slug: "field",
+    name: "فیلد",
+    nameEn: "Field",
+    description: "کامپوننت فیلد برای ساخت فرم‌های دسترسی‌پذیر با برچسب، توضیحات و خطا",
+    category: "inputs",
+    isNew: true,
+    examples: [
+      {
+        id: "default",
+        title: "پیش‌فرض",
+        description: "فیلد ساده با برچسب و توضیحات",
+        preview: (
+          <div className="w-full max-w-sm">
+            <Field>
+              <FieldLabel htmlFor="email-field">ایمیل</FieldLabel>
+              <Input id="email-field" type="email" placeholder="example@email.com" />
+              <FieldDescription>ایمیل خود را وارد کنید.</FieldDescription>
+            </Field>
+          </div>
+        ),
+        code: `<Field>
+  <FieldLabel htmlFor="email">ایمیل</FieldLabel>
+  <Input id="email" type="email" placeholder="example@email.com" />
+  <FieldDescription>ایمیل خود را وارد کنید.</FieldDescription>
+</Field>`,
+      },
+      {
+        id: "with-error",
+        title: "با خطا",
+        description: "فیلد همراه با نمایش پیام خطا",
+        preview: (
+          <div className="w-full max-w-sm">
+            <Field data-invalid>
+              <FieldLabel htmlFor="email-error">ایمیل</FieldLabel>
+              <Input id="email-error" type="email" aria-invalid placeholder="email@" />
+              <FieldError>یک آدرس ایمیل معتبر وارد کنید.</FieldError>
+            </Field>
+          </div>
+        ),
+        code: `<Field data-invalid>
+  <FieldLabel htmlFor="email">ایمیل</FieldLabel>
+  <Input id="email" type="email" aria-invalid />
+  <FieldError>یک آدرس ایمیل معتبر وارد کنید.</FieldError>
+</Field>`,
+      },
+      {
+        id: "horizontal",
+        title: "افقی",
+        description: "فیلد با چیدمان افقی",
+        preview: (
+          <div className="w-full max-w-md">
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="name-horizontal">نام کاربری</FieldLabel>
+              <Input id="name-horizontal" placeholder="نام کاربری" />
+            </Field>
+          </div>
+        ),
+        code: `<Field orientation="horizontal">
+  <FieldLabel htmlFor="name">نام کاربری</FieldLabel>
+  <Input id="name" placeholder="نام کاربری" />
+</Field>`,
+      },
+      {
+        id: "field-group",
+        title: "گروه فیلدها",
+        description: "چند فیلد در یک گروه",
+        preview: (
+          <div className="w-full max-w-sm">
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="firstname">نام</FieldLabel>
+                <Input id="firstname" placeholder="نام خود را وارد کنید" />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="lastname">نام خانوادگی</FieldLabel>
+                <Input id="lastname" placeholder="نام خانوادگی خود را وارد کنید" />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="phone">شماره تماس</FieldLabel>
+                <Input id="phone" type="tel" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" className="text-left" />
+                <FieldDescription>شماره تلفن همراه ۱۱ رقمی</FieldDescription>
+              </Field>
+            </FieldGroup>
+          </div>
+        ),
+        code: `<FieldGroup>
+  <Field>
+    <FieldLabel htmlFor="firstname">نام</FieldLabel>
+    <Input id="firstname" placeholder="نام خود را وارد کنید" />
+  </Field>
+  <Field>
+    <FieldLabel htmlFor="lastname">نام خانوادگی</FieldLabel>
+    <Input id="lastname" placeholder="نام خانوادگی خود را وارد کنید" />
+  </Field>
+  <Field>
+    <FieldLabel htmlFor="phone">شماره تماس</FieldLabel>
+    <Input id="phone" type="tel" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" />
+    <FieldDescription>شماره تلفن همراه ۱۱ رقمی</FieldDescription>
+  </Field>
+</FieldGroup>`,
+      },
+    ],
+  },
+  // ===== FEEDBACK - Empty State =====
+  {
+    slug: "empty",
+    name: "حالت خالی",
+    nameEn: "Empty State",
+    description: "نمایش حالت خالی برای زمانی که محتوایی وجود ندارد",
+    category: "feedback",
+    isNew: true,
+    examples: [
+      {
+        id: "default",
+        title: "پیش‌فرض",
+        description: "حالت خالی ساده با آیکون و متن",
+        preview: (
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <Inbox className="size-5" />
+              </EmptyMedia>
+              <EmptyTitle>هیچ پیامی وجود ندارد</EmptyTitle>
+              <EmptyDescription>
+                صندوق ورودی شما خالی است. پیام‌های جدید اینجا نمایش داده می‌شوند.
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
+        ),
+        code: `<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Inbox className="size-5" />
+    </EmptyMedia>
+    <EmptyTitle>هیچ پیامی وجود ندارد</EmptyTitle>
+    <EmptyDescription>
+      صندوق ورودی شما خالی است. پیام‌های جدید اینجا نمایش داده می‌شوند.
+    </EmptyDescription>
+  </EmptyHeader>
+</Empty>`,
+      },
+      {
+        id: "with-action",
+        title: "با دکمه عمل",
+        description: "حالت خالی همراه با دکمه فراخوان",
+        preview: (
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <FolderOpen className="size-5" />
+              </EmptyMedia>
+              <EmptyTitle>هیچ فایلی یافت نشد</EmptyTitle>
+              <EmptyDescription>
+                هنوز فایلی آپلود نکرده‌اید. اولین فایل خود را بارگذاری کنید.
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>
+              <Button>
+                <Plus className="size-4 me-2" />
+                آپلود فایل
+              </Button>
+            </EmptyContent>
+          </Empty>
+        ),
+        code: `<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <FolderOpen className="size-5" />
+    </EmptyMedia>
+    <EmptyTitle>هیچ فایلی یافت نشد</EmptyTitle>
+    <EmptyDescription>
+      هنوز فایلی آپلود نکرده‌اید. اولین فایل خود را بارگذاری کنید.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>
+      <Plus className="size-4 me-2" />
+      آپلود فایل
+    </Button>
+  </EmptyContent>
+</Empty>`,
+      },
+      {
+        id: "search-results",
+        title: "نتایج جستجو",
+        description: "حالت خالی برای نتایج جستجوی یافت نشده",
+        preview: (
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <Search className="size-5" />
+              </EmptyMedia>
+              <EmptyTitle>نتیجه‌ای یافت نشد</EmptyTitle>
+              <EmptyDescription>
+                هیچ نتیجه‌ای برای «کلمه جستجو» پیدا نشد. لطفاً عبارت دیگری را امتحان کنید.
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>
+              <Button variant="outline">پاک کردن فیلترها</Button>
+            </EmptyContent>
+          </Empty>
+        ),
+        code: `<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Search className="size-5" />
+    </EmptyMedia>
+    <EmptyTitle>نتیجه‌ای یافت نشد</EmptyTitle>
+    <EmptyDescription>
+      هیچ نتیجه‌ای برای «کلمه جستجو» پیدا نشد. لطفاً عبارت دیگری را امتحان کنید.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button variant="outline">پاک کردن فیلترها</Button>
+  </EmptyContent>
+</Empty>`,
+      },
+      {
+        id: "no-orders",
+        title: "سفارشات",
+        description: "حالت خالی برای لیست سفارشات",
+        preview: (
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <Package className="size-5" />
+              </EmptyMedia>
+              <EmptyTitle>سفارشی ثبت نشده</EmptyTitle>
+              <EmptyDescription>
+                شما هنوز سفارشی ثبت نکرده‌اید. برای ثبت اولین سفارش به فروشگاه مراجعه کنید.
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>
+              <div className="flex gap-2">
+                <Button variant="outline">مشاهده محصولات</Button>
+                <Button>شروع خرید</Button>
+              </div>
+            </EmptyContent>
+          </Empty>
+        ),
+        code: `<Empty className="border">
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Package className="size-5" />
+    </EmptyMedia>
+    <EmptyTitle>سفارشی ثبت نشده</EmptyTitle>
+    <EmptyDescription>
+      شما هنوز سفارشی ثبت نکرده‌اید. برای ثبت اولین سفارش به فروشگاه مراجعه کنید.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <div className="flex gap-2">
+      <Button variant="outline">مشاهده محصولات</Button>
+      <Button>شروع خرید</Button>
+    </div>
+  </EmptyContent>
+</Empty>`,
       },
     ],
   },
