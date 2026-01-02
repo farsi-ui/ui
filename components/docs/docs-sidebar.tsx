@@ -163,9 +163,9 @@ function SidebarContentArea() {
     <>
       <SidebarHeader className="">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2">
           <div className="flex items-center justify-center">
-              <MousePointerClick />
+              <MousePointerClick className="size-3" />
             </div>
           {!isCollapsed && (
             <div className="flex flex-col">

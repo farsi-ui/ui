@@ -52,11 +52,11 @@ export default function SpacingPage() {
             <div className="divide-y divide-border">
               {spacingScale.map((item) => (
                 <div key={item.name} className="flex items-center gap-4 p-4">
-                  <code className="text-sm bg-muted px-2 py-1 rounded min-w-[60px] text-center">
+                  <code className="text-sm bg-muted px-2 py-1 rounded min-w-15 text-center">
                     {item.name}
                   </code>
-                  <span className="text-sm text-muted-foreground min-w-[60px]">{item.value}</span>
-                  <span className="text-sm text-muted-foreground min-w-[80px]">{item.rem}</span>
+                  <span className="text-sm text-muted-foreground min-w-15">{item.value}</span>
+                  <span className="text-sm text-muted-foreground min-w-20">{item.rem}</span>
                   <div className="flex-1">
                     <div className="h-4 bg-primary rounded" style={{ width: item.value }} />
                   </div>

@@ -13,7 +13,6 @@ import {
   Moon,
   Code2,
   Layers,
-  Copy,
   Check,
   Terminal,
   Component,
@@ -26,59 +25,7 @@ import {
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { FarsiUILogo } from "@/components/app-logo";
-
-function CodeBlock({ code, filename }: { code: string; filename: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const copyCode = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const highlightCode = (code: string) => {
-    return code
-      .replace(
-        /(import|export|from|const|function|return|default|async|await)/g,
-        '<span class="token-keyword">$1</span>'
-      )
-      .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="token-string">$1</span>')
-      .replace(/(\w+)(?=\s*\()/g, '<span class="token-function">$1</span>')
-      .replace(/(\d+)/g, '<span class="token-number">$1</span>')
-      .replace(/(\/\/.*$)/gm, '<span class="token-comment">$1</span>')
-      .replace(/(&lt;\/?[\w-]+|\/&gt;|&gt;)/g, '<span class="token-tag">$1</span>');
-  };
-
-  return (
-    <div className="code-block group rounded-lg border border-beerus overflow-hidden transition-all hover:border-piccolo/20 hover:shadow-lg">
-      <div className="code-block-header bg-muted/50 border-b border-beerus/50 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-chichi/60 sm:h-3 sm:w-3" />
-            <div className="h-2.5 w-2.5 rounded-full bg-krillin/60 sm:h-3 sm:w-3" />
-            <div className="h-2.5 w-2.5 rounded-full bg-roshi/60 sm:h-3 sm:w-3" />
-          </div>
-          <span className="ms-2 font-mono text-xs text-trunks font-medium">{filename}</span>
-        </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
-          onClick={copyCode}
-          aria-label={copied ? "کپی شد" : "کپی کن"}
-        >
-          {copied ? <Check className="h-4 w-4 text-roshi" /> : <Copy className="h-4 w-4" />}
-        </Button>
-      </div>
-      <pre className="overflow-x-auto p-4 bg-background" dir="ltr">
-        <code
-          className="font-mono text-sm leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: highlightCode(code) }}
-        />
-      </pre>
-    </div>
-  );
-}
+import { CodeBlock } from "@/components/ui/code-block";
 
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -144,7 +91,7 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  const installCode = `npx shadcn@latest add https://farsiui.dev/r/button.json`;
+  const installCode = `npx shadcn@latest add @einui/react`;
   const usageCode = `import { Button } from "@/components/ui/button"
 
 export default function App() {
@@ -379,8 +326,8 @@ export default function App() {
             </div>
 
             <div className="space-y-4">
-              <CodeBlock code={installCode} filename="terminal" />
-              <CodeBlock code={usageCode} filename="app.tsx" />
+              <CodeBlock code={installCode} filename="terminal" language="bash" />
+              <CodeBlock code={usageCode} filename="app.tsx" language="tsx" />
             </div>
           </div>
         </div>

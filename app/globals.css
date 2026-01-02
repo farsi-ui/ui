@@ -317,7 +317,7 @@
   }
 }
 
-/* Code block syntax highlighting */
+/* Code block syntax highlighting with Shiki */
 @layer components {
   .code-block {
     @apply relative overflow-hidden rounded-xl border border-border bg-card;
@@ -337,7 +337,39 @@
     @apply font-mono;
   }
 
-  /* Syntax highlighting colors */
+  /* Shiki dual theme support */
+  .shiki-container {
+    direction: ltr;
+    text-align: left;
+  }
+
+  .shiki-container pre {
+    @apply overflow-x-auto;
+  }
+
+  .shiki-container code {
+    counter-reset: line;
+  }
+
+  /* Light mode: use github-light colors */
+  html:not(.dark) .shiki,
+  html:not(.dark) .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: transparent !important;
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  /* Dark mode: use github-dark colors */
+  html.dark .shiki,
+  html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  /* Legacy token-based syntax highlighting colors (fallback) */
   .token-keyword {
     color: hsl(var(--frieza));
   }
