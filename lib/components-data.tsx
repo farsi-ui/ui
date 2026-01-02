@@ -405,7 +405,7 @@ export const allComponents: ComponentData[] = [
         title: "پیش‌فرض",
         description: "متن چندخطی ساده",
         preview: (
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-full space-y-2">
             <Label htmlFor="message">عنوان</Label>
             <Textarea id="message" placeholder="پیام خود را بنویسید..." />
           </div>
@@ -1889,12 +1889,12 @@ export const allComponents: ComponentData[] = [
           <div className="flex items-center gap-6">
             <Loader2 className="h-6 w-6 animate-spin text-primary" />
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+            <Loader2 className="size-10 animate-spin text-primary" />
           </div>
         ),
         code: `<Loader2 className="h-6 w-6 animate-spin text-primary" />
 <Loader2 className="h-8 w-8 animate-spin text-primary" />
-<Loader2 className="h-10 w-10 animate-spin text-primary" />`,
+<Loader2 className="size-10 animate-spin text-primary" />`,
       },
       {
         id: "ring",
@@ -2064,7 +2064,7 @@ export const allComponents: ComponentData[] = [
         title: "کارت",
         description: "اسکلت برای کارت محتوا",
         preview: (
-          <Card className="w-full max-w-sm">
+          <Card className="w-52 max-w-sm">
             <CardHeader className="gap-2">
               <Skeleton className="h-5 w-1/2" />
               <Skeleton className="h-4 w-3/4" />
@@ -2095,12 +2095,12 @@ export const allComponents: ComponentData[] = [
           <div className="w-full max-w-sm space-y-4">
             {[1, 2, 3].map((i) => (
               <div key={i} className="flex items-center gap-4">
-                <Skeleton className="h-10 w-10 rounded-full" />
+                <Skeleton className="size-8 rounded-full" />
                 <div className="flex-1 space-y-2">
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-3 w-3/4" />
                   <Skeleton className="h-3 w-1/2" />
                 </div>
-                <Skeleton className="h-8 w-16" />
+                <Skeleton className="h-5 w-32" />
               </div>
             ))}
           </div>
@@ -2108,7 +2108,7 @@ export const allComponents: ComponentData[] = [
         code: `<div className="space-y-4">
   {[1, 2, 3].map((i) => (
     <div key={i} className="flex items-center gap-4">
-      <Skeleton className="h-10 w-10 rounded-full" />
+      <Skeleton className="size-10 rounded-full" />
       <div className="flex-1 space-y-2">
         <Skeleton className="h-4 w-3/4" />
         <Skeleton className="h-3 w-1/2" />
@@ -2225,7 +2225,7 @@ export const allComponents: ComponentData[] = [
         title: "پیش‌فرض",
         description: "زبانه‌های ساده",
         preview: (
-          <Tabs defaultValue="tab1" className="w-full max-w-md">
+          <Tabs defaultValue="tab1" className="w-full max-w-lg">
             <TabsList className="w-full">
               <TabsTrigger value="tab1" className="flex-1 gap-2">
                 <Star className="h-4 w-4" />
@@ -2844,7 +2844,7 @@ export const allComponents: ComponentData[] = [
         preview: (
           <div className="w-full max-w-xs divide-y rounded-lg border bg-background">
             <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <User className="h-5 w-5" />
               </div>
               <div className="flex flex-col items-start gap-0.5">
@@ -2853,7 +2853,7 @@ export const allComponents: ComponentData[] = [
               </div>
             </button>
             <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <Settings className="h-5 w-5" />
               </div>
               <div className="flex flex-col items-start gap-0.5">
@@ -2865,7 +2865,7 @@ export const allComponents: ComponentData[] = [
         ),
         code: `<div className="divide-y rounded-lg border bg-background">
   <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
-    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+    <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
       <User className="h-5 w-5" />
     </div>
     <div className="flex flex-col items-start gap-0.5">
