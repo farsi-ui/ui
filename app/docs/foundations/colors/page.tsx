@@ -64,7 +64,7 @@ export default function ColorsPage() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">سیستم رنگی</h1>
         <p className="text-lg text-muted-foreground">
-          سیستم رنگی Moon UI شامل رنگ‌های پایه و معنایی است که در هر تم قابل مشاهده و بررسی است.
+          در این بخش می‌توانید رنگ‌های پایه و معنایی استفاده شده در طراحی را مشاهده کنید.
         </p>
       </div>
 

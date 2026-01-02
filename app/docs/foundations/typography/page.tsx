@@ -25,7 +25,7 @@ export default function TypographyPage() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">تایپوگرافی</h1>
         <p className="text-lg text-muted-foreground">
-          سیستم تایپوگرافی Moon UI با پشتیبانی کامل از فونت فارسی وزیرمتن
+          راهنمای استفاده از فونت‌ها، اندازه‌ها و وزن‌های مختلف در طراحی رابط کاربری
         </p>
       </div>
 
@@ -130,22 +130,22 @@ export default function TypographyPage() {
             <div className="space-y-2">
               <code className="text-xs bg-muted px-2 py-0.5 rounded">leading-tight (1.25)</code>
               <p className="leading-tight max-w-xl">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                گرافیک است.
+                فارسی یو آی یکی از بهترین مجموعه‌های کامپوننت برای ساخت رابط‌های کاربری
+                واکنش‌گرا و زیبا است.
               </p>
             </div>
             <div className="space-y-2">
               <code className="text-xs bg-muted px-2 py-0.5 rounded">leading-normal (1.5)</code>
               <p className="leading-normal max-w-xl">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                گرافیک است.
+                این مجموعه شامل انواع کامپوننت‌های از پیش ساخته شده است که می‌توانید به راحتی
+                از آن‌ها در پروژه‌های خود استفاده کنید.
               </p>
             </div>
             <div className="space-y-2">
               <code className="text-xs bg-muted px-2 py-0.5 rounded">leading-relaxed (1.625)</code>
               <p className="leading-relaxed max-w-xl">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                گرافیک است.
+                با استفاده از فارسی یو آی، می‌توانید به سرعت رابط‌های کاربری زیبا و حرفه‌ای
+                ایجاد کنید که تجربه کاربری بی‌نظیری را ارائه می‌دهند.
               </p>
             </div>
           </CardContent>

@@ -26,6 +26,7 @@ import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { FarsiUILogo } from "@/components/app-logo";
 import { CodeBlock } from "@/components/ui/code-block";
+import { ScrollIndicator } from "@/components/scroll-indicator";
 
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -177,7 +178,7 @@ export default function App() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-hover-bg focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <Github className="h-4 w-4" />
+                    <Github className="size-4" />
                     GitHub
                   </Link>
                 </nav>
@@ -217,12 +218,15 @@ export default function App() {
             </h1>
 
             <p
-              className={`opacity-0-init mx-auto mt-6 max-w-3xl text-balance text-lg leading-relaxed text-trunks sm:mt-8 ${
+              className={`opacity-0-init mx-auto mt-6 max-w-4xl text-balance text-lg leading-relaxed text-trunks sm:mt-8 ${
                 mounted ? "animate-fade-in-up delay-200" : ""
               }`}
             >
-              مجموعه‌ای جامع و حرفه‌ای از کامپوننت‌های React با پشتیبانی کامل RTL، مخصوص
-              توسعه‌دهندگان ایرانی که می‌خواهند رابط کاربری زیبا و قابل دسترس بسازند
+              فارسی یو آی مجموعه‌ای از کامپوننت‌های آماده برای React است که مخصوص توسعه‌دهندگان
+              فارسی‌زبان طراحی شده. با فارسی یو آی می‌توانید سریع، تمیز و بدون دردسر رابط‌های کاربری
+              زیبا و کاربردی بسازید
+              <br />
+              فقط کپی، پیست و استفاده کن.
             </p>
 
             {/* CTAs - Stack on mobile, row on tablet+ */}
@@ -260,38 +264,21 @@ export default function App() {
                 mounted ? "animate-fade-in-up delay-400" : ""
               }`}
             >
-              <Terminal className="h-4 w-4 shrink-0 text-piccolo" />
+              <Terminal className="size-4 shrink-0 text-piccolo" />
               <code className="font-mono text-sm text-trunks" dir="ltr">
                 npm install @farsiui/react
               </code>
-              <Check className="h-4 w-4 shrink-0 text-roshi" />
+              <Check className="size-4 shrink-0 text-roshi" />
             </div>
           </div>
-
-          {/* Stats - Improved mobile spacing */}
-          <div
-            className={`opacity-0-init mt-16 flex items-center justify-center gap-8 sm:mt-20 sm:gap-16 lg:gap-20 ${
-              mounted ? "animate-fade-in-up delay-500" : ""
-            }`}
-          >
-            {stats.map((stat, i) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-                  {mounted ? (
-                    <AnimatedCounter end={stat.value} duration={1500 + i * 200} />
-                  ) : (
-                    `${stat.value}+`
-                  )}
-                </div>
-                <div className="mt-2 text-sm font-medium text-trunks sm:mt-3">{stat.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
+        <div className="flex justify-center">
+        <ScrollIndicator targetId="showcase" />
+      </div>
       </section>
 
       {/* Code Preview Section - Improved mobile layout */}
-      <section className="border-y border-beerus bg-linear-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
+      <section  className="border-y border-beerus bg-linear-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
@@ -309,7 +296,7 @@ export default function App() {
                 با یک دستور ساده، کامپوننت‌های مورد نیاز خود را به پروژه اضافه کنید. تمام
                 کامپوننت‌ها کاملاً از TypeScript و Tailwind CSS پشتیبانی می‌کنند.
               </p>
-              <div className="mt-8 space-y-4 sm:mt-10">
+              <div id="showcase" className="mt-8 space-y-4 sm:mt-10">
                 {[
                   "پشتیبانی کامل از TypeScript",
                   "سازگار با Next.js و React",
@@ -317,7 +304,7 @@ export default function App() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-4">
                     <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-roshi/15 text-roshi">
-                      <Check className="h-4 w-4 font-bold" />
+                      <Check className="size-4 font-bold" />
                     </div>
                     <span className="text-base leading-relaxed">{item}</span>
                   </div>
@@ -382,11 +369,11 @@ export default function App() {
       <section className="border-t border-beerus bg-linear-to-b from-hales/40 via-hales/20 to-background py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
-            آماده شروع هستید؟
+            آماده شروع هستی؟
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-trunks">
-            همین حالا از کامپوننت‌های Farsi UI در پروژه خود استفاده کنید و تجربه‌ای بی‌نظیر برای
-            کاربران فارسی‌زبان بسازید
+            به جمع توسعه‌دهندگان فارسی‌زبان بپیوندید که از فارسی یو آی برای ساخت رابط‌های کاربری
+            زیبا و کاربردی استفاده می‌کنند
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5">
             <Button
@@ -428,12 +415,12 @@ export default function App() {
                 <span className="text-lg text-chichi animate-pulse">♥</span>
                 <span>توسط</span>
                 <Link
-                  href="https://ehsanghaffarii.ir"
+                  href="https://eindev.ir"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-piccolo hover:text-hit transition-colors focus-visible:ring-2 focus-visible:ring-ring rounded px-1"
                 >
-                  Ein Ghaffar
+                  Ein
                 </Link>
                 <span>برای توسعه‌دهندگان ایرانی</span>
               </div>

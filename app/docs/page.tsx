@@ -12,14 +12,14 @@ export default function DocsPage() {
         </Badge>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">معرفی فارسی یو آی</h1>
         <p className="text-lg leading-relaxed text-trunks">
-          کتابخانه کامپوننت‌های React با پشتیبانی کامل RTL برای زبان فارسی
+          ساخت رابط کاربری فارسی، ساده‌تر از همیشه
         </p>
       </div>
 
       <div className="space-y-6">
         <p className="text-base leading-relaxed">
-          <strong className="font-semibold text-foreground">Farsi UI</strong> یک کتابخانه کامپوننت
-          متن‌باز است که با{" "}
+          <strong className="font-semibold text-foreground">فارسی یو آی</strong>
+          یک کتابخانه کامپوننت متن‌باز برای React است که با{" "}
           <a
             href="https://tailwindcss.com/"
             target="_blank"
@@ -28,12 +28,13 @@ export default function DocsPage() {
           >
             Tailwindcss
           </a>{" "}
-          استایل دهی شده و برای پشتیبانی کامل از زبان فارسی و چیدمان راست به چپ (RTL) بهینه‌سازی شده است.
+          استایل دهی شده و از ابتدا برای زبان فارسی و چیدمان راست‌به‌چپ (RTL) طراحی شده است.
         </p>
 
         <p className="text-base leading-relaxed">
-          این کتابخانه شامل کامپوننت‌های زیبا، قابل دسترس و کاملاً قابل سفارشی‌سازی است که می‌توانید
-          آن‌ها را در پروژه‌های React و Next.js خود استفاده کنید.
+          با مجموعه‌ای از کامپوننت‌های زیبا، مدرن و کاملاً قابل سفارشی‌سازی، می‌توانید خیلی سریع در
+          پروژه‌های React و Next.js رابط کاربری حرفه‌ای، خوانا و هماهنگ با نیاز کاربران فارسی‌زبان
+          بسازید — بدون دردسرهای همیشگی RTL.
         </p>
       </div>
 
@@ -62,7 +63,7 @@ export default function DocsPage() {
       <div className="not-prose mt-12 rounded-xl border border-beerus bg-hales/50 p-8">
         <h2 className="mb-3 text-xl font-semibold">آماده برای شروع؟</h2>
         <p className="mb-6 text-sm leading-relaxed text-trunks">
-          با نصب Farsi UI در پروژه خود، شروع به ساخت رابط‌های کاربری زیبا و قابل دسترس کنید.
+          همین الان کدنویسی رو شروع کن و از کامپوننت‌های فارسی یو آی در پروژه‌هات استفاده کن!
         </p>
         <div className="flex flex-wrap gap-3">
           <Button

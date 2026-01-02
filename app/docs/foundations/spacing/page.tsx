@@ -40,7 +40,7 @@ export default function SpacingPage() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">فاصله‌گذاری</h1>
         <p className="text-lg text-muted-foreground">
-          سیستم فاصله‌گذاری Moon UI بر اساس مقیاس 4px با پشتیبانی کامل RTL
+          راهنمای فاصله‌گذاری در فارسی یو آی با پشتیبانی کامل از زبان‌های راست‌به‌چپ (RTL)
         </p>
       </div>
 

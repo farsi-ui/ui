@@ -7,7 +7,7 @@ export default function ConfigurationPage() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">تنظیمات</h1>
         <p className="text-lg text-muted-foreground">
-          نحوه پیکربندی و سفارشی‌سازی Moon UI برای پروژه شما
+          راهنمای پیکربندی فارسی یو آی در پروژه‌
         </p>
       </div>
 
