@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft,
@@ -24,26 +23,9 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { FarsiUILogo } from "@/components/app-logo";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ScrollIndicator } from "@/components/scroll-indicator";
-
-function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime: number | null = null;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-  }, [end, duration]);
-
-  return <span>{count}+</span>;
-}
+import { ModeToggle } from "@/components/theme-toggle";
 
 const features = [
   {
@@ -78,19 +60,9 @@ const features = [
   },
 ];
 
-const stats = [
-  { label: "کامپوننت", value: 31 },
-  { label: "مثال کد", value: 60 },
-  { label: "توسعه‌دهنده", value: 500 },
-];
-
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const installCode = `npx shadcn@latest add @einui/react`;
   const usageCode = `import { Button } from "@/components/ui/button"
@@ -143,12 +115,12 @@ export default function App() {
               <Github className="h-5 w-5" />
             </Link>
             <div className="me-1 ms-2 h-5 w-px bg-beerus" />
-            <ThemeToggle />
+            <ModeToggle />
           </nav>
 
           {/* Mobile Navigation */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+            <ModeToggle />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-10 w-10" aria-label="بازکردن منو">
