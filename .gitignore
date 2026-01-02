@@ -31,3 +31,5 @@ next-env.d.ts
 .vscode
 
 notion.instructions.md
+
+.wakatime-project
