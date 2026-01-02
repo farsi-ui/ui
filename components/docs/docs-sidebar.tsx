@@ -169,7 +169,7 @@ function SidebarContentArea() {
             </div>
           {!isCollapsed && (
             <div className="flex flex-col">
-              <span className="font-bold text-lg leading-tight">Farsi UI</span>
+              <span className="font-bold text-lg leading-tight">فارسی یو آی</span>
               <span className="text-xs text-muted-foreground">سیستم طراحی فارسی</span>
             </div>
           )}

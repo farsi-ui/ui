@@ -115,7 +115,7 @@ export default function App() {
             <div className="flex items-center justify-center">
               <MousePointerClick />
             </div>
-            <span className="hidden sm:inline">Farsi UI</span>
+            <span className="hidden sm:inline">فارسی یو آی</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle2 } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2 } from "lucide-react";
 
 export default function DocsPage() {
   return (
@@ -10,7 +10,7 @@ export default function DocsPage() {
         <Badge variant="outline" className="mb-2 border-beerus">
           نسخه 1.0
         </Badge>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">معرفی Farsi UI</h1>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">معرفی فارسی یو آی</h1>
         <p className="text-lg leading-relaxed text-trunks">
           کتابخانه کامپوننت‌های React با پشتیبانی کامل RTL برای زبان فارسی
         </p>
@@ -18,21 +18,22 @@ export default function DocsPage() {
 
       <div className="space-y-6">
         <p className="text-base leading-relaxed">
-          <strong className="font-semibold text-foreground">Farsi UI</strong> یک کتابخانه کامپوننت متن‌باز است که بر پایه{" "}
+          <strong className="font-semibold text-foreground">Farsi UI</strong> یک کتابخانه کامپوننت
+          متن‌باز است که با{" "}
           <a
-            href="https://ui.shadcn.com"
+            href="https://tailwindcss.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-piccolo underline decoration-piccolo/30 underline-offset-4 transition-colors hover:decoration-piccolo"
           >
-            shadcn/ui
+            Tailwindcss
           </a>{" "}
-          ساخته شده و برای پشتیبانی کامل از زبان فارسی و چیدمان راست به چپ (RTL) بهینه‌سازی شده است.
+          استایل دهی شده و برای پشتیبانی کامل از زبان فارسی و چیدمان راست به چپ (RTL) بهینه‌سازی شده است.
         </p>
 
         <p className="text-base leading-relaxed">
-          این کتابخانه شامل کامپوننت‌های زیبا، قابل دسترس و کاملاً قابل سفارشی‌سازی است که می‌توانید آن‌ها را در پروژه‌های
-          React و Next.js خود استفاده کنید.
+          این کتابخانه شامل کامپوننت‌های زیبا، قابل دسترس و کاملاً قابل سفارشی‌سازی است که می‌توانید
+          آن‌ها را در پروژه‌های React و Next.js خود استفاده کنید.
         </p>
       </div>
 
@@ -47,7 +48,10 @@ export default function DocsPage() {
             "سازگار با Next.js App Router و React 19",
             "استایل‌دهی با Tailwind CSS v4",
           ].map((feature) => (
-            <div key={feature} className="flex items-start gap-3 rounded-lg border border-beerus bg-card p-4">
+            <div
+              key={feature}
+              className="flex items-start gap-3 rounded-lg border border-beerus bg-card p-4"
+            >
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-piccolo" aria-hidden="true" />
               <span className="text-sm leading-relaxed">{feature}</span>
             </div>
@@ -61,7 +65,11 @@ export default function DocsPage() {
           با نصب Farsi UI در پروژه خود، شروع به ساخت رابط‌های کاربری زیبا و قابل دسترس کنید.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Button asChild size="default" className="bg-piccolo font-medium text-goku hover:bg-piccolo/90">
+          <Button
+            asChild
+            size="default"
+            className="bg-piccolo font-medium text-goku hover:bg-piccolo/90"
+          >
             <Link href="/docs/installation">راهنمای نصب</Link>
           </Button>
           <Button
@@ -75,5 +83,5 @@ export default function DocsPage() {
         </div>
       </div>
     </article>
-  )
+  );
 }
