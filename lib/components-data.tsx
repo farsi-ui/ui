@@ -94,13 +94,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import {
-  Field,
-  FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
   Search,
   Plus,
@@ -131,6 +125,7 @@ import {
   FolderOpen,
   Package,
 } from "lucide-react";
+import Image from "next/image";
 
 export interface ComponentExample {
   id: string;
@@ -404,7 +399,7 @@ export const allComponents: ComponentData[] = [
         title: "پیش‌فرض",
         description: "متن چندخطی ساده",
         preview: (
-          <div className="w-full space-y-2">
+          <div className="w-sm space-y-2">
             <Label htmlFor="message">عنوان</Label>
             <Textarea id="message" placeholder="پیام خود را بنویسید..." />
           </div>
@@ -417,7 +412,7 @@ export const allComponents: ComponentData[] = [
         title: "با شمارنده",
         description: "متن چندخطی با نمایش تعداد کاراکتر",
         preview: (
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-sm space-y-2">
             <Label>توضیحات</Label>
             <Textarea placeholder="حداکثر ۲۵۰ کاراکتر..." maxLength={250} rows={4} />
             <div className="flex justify-between text-xs text-muted-foreground">
@@ -438,7 +433,7 @@ export const allComponents: ComponentData[] = [
         title: "غیرفعال",
         description: "متن چندخطی در حالت غیرفعال",
         preview: (
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-sm max-w-sm space-y-2">
             <Label className="text-muted-foreground">یادداشت</Label>
             <Textarea placeholder="این فیلد غیرفعال است..." disabled rows={3} />
           </div>
@@ -1417,7 +1412,7 @@ export const allComponents: ComponentData[] = [
         title: "با دکمه عمل",
         description: "کارت همراه با دکمه‌های عملیاتی",
         preview: (
-          <Card className="w-full max-w-sm">
+          <Card className="w-sm">
             <CardHeader>
               <CardTitle>اشتراک ویژه</CardTitle>
               <CardDescription>دسترسی به تمام امکانات</CardDescription>
@@ -1444,9 +1439,9 @@ export const allComponents: ComponentData[] = [
         title: "با تصویر",
         description: "کارت همراه با تصویر و محتوا",
         preview: (
-          <Card className="w-full max-w-sm overflow-hidden">
-            <div className="aspect-video bg-muted flex items-center justify-center">
-              <Star className="h-12 w-12 text-muted-foreground" />
+          <Card className="w-full max-w-sm overflow-hidden pt-0">
+            <div className="aspect-video flex items-center justify-center">
+              <Image src="/diverse-group.png" alt="تصویر مقاله" width={400} height={225} />
             </div>
             <CardHeader>
               <CardTitle>عنوان مقاله</CardTitle>
@@ -3260,7 +3255,7 @@ export const allComponents: ComponentData[] = [
                 منو
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="p-6">
               <SheetHeader>
                 <SheetTitle>عنوان</SheetTitle>
                 <SheetDescription>
@@ -3297,7 +3292,7 @@ export const allComponents: ComponentData[] = [
             <SheetTrigger asChild>
               <Button>کشو پایین</Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="h-[50vh]">
+            <SheetContent side="bottom" className="h-[50vh] p-6">
               <SheetHeader>
                 <SheetTitle>عنوان</SheetTitle>
                 <SheetDescription>این کشو از پایین صفحه باز می‌شود.</SheetDescription>
@@ -3309,7 +3304,7 @@ export const allComponents: ComponentData[] = [
   <SheetTrigger asChild>
     <Button>کشو پایین</Button>
   </SheetTrigger>
-  <SheetContent side="bottom" className="h-[50vh]">
+  <SheetContent side="bottom" className="h-[50vh] p-6">
     <SheetHeader>
       <SheetTitle>عنوان</SheetTitle>
       <SheetDescription>این کشو از پایین صفحه باز می‌شود.</SheetDescription>
@@ -3328,7 +3323,7 @@ export const allComponents: ComponentData[] = [
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
+            <SheetContent side="right" className="w-72 p-6">
               <SheetHeader>
                 <SheetTitle>منو</SheetTitle>
               </SheetHeader>
@@ -3364,7 +3359,7 @@ export const allComponents: ComponentData[] = [
       <Menu className="h-5 w-5" />
     </Button>
   </SheetTrigger>
-  <SheetContent side="right" className="w-72">
+  <SheetContent side="right" className="w-72 p-6">
     <SheetHeader>
       <SheetTitle>منو</SheetTitle>
     </SheetHeader>
@@ -3826,7 +3821,7 @@ export const allComponents: ComponentData[] = [
             <SheetTrigger asChild>
               <Button>باز کردن</Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="h-auto">
+            <SheetContent side="bottom" className="h-auto mx-auto px-16  py-8">
               <SheetHeader>
                 <SheetTitle>عنوان</SheetTitle>
               </SheetHeader>
@@ -3863,7 +3858,7 @@ export const allComponents: ComponentData[] = [
             <SheetTrigger asChild>
               <Button variant="outline">عملیات</Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="h-auto">
+            <SheetContent side="bottom" className="h-auto mx-auto px-16  py-8">
               <SheetHeader>
                 <SheetTitle>انتخاب عملیات</SheetTitle>
               </SheetHeader>
@@ -3913,7 +3908,7 @@ export const allComponents: ComponentData[] = [
             <SheetTrigger asChild>
               <Button variant="outline">فیلترها</Button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="h-auto">
+            <SheetContent side="bottom" className="h-auto mx-auto px-16  py-8">
               <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted" />
               <SheetHeader className="mt-4">
                 <SheetTitle>فیلترها</SheetTitle>
@@ -4042,7 +4037,13 @@ export const allComponents: ComponentData[] = [
               </Field>
               <Field>
                 <FieldLabel htmlFor="phone">شماره تماس</FieldLabel>
-                <Input id="phone" type="tel" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" className="text-left" />
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+                  dir="ltr"
+                  className="text-left"
+                />
                 <FieldDescription>شماره تلفن همراه ۱۱ رقمی</FieldDescription>
               </Field>
             </FieldGroup>
