@@ -76,7 +76,7 @@ export default async function ComponentPage({ params }: PageProps) {
         {nextComponent ? (
           <Link
             href={`/docs/components/${nextComponent.slug}`}
-            className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground text-left"
+            className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground text-end"
           >
             <div>
               <p className="text-xs text-muted-foreground">بعدی</p>

@@ -127,7 +127,6 @@ import {
   Share,
   Menu,
   Calendar,
-  FileText,
   Inbox,
   FolderOpen,
   Package,
