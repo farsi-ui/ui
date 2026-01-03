@@ -25,10 +25,10 @@ const rtlUtilities = [
   { standard: "mr-*", rtl: "me-*", description: "مارجین از انتها (چپ در RTL)" },
   { standard: "pl-*", rtl: "ps-*", description: "پدینگ از ابتدا (راست در RTL)" },
   { standard: "pr-*", rtl: "pe-*", description: "پدینگ از انتها (چپ در RTL)" },
-  { standard: "left-*", rtl: "start-*", description: "موقعیت ابتدا" },
-  { standard: "right-*", rtl: "end-*", description: "موقعیت انتها" },
-  { standard: "text-left", rtl: "text-start", description: "تراز متن به ابتدا" },
-  { standard: "text-right", rtl: "text-end", description: "تراز متن به انتها" },
+  { standard: "end-*", rtl: "start-*", description: "موقعیت ابتدا" },
+  { standard: "start-*", rtl: "end-*", description: "موقعیت انتها" },
+  { standard: "text-end", rtl: "text-start", description: "تراز متن به ابتدا" },
+  { standard: "text-start", rtl: "text-end", description: "تراز متن به انتها" },
   { standard: "border-l-*", rtl: "border-s-*", description: "بردر ابتدا" },
   { standard: "border-r-*", rtl: "border-e-*", description: "بردر انتها" },
 ];
@@ -154,7 +154,7 @@ export default function SpacingPage() {
           <CardContent>
             <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm" dir="ltr">
               <code>{`{/* ❌ اشتباه - جهت‌دار */}
-<div className="ml-4 pr-6 text-left border-r-2">
+<div className="ml-4 pr-6 text-end border-r-2">
 
 {/* ✅ درست - منطقی (RTL-friendly) */}
 <div className="ms-4 pe-6 text-start border-e-2">

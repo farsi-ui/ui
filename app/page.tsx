@@ -21,7 +21,9 @@ import {
   X,
   MousePointerClick,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ScrollIndicator } from "@/components/scroll-indicator";
@@ -63,6 +65,7 @@ const features = [
 export default function Home() {
   const [mounted, setMounted] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isRTL = useIsRTL();
 
   const installCode = `npx shadcn@latest add @einui/react`;
   const usageCode = `import { Button } from "@/components/ui/button"
@@ -214,7 +217,7 @@ export default function App() {
               >
                 <Link href="/docs">
                   شروع کنید
-                  <ArrowLeft className="ms-2 h-5 w-5 transition-transform group-hover:-translate-x-1 rtl:rotate-180 rtl:group-hover:translate-x-1" />
+                  <ArrowLeft className={cn("ms-2 h-5 w-5 transition-transform group-hover:-translate-x-1", isRTL ? 'rotate-180 group-hover:translate-x-1' : '')} />
                 </Link>
               </Button>
               <Button
@@ -355,7 +358,7 @@ export default function App() {
             >
               <Link href="/docs">
                 مشاهده مستندات
-                <ArrowLeft className="ms-2 h-5 w-5 rtl:rotate-180" />
+                <ArrowLeft className={cn("ms-2 h-5 w-5", isRTL ? 'rotate-180' : '')} />
               </Link>
             </Button>
             <Button
