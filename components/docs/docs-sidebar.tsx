@@ -437,7 +437,7 @@ function SidebarContentArea() {
 export function DocsSidebar({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider defaultOpen={true}>
-      <Sidebar side="right" collapsible="icon" className="border-s border-border">
+      <Sidebar side="left" collapsible="icon" className="border-s border-border">
         <SidebarContentArea />
       </Sidebar>
       <SidebarInset className="flex flex-col">{children}</SidebarInset>

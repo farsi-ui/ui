@@ -7,6 +7,7 @@ import useEmblaCarousel, {
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 import { Button } from '@/components/ui/button'
 
 type CarouselApi = UseEmblaCarouselType[1]
@@ -144,7 +145,7 @@ function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
       <div
         className={cn(
           'flex',
-          orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col',
+          orientation === 'horizontal' ? '-ms-4' : '-mt-4 flex-col',
           className,
         )}
         {...props}
@@ -163,7 +164,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="carousel-item"
       className={cn(
         'min-w-0 shrink-0 grow-0 basis-full',
-        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
+        orientation === 'horizontal' ? 'ps-4' : 'pt-4',
         className,
       )}
       {...props}
@@ -178,6 +179,7 @@ function CarouselPrevious({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const isRTL = useIsRTL()
 
   return (
     <Button
@@ -188,14 +190,14 @@ function CarouselPrevious({
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
           ? 'top-1/2 -start-12 -translate-y-1/2'
-          : '-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90',
+          : '-top-12 start-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="rtl:rotate-180" />
+      <ArrowLeft className={cn(isRTL ? 'rotate-180' : '')} />
       <span className="sr-only">اسلاید قبلی</span>
     </Button>
   )
@@ -208,6 +210,7 @@ function CarouselNext({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
+  const isRTL = useIsRTL()
 
   return (
     <Button
@@ -218,14 +221,14 @@ function CarouselNext({
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
           ? 'top-1/2 -end-12 -translate-y-1/2'
-          : '-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90',
+          : '-bottom-12 start-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="rtl:rotate-180" />
+      <ArrowRight className={cn(isRTL ? 'rotate-180' : '')} />
       <span className="sr-only">اسلاید بعدی</span>
     </Button>
   )

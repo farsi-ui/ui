@@ -5,6 +5,7 @@ import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 
 function Menubar({
   className,
@@ -224,6 +225,7 @@ function MenubarSubTrigger({
 }: React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
   inset?: boolean
 }) {
+  const isRTL = useIsRTL()
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
@@ -235,7 +237,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ms-auto h-4 w-4 rtl:rotate-180" />
+      <ChevronRightIcon className={cn("ms-auto h-4 w-4", isRTL ? 'rotate-180' : '')} />
     </MenubarPrimitive.SubTrigger>
   )
 }

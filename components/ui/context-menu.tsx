@@ -2,9 +2,10 @@
 
 import * as React from 'react'
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 
 function ContextMenu({
   ...props
@@ -61,6 +62,7 @@ function ContextMenuSubTrigger({
 }: React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & {
   inset?: boolean
 }) {
+  const isRTL = useIsRTL()
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
@@ -72,7 +74,7 @@ function ContextMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ms-auto rtl:rotate-180" />
+      {isRTL ? <ChevronLeftIcon className="ms-auto size-4" /> : <ChevronRightIcon className="ms-auto size-4" />}
     </ContextMenuPrimitive.SubTrigger>
   )
 }

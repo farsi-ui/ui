@@ -5,6 +5,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 
 function DropdownMenu({
   ...props
@@ -206,6 +207,7 @@ function DropdownMenuSubTrigger({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
   inset?: boolean
 }) {
+  const isRTL = useIsRTL()
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
@@ -217,7 +219,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ms-auto size-4 rtl:rotate-180" />
+      <ChevronRightIcon className={cn("ms-auto size-4", isRTL ? 'rotate-180' : '')} />
     </DropdownMenuPrimitive.SubTrigger>
   )
 }

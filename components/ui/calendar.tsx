@@ -9,6 +9,7 @@ import {
 import { DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 function Calendar({
@@ -24,14 +25,13 @@ function Calendar({
   buttonVariant?: React.ComponentProps<typeof Button>['variant']
 }) {
   const defaultClassNames = getDefaultClassNames()
+  const isRTL = useIsRTL()
 
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        'bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent',
-        String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
-        String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
+        'bg-background group/calendar p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent',
         className,
       )}
       captionLayout={captionLayout}
@@ -81,7 +81,7 @@ function Calendar({
           'select-none font-medium',
           captionLayout === 'label'
             ? 'text-sm'
-            : 'rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5',
+            : 'rounded-md ps-2 pe-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5',
           defaultClassNames.caption_label,
         ),
         table: 'w-full border-collapse',
@@ -138,16 +138,13 @@ function Calendar({
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === 'left') {
             return (
-              <ChevronLeftIcon className={cn('size-4', className)} {...props} />
+              <>{isRTL ? <ChevronRightIcon className={cn('size-4', className)} {...props} /> : <ChevronLeftIcon className={cn('size-4', className)} {...props} />}</>
             )
           }
 
           if (orientation === 'right') {
             return (
-              <ChevronRightIcon
-                className={cn('size-4', className)}
-                {...props}
-              />
+              <>{isRTL ? <ChevronLeftIcon className={cn('size-4', className)} {...props} /> : <ChevronRightIcon className={cn('size-4', className)} {...props} />}</>
             )
           }
 

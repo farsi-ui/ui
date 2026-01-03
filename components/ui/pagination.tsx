@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from 'react'
 import {
   ChevronLeftIcon,
@@ -6,6 +8,7 @@ import {
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { useIsRTL } from '@/hooks/use-rtl'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
@@ -69,6 +72,7 @@ function PaginationPrevious({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
+  const isRTL = useIsRTL()
   return (
     <PaginationLink
       aria-label="رفتن به صفحه قبلی"
@@ -76,7 +80,7 @@ function PaginationPrevious({
       className={cn('gap-1 px-2.5 sm:ps-2.5', className)}
       {...props}
     >
-      <ChevronLeftIcon className="rtl:rotate-180" />
+      {isRTL ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       <span className="hidden sm:block">قبلی</span>
     </PaginationLink>
   )
@@ -86,6 +90,7 @@ function PaginationNext({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
+  const isRTL = useIsRTL()
   return (
     <PaginationLink
       aria-label="رفتن به صفحه بعدی"
@@ -94,7 +99,7 @@ function PaginationNext({
       {...props}
     >
       <span className="hidden sm:block">بعدی</span>
-      <ChevronRightIcon className="rtl:rotate-180" />
+      {isRTL ? <ChevronLeftIcon /> : <ChevronRightIcon />}
     </PaginationLink>
   )
 }

@@ -30,8 +30,8 @@ function Command({
 }
 
 function CommandDialog({
-  title = 'Command Palette',
-  description = 'Search for a command to run...',
+  title = 'پنجره فرمان',
+  description = 'برای یافتن فرمان جستجو کنید...',
   children,
   className,
   showCloseButton = true,
@@ -163,7 +163,7 @@ function CommandShortcut({
     <span
       data-slot="command-shortcut"
       className={cn(
-        'text-muted-foreground ml-auto text-xs tracking-widest',
+        'text-muted-foreground ms-auto text-xs tracking-widest',
         className,
       )}
       {...props}
