@@ -20,6 +20,12 @@ import {
   Menu,
   X,
   MousePointerClick,
+  Blocks,
+  LayoutDashboard,
+  KeyRound,
+  Contact,
+  LucideArrowBigLeftDash,
+  ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from '@/lib/utils'
@@ -79,10 +85,10 @@ export default function App() {
 }`;
 
   return (
-    <main className="min-h-screen bg-background pb-20 md:pb-0">
+    <main className="min-h-screen bg-background pb-16 md:pb-0">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-beerus/50 bg-background/80 backdrop-blur-xl transition-all">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-18 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex items-center gap-2 text-base font-bold tracking-tight transition-all hover:opacity-80 focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1 sm:text-lg"
@@ -109,13 +115,19 @@ export default function App() {
               کامپوننت‌ها
             </Link>
             <Link
+              href="/docs/blocks"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-trunks transition-colors hover:bg-hover-bg hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              بلاک‌ها
+            </Link>
+            <Link
               href="https://github.com/ehsanghaffar"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg p-2 text-trunks transition-colors hover:bg-hover-bg hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="GitHub - Ehsan Ghaffar"
             >
-              <Github className="h-5 w-5" />
+              <Github className="size-4" />
             </Link>
             <div className="me-1 ms-2 h-5 w-px bg-beerus" />
             <ModeToggle />
@@ -127,7 +139,7 @@ export default function App() {
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-10 w-10" aria-label="بازکردن منو">
-                  {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                  {mobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-72 p-6">
@@ -145,6 +157,14 @@ export default function App() {
                     className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-hover-bg focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     کامپوننت‌ها
+                  </Link>
+                  <Link
+                    href="/docs/blocks"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-hover-bg focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <Blocks className="size-4" />
+                    بلاک‌ها
                   </Link>
                   <Link
                     href="https://github.com/ehsanghaffar"
@@ -168,15 +188,19 @@ export default function App() {
         <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-piccolo/5 via-transparent to-transparent" />
         <div className="pointer-events-none absolute -top-40 start-1/2 h-125 w-200 -translate-x-1/2 rounded-full bg-piccolo/10 blur-3xl" />
 
-        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-32 lg:pt-32">
+        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:px-8 lg:pb-32 lg:pt-24">
           <div className="text-center">
             <div className={`opacity-0-init ${mounted ? "animate-fade-in-down" : ""}`}>
               <Badge
                 variant="secondary"
                 className="mb-6 border border-piccolo/20 bg-piccolo/10 px-4 py-2 text-xs font-semibold text-piccolo transition-all hover:border-piccolo/40 hover:bg-piccolo/15"
+                asChild
               >
-                <Sparkles className="me-1.5 inline h-3.5 w-3.5" />
-                نسخه 0.0.1 منتشر شد!
+                <Link href="/docs/blocks" className="inline-flex items-center">
+                <Sparkles className="me-1.5 inline size-3.5" />
+                بلاک‌ها و کامپوننت‌های جدید اضافه شدند!
+                <LucideArrowBigLeftDash className="ms-1 inline size-4" />
+                </Link>
               </Badge>
             </div>
 
@@ -216,8 +240,8 @@ export default function App() {
                 className="group h-12 w-full bg-piccolo px-8 text-base font-semibold text-white shadow-lg shadow-piccolo/25 transition-all hover:bg-piccolo/90 hover:shadow-xl hover:shadow-piccolo/35 focus-visible:ring-offset-2 sm:w-auto"
               >
                 <Link href="/docs">
-                  شروع کنید
-                  <ArrowLeft className={cn("ms-2 h-5 w-5 transition-transform group-hover:-translate-x-1", isRTL ? 'rotate-180 group-hover:translate-x-1' : '')} />
+                  مستندات
+                  <ArrowRight className={cn("ms-1 size-4 transition-transform group-hover:-translate-x-1", isRTL ? 'rotate-180 group-hover:translate-x-1' : '')} />
                 </Link>
               </Button>
               <Button
@@ -227,29 +251,128 @@ export default function App() {
                 className="h-12 w-full border-beerus bg-background px-8 text-base font-semibold transition-all hover:bg-hover-bg hover:border-piccolo/30 focus-visible:ring-offset-2 sm:w-auto"
               >
                 <Link href="/docs/components">
-                  <Component className="ms-2 h-5 w-5" />
+                  <Component className="ms-2 size-4" />
                   مشاهده کامپوننت‌ها
                 </Link>
               </Button>
             </div>
 
             {/* Install command with better styling */}
-            <div
+            {/* <div
               className={`opacity-0-init mt-8 inline-flex items-center gap-3 rounded-full border border-beerus bg-card px-5 py-2.5 transition-all hover:border-piccolo/20 hover:shadow-md sm:mt-10 ${
                 mounted ? "animate-fade-in-up delay-400" : ""
               }`}
             >
               <Terminal className="size-4 shrink-0 text-piccolo" />
               <code className="font-mono text-sm text-trunks" dir="ltr">
-                npm install @farsiui/react
+                فقط کدها رو کپی کن
               </code>
               <Check className="size-4 shrink-0 text-roshi" />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex justify-center">
         <ScrollIndicator targetId="showcase" />
       </div>
+      </section>
+
+      {/* Blocks Section - NEW */}
+      <section className="border-t border-beerus bg-linear-to-b from-hales/30 to-transparent py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <Badge
+              variant="outline"
+              className="mb-4 border-hit/30 bg-hit/5 text-hit font-semibold inline-flex items-center gap-2"
+            >
+              <Blocks className="size-3.5" />
+              بلاک‌ها
+              <span className="bg-hit/20 text-hit text-[10px] px-1.5 py-0.5 rounded-full font-bold">جدید</span>
+            </Badge>
+            <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
+              بلاک‌های آماده برای پروژه‌های واقعی
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-trunks">
+              بلاک‌ها ترکیب‌های آماده از چند کامپوننت هستند که می‌توانید مستقیماً در پروژه خود استفاده کنید.
+              فرم‌های ورود، داشبوردها، صفحات ارتباط و موارد بیشتر - همه با پشتیبانی کامل RTL
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Authentication Block Card */}
+            <Link
+              href="/docs/blocks/login-01"
+              className={`opacity-0-init group relative overflow-hidden rounded-xl border border-beerus bg-card p-6 transition-all duration-300 hover:border-hit/40 hover:shadow-lg hover:shadow-hit/10 ${
+                mounted ? "animate-fade-in-up delay-100" : ""
+              }`}
+            >
+              <div className="absolute -end-8 -top-8 h-24 w-24 rounded-full bg-hit/5 transition-transform duration-500 group-hover:scale-150" />
+              <div className="relative z-10">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-hit/20 to-piccolo/20 text-hit transition-all group-hover:scale-110">
+                  <KeyRound className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">احراز هویت</h3>
+                <p className="text-sm leading-relaxed text-trunks mb-4">
+                  فرم‌های ورود و ثبت‌نام با طراحی مدرن و پشتیبانی از شبکه‌های اجتماعی
+                </p>
+                <span className="text-xs text-hit font-medium">۳ بلاک</span>
+              </div>
+            </Link>
+
+            {/* Dashboard Block Card */}
+            <Link
+              href="/docs/blocks/stats-cards-01"
+              className={`opacity-0-init group relative overflow-hidden rounded-xl border border-beerus bg-card p-6 transition-all duration-300 hover:border-frieza/40 hover:shadow-lg hover:shadow-frieza/10 ${
+                mounted ? "animate-fade-in-up delay-200" : ""
+              }`}
+            >
+              <div className="absolute -end-8 -top-8 h-24 w-24 rounded-full bg-frieza/5 transition-transform duration-500 group-hover:scale-150" />
+              <div className="relative z-10">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-frieza/20 to-hit/20 text-frieza transition-all group-hover:scale-110">
+                  <LayoutDashboard className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">داشبورد</h3>
+                <p className="text-sm leading-relaxed text-trunks mb-4">
+                  کارت‌های آماری و لیست فروش‌های اخیر برای پنل‌های مدیریت
+                </p>
+                <span className="text-xs text-frieza font-medium">۲ بلاک</span>
+              </div>
+            </Link>
+
+            {/* Forms Block Card */}
+            <Link
+              href="/docs/blocks/contact-form-01"
+              className={`opacity-0-init group relative overflow-hidden rounded-xl border border-beerus bg-card p-6 transition-all duration-300 hover:border-roshi/40 hover:shadow-lg hover:shadow-roshi/10 ${
+                mounted ? "animate-fade-in-up delay-300" : ""
+              }`}
+            >
+              <div className="absolute -end-8 -top-8 h-24 w-24 rounded-full bg-roshi/5 transition-transform duration-500 group-hover:scale-150" />
+              <div className="relative z-10">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-roshi/20 to-hit/20 text-roshi transition-all group-hover:scale-110">
+                  <Contact className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">فرم‌ها</h3>
+                <p className="text-sm leading-relaxed text-trunks mb-4">
+                  فرم‌های تماس و سایر فرم‌های کاربردی با اعتبارسنجی
+                </p>
+                <span className="text-xs text-roshi font-medium">۱ بلاک</span>
+              </div>
+            </Link>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 border-beerus bg-background px-8 text-base font-semibold transition-all hover:bg-hover-bg hover:border-hit/30"
+            >
+              <Link href="/docs/blocks">
+                <Blocks className="ms-2 size-4" />
+                مشاهده همه بلاک‌ها
+              </Link>
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Code Preview Section - Improved mobile layout */}
@@ -261,7 +384,7 @@ export default function App() {
                 variant="outline"
                 className="mb-4 w-fit border-hit/30 bg-hit/5 text-hit font-semibold transition-all hover:bg-hit/10"
               >
-                <Code2 className="me-2 h-3.5 w-3.5" />
+                <Code2 className="me-2 size-3.5" />
                 نصب آسان
               </Badge>
               <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl leading-tight">
@@ -303,7 +426,7 @@ export default function App() {
               variant="outline"
               className="mb-4 border-frieza/30 bg-frieza/5 text-frieza font-semibold inline-flex items-center gap-2"
             >
-              <Layers className="h-3.5 w-3.5" />
+              <Layers className="size-3.5" />
               ویژگی‌ها
             </Badge>
             <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
@@ -340,45 +463,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="border-t border-beerus bg-linear-to-b from-hales/40 via-hales/20 to-background py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
-            آماده شروع هستی؟
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-trunks">
-            به جمع توسعه‌دهندگان فارسی‌زبان بپیوندید که از فارسی یو آی برای ساخت رابط‌های کاربری
-            زیبا و کاربردی استفاده می‌کنند
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5">
-            <Button
-              asChild
-              size="lg"
-              className="h-12 w-full bg-piccolo px-8 text-base font-semibold text-white shadow-lg shadow-piccolo/25 transition-all hover:bg-piccolo/90 hover:shadow-xl hover:shadow-piccolo/35 focus-visible:ring-offset-2 sm:w-auto"
-            >
-              <Link href="/docs">
-                مشاهده مستندات
-                <ArrowLeft className={cn("ms-2 h-5 w-5", isRTL ? 'rotate-180' : '')} />
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              asChild
-              size="lg"
-              className="h-12 w-full border-beerus bg-background px-8 text-base font-semibold transition-all hover:bg-hover-bg hover:border-piccolo/30 focus-visible:ring-offset-2 sm:w-auto"
-            >
-              <Link
-                href="https://github.com/ehsanghaffar"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="ms-2 h-5 w-5" />
-                مشاهده در GitHub
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="border-t border-beerus bg-card py-8 sm:py-12">
@@ -420,6 +504,12 @@ export default function App() {
                     className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1"
                   >
                     کامپوننت‌ها
+                  </Link>
+                  <Link
+                    href="/docs/blocks"
+                    className="transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1"
+                  >
+                    بلاک‌ها
                   </Link>
                 </div>
                 <div className="flex items-center gap-6">

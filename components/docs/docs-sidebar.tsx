@@ -26,6 +26,10 @@ import {
   DatabaseZapIcon,
   QrCodeIcon,
   MousePointerClick,
+  BlocksIcon,
+  KeyRoundIcon,
+  LayoutDashboardIcon,
+  ContactIcon,
 } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -54,6 +58,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { allComponents } from "@/lib/components-data"
+import { allBlocks, blockCategories } from "@/lib/blocks-data"
 
 // Navigation sections
 const navSections = [
@@ -79,14 +84,23 @@ const navSections = [
   },
 ]
 
-// Category icons mapping
+// Category icons mapping for components
 const categoryIcons: Record<string, React.ElementType> = {
-  "عناصر پایه": BoxIcon,
-  ورودی‌ها: FormIcon,
-  "نمایش داده": DatabaseZapIcon,
-  ناوبری: NavigationIcon,
-  بازخورد: MessageSquareIcon,
-  پوشش‌ها: LayersIcon,
+  "layout": BoxIcon,
+  "inputs": FormIcon,
+  "display": DatabaseZapIcon,
+  "navigation": NavigationIcon,
+  "feedback": MessageSquareIcon,
+  "overlay": LayersIcon,
+}
+
+// Category icons mapping for blocks
+const blockCategoryIcons: Record<string, React.ElementType> = {
+  authentication: KeyRoundIcon,
+  dashboard: LayoutDashboardIcon,
+  marketing: MessageSquareIcon,
+  ecommerce: BoxIcon,
+  forms: ContactIcon,
 }
 
 function SidebarToggleButton() {
@@ -218,7 +232,7 @@ function SidebarContentArea() {
         {navSections.map((section) => (
           <SidebarGroup key={section.title}>
             {!isCollapsed ? (
-              <Collapsible defaultOpen className="group/collapsible">
+              <Collapsible defaultOpen={false} className="group/collapsible">
                 <SidebarGroupLabel
                   asChild
                   className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
@@ -295,8 +309,10 @@ function SidebarContentArea() {
               <SidebarGroupContent>
                 {Object.entries(groupedComponents).map(([category, components]) => {
                   const CategoryIcon = categoryIcons[category] || BoxIcon
+                  console.log(category);
+
                   return (
-                    <Collapsible key={category} defaultOpen className="group/collapsible">
+                    <Collapsible key={category} defaultOpen={false} className="group/collapsible">
                       <SidebarMenu>
                         <SidebarMenuItem>
                           <CollapsibleTrigger asChild>
@@ -380,6 +396,105 @@ function SidebarContentArea() {
                     </TooltipProvider>
                   </SidebarMenuItem>
                 ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          )}
+        </SidebarGroup>
+
+        <SidebarSeparator className="my-2 mx-auto" />
+
+        {/* Blocks Section */}
+        <SidebarGroup>
+          {!isCollapsed ? (
+            <>
+              <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2 px-2 mb-2">
+                <BlocksIcon className="size-4 shrink-0" />
+                <span>
+                  بلاک‌ها
+                  <span className="text-[10px] text-muted-foreground/70 ms-1.5 font-normal normal-case">
+                    ({allBlocks.length})
+                  </span>
+                  <span className="rounded-full bg-teal-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-teal-600 dark:text-teal-400 ms-1.5">
+                    جدید
+                  </span>
+                </span>
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                {Object.entries(blockCategories).map(([categoryKey, categoryLabel]) => {
+                  const CategoryIcon = blockCategoryIcons[categoryKey] || BoxIcon
+                  const categoryBlocks = allBlocks.filter((b) => b.category === categoryKey)
+                  if (categoryBlocks.length === 0) return null
+                  return (
+                    <Collapsible key={categoryKey} defaultOpen className="group/collapsible">
+                      <SidebarMenu>
+                        <SidebarMenuItem>
+                          <CollapsibleTrigger asChild>
+                            <SidebarMenuButton className="w-full justify-between font-medium">
+                              <span className="flex items-center gap-2">
+                                <CategoryIcon className="size-4 text-muted-foreground shrink-0" />
+                                <span>{categoryLabel}</span>
+                              </span>
+                              <ChevronLeftIcon className="size-4 text-muted-foreground transition-transform duration-200 group-data-[state=open]/collapsible:-rotate-90" />
+                            </SidebarMenuButton>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <SidebarMenuSub className="border-s-2 border-border/50 ms-4 ps-3 mt-1">
+                              {categoryBlocks.map((block) => (
+                                <SidebarMenuSubItem key={block.slug}>
+                                  <SidebarMenuSubButton
+                                    asChild
+                                    isActive={pathname === `/docs/blocks/${block.slug}`}
+                                    className="h-auto py-1.5"
+                                  >
+                                    <Link href={`/docs/blocks/${block.slug}`}>
+                                      <span className="flex flex-col items-start gap-0">
+                                        <span className="flex items-center gap-2">
+                                          <span className="font-medium text-sm">{block.name}</span>
+                                          {block.isNew && (
+                                            <span className="rounded-full bg-teal-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-teal-600 dark:text-teal-400">
+                                              جدید
+                                            </span>
+                                          )}
+                                        </span>
+                                        <span className="text-xs text-muted-foreground">{block.nameEn}</span>
+                                      </span>
+                                    </Link>
+                                  </SidebarMenuSubButton>
+                                </SidebarMenuSubItem>
+                              ))}
+                            </SidebarMenuSub>
+                          </CollapsibleContent>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    </Collapsible>
+                  )
+                })}
+              </SidebarGroupContent>
+            </>
+          ) : (
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={pathname.startsWith("/docs/blocks")}
+                          className="justify-center"
+                        >
+                          <Link href="/docs/blocks">
+                            <BlocksIcon className="size-4" />
+                          </Link>
+                        </SidebarMenuButton>
+                      </TooltipTrigger>
+                      <TooltipContent side="left">
+                        <span className="font-medium">بلاک‌ها</span>
+                        <span className="text-xs text-muted-foreground block">Blocks</span>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           )}

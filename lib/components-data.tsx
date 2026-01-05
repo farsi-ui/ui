@@ -135,16 +135,6 @@ export interface ComponentExample {
   code: string;
 }
 
-export interface ComponentData {
-  slug: string;
-  name: string;
-  nameEn: string;
-  description: string;
-  category: "inputs" | "display" | "feedback" | "navigation" | "layout" | "overlay";
-  examples: ComponentExample[];
-  isNew?: boolean;
-}
-
 export const componentCategories = {
   inputs: "ورودی‌ها",
   display: "نمایشی",
@@ -153,6 +143,17 @@ export const componentCategories = {
   layout: "چیدمان",
   overlay: "روکش",
 };
+export interface ComponentData {
+  slug: string;
+  name: string;
+  nameEn: string;
+  description: string;
+  category: keyof typeof componentCategories;
+  examples: ComponentExample[];
+  isNew?: boolean;
+}
+
+
 
 // Helper function to get component by slug
 export function getComponentBySlug(slug: string): ComponentData | undefined {
