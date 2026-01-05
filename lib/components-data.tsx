@@ -1777,7 +1777,7 @@ export const allComponents: ComponentData[] = [
         title: "پیش‌فرض",
         description: "نوار پیشرفت خطی",
         preview: (
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-xs space-y-2">
             <div className="flex justify-between text-sm">
               <span>عنوان</span>
               <span>٪۶۰</span>
@@ -1797,8 +1797,8 @@ export const allComponents: ComponentData[] = [
         description: "نوار پیشرفت دایره‌ای",
         preview: (
           <div className="flex flex-col items-center gap-2">
-            <div className="relative h-24 w-24">
-              <svg className="h-24 w-24 -rotate-90" viewBox="0 0 100 100">
+            <div className="relative size-28">
+              <svg className="size-28 -rotate-90" viewBox="0 0 100 100">
                 <circle
                   cx="50"
                   cy="50"
@@ -1825,8 +1825,8 @@ export const allComponents: ComponentData[] = [
             <span className="text-sm text-muted-foreground">عنوان</span>
           </div>
         ),
-        code: `<div className="relative h-24 w-24">
-  <svg className="h-24 w-24 -rotate-90" viewBox="0 0 100 100">
+        code: `<div className="relative size-28">
+  <svg className="size-28 -rotate-90" viewBox="0 0 100 100">
     <circle cx="50" cy="50" r="40" strokeWidth="8" fill="none" className="stroke-muted" />
     <circle cx="50" cy="50" r="40" strokeWidth="8" fill="none" strokeLinecap="round"
       className="stroke-primary" strokeDasharray="..." />
@@ -1841,7 +1841,7 @@ export const allComponents: ComponentData[] = [
         title: "مراحل",
         description: "نمایش پیشرفت مرحله‌ای",
         preview: (
-          <div className="w-full max-w-sm space-y-3">
+          <div className="w-xs space-y-3">
             <div className="flex justify-between text-sm">
               <span>مرحله ۲ از ۴</span>
               <span>٪۵۰</span>

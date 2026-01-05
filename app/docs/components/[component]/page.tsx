@@ -58,7 +58,7 @@ export default async function ComponentPage({ params }: PageProps) {
       </div>
 
       {/* Navigation - Fixed RTL navigation with correct chevron directions */}
-      <div className="flex items-center justify-between border-t pt-6">
+      <div className="flex items-center justify-between border-t lg:mb-0 md:mb-0 mb-20 pt-6">
         {prevComponent ? (
           <Link
             href={`/docs/components/${prevComponent.slug}`}

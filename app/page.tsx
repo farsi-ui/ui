@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowLeft,
   Github,
   Sparkles,
   Zap,
@@ -26,14 +25,17 @@ import {
   Contact,
   LucideArrowBigLeftDash,
   ArrowRight,
+  SunIcon,
+  MoonIcon,
 } from "lucide-react";
 import { useState } from "react";
-import { cn } from '@/lib/utils'
-import { useIsRTL } from '@/hooks/use-rtl'
+import { cn } from "@/lib/utils";
+import { useIsRTL } from "@/hooks/use-rtl";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ScrollIndicator } from "@/components/scroll-indicator";
 import { ModeToggle } from "@/components/theme-toggle";
+import { useTheme } from "next-themes";
 
 const features = [
   {
@@ -72,6 +74,7 @@ export default function Home() {
   const [mounted, setMounted] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isRTL = useIsRTL();
+  const { setTheme, theme } = useTheme();
 
   const installCode = `npx shadcn@latest add @einui/react`;
   const usageCode = `import { Button } from "@/components/ui/button"
@@ -130,12 +133,31 @@ export default function App() {
               <Github className="size-4" />
             </Link>
             <div className="me-1 ms-2 h-5 w-px bg-beerus" />
-            <ModeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="size-8"
+              aria-label="تغییر تم"
+            >
+              <SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <MoonIcon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </Button>
           </nav>
 
           {/* Mobile Navigation */}
           <div className="flex items-center gap-2 md:hidden">
-            <ModeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="size-8"
+              aria-label="تغییر تم"
+            >
+              <SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <MoonIcon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </Button>
+
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-10 w-10" aria-label="بازکردن منو">
@@ -197,9 +219,9 @@ export default function App() {
                 asChild
               >
                 <Link href="/docs/blocks" className="inline-flex items-center">
-                <Sparkles className="me-1.5 inline size-3.5" />
-                بلاک‌ها و کامپوننت‌های جدید اضافه شدند!
-                <LucideArrowBigLeftDash className="ms-1 inline size-4" />
+                  <Sparkles className="me-1.5 inline size-3.5" />
+                  بلاک‌ها و کامپوننت‌های جدید اضافه شدند!
+                  <LucideArrowBigLeftDash className="ms-1 inline size-4" />
                 </Link>
               </Badge>
             </div>
@@ -241,7 +263,12 @@ export default function App() {
               >
                 <Link href="/docs">
                   مستندات
-                  <ArrowRight className={cn("ms-1 size-4 transition-transform group-hover:-translate-x-1", isRTL ? 'rotate-180 group-hover:translate-x-1' : '')} />
+                  <ArrowRight
+                    className={cn(
+                      "ms-1 size-4 transition-transform group-hover:-translate-x-1",
+                      isRTL ? "rotate-180 group-hover:translate-x-1" : ""
+                    )}
+                  />
                 </Link>
               </Button>
               <Button
@@ -272,8 +299,8 @@ export default function App() {
           </div>
         </div>
         <div className="flex justify-center">
-        <ScrollIndicator targetId="showcase" />
-      </div>
+          <ScrollIndicator targetId="showcase" />
+        </div>
       </section>
 
       {/* Blocks Section - NEW */}
@@ -286,14 +313,17 @@ export default function App() {
             >
               <Blocks className="size-3.5" />
               بلاک‌ها
-              <span className="bg-hit/20 text-hit text-[10px] px-1.5 py-0.5 rounded-full font-bold">جدید</span>
+              <span className="bg-hit/20 text-hit text-[10px] px-1.5 py-0.5 rounded-full font-bold">
+                جدید
+              </span>
             </Badge>
             <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight">
               بلاک‌های آماده برای پروژه‌های واقعی
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-trunks">
-              بلاک‌ها ترکیب‌های آماده از چند کامپوننت هستند که می‌توانید مستقیماً در پروژه خود استفاده کنید.
-              فرم‌های ورود، داشبوردها، صفحات ارتباط و موارد بیشتر - همه با پشتیبانی کامل RTL
+              بلاک‌ها ترکیب‌های آماده از چند کامپوننت هستند که می‌توانید مستقیماً در پروژه خود
+              استفاده کنید. فرم‌های ورود، داشبوردها، صفحات ارتباط و موارد بیشتر - همه با پشتیبانی
+              کامل RTL
             </p>
           </div>
 
@@ -376,7 +406,7 @@ export default function App() {
       </section>
 
       {/* Code Preview Section - Improved mobile layout */}
-      <section  className="border-y border-beerus bg-linear-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
+      <section className="hidden md:flex lg:flex border-y border-beerus bg-linear-to-b from-hales/50 to-hales/20 py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
@@ -462,7 +492,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
 
       {/* Footer */}
       <footer className="border-t border-beerus bg-card py-8 sm:py-12">
