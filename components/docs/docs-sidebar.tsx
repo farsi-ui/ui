@@ -57,7 +57,7 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { allComponents } from "@/lib/components-data"
+import { allComponents, componentCategories } from "@/lib/components-data"
 import { allBlocks, blockCategories } from "@/lib/blocks-data"
 
 // Navigation sections
@@ -309,7 +309,7 @@ function SidebarContentArea() {
               <SidebarGroupContent>
                 {Object.entries(groupedComponents).map(([category, components]) => {
                   const CategoryIcon = categoryIcons[category] || BoxIcon
-                  console.log(category);
+                  const categoryLabel = componentCategories[category as keyof typeof componentCategories] || category
 
                   return (
                     <Collapsible key={category} defaultOpen={false} className="group/collapsible">
@@ -319,7 +319,7 @@ function SidebarContentArea() {
                             <SidebarMenuButton className="w-full justify-between font-medium">
                               <span className="flex items-center gap-2">
                                 <CategoryIcon className="size-4 text-muted-foreground shrink-0" />
-                                <span>{category}</span>
+                                <span>{categoryLabel}</span>
                               </span>
                               <ChevronLeftIcon className="size-4 text-muted-foreground transition-transform duration-200 group-data-[state=open]/collapsible:-rotate-90" />
                             </SidebarMenuButton>
@@ -382,20 +382,23 @@ function SidebarContentArea() {
                     </Tooltip>
                   </TooltipProvider>
                 </SidebarMenuItem>
-                {Object.entries(categoryIcons).map(([category, CategoryIcon]) => (
-                  <SidebarMenuItem key={category}>
-                    <TooltipProvider delayDuration={0}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <SidebarMenuButton className="justify-center opacity-60 hover:opacity-100">
-                            <CategoryIcon className="size-4" />
-                          </SidebarMenuButton>
-                        </TooltipTrigger>
-                        <TooltipContent side="left">{category}</TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </SidebarMenuItem>
-                ))}
+                {Object.entries(categoryIcons).map(([category, CategoryIcon]) => {
+                  const categoryLabel = componentCategories[category as keyof typeof componentCategories] || category
+                  return (
+                    <SidebarMenuItem key={category}>
+                      <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <SidebarMenuButton className="justify-center opacity-60 hover:opacity-100">
+                              <CategoryIcon className="size-4" />
+                            </SidebarMenuButton>
+                          </TooltipTrigger>
+                          <TooltipContent side="left">{categoryLabel}</TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </SidebarMenuItem>
+                  )
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           )}
