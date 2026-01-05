@@ -87,15 +87,53 @@ export default function App() {
   )
 }`;
 
+  // JSON-LD structured data for homepage
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "فارسی یو آی",
+    url: "https://farsi.eindev.ir/",
+    logo: "https://farsi.eindev.ir//logo.png",
+    description: "سیستم طراحی RTL-First برای React با پشتیبانی کامل از زبان فارسی",
+    sameAs: [
+      "https://github.com/ehsanghaffar/farsi-ui",
+    ],
+  };
+
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "فارسی یو آی",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    description: "کتابخانه کامپوننت‌های React با پشتیبانی RTL و زبان فارسی",
+  };
+
   return (
-    <main className="min-h-screen bg-background pb-16 md:pb-0">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-beerus/50 bg-background/80 backdrop-blur-xl transition-all">
+    <>
+      {/* JSON-LD Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+
+      <main className="min-h-screen bg-background pb-16 md:pb-0">
+        {/* Header */}
+        <header className="sticky top-0 z-50 border-b border-beerus/50 bg-background/80 backdrop-blur-xl transition-all">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-18 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex items-center gap-2 text-base font-bold tracking-tight transition-all hover:opacity-80 focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1 sm:text-lg"
-            aria-label="Farsi UI - صفحه اصلی"
+            aria-label="فارسی یو آی - صفحه اصلی"
           >
             <div className="flex items-center justify-center">
               <MousePointerClick />
@@ -518,7 +556,7 @@ export default function App() {
           <div className="border-t border-beerus/50 pt-6">
             <div className="flex flex-col items-center justify-center gap-6 text-center sm:flex-row sm:justify-between">
               <div className="text-xs text-trunks/70 sm:text-sm">
-                © 2026 Farsi UI. تمام حقوق محفوظ است.
+                © 2026 فارسی یو آی. تمام حقوق محفوظ است.
               </div>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 text-xs text-trunks sm:text-sm">
                 <div className="flex items-center gap-6">
@@ -575,6 +613,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+    </>
   );
 }

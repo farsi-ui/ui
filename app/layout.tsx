@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Vazirmatn } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const vazirmatn = Vazirmatn({
@@ -10,19 +11,81 @@ const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/"
+
 export const metadata: Metadata = {
-  title: "Farsi UI - کتابخانه کامپوننت فارسی",
-  description: "مجموعه کامپوننت‌های React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی",
-  keywords: ["React", "Next.js", "RTL", "Persian", "Farsi", "UI Components", "کامپوننت", "فارسی"],
-  authors: [{ name: "Farsi UI Team" }],
-  creator: "Farsi UI",
-  publisher: "Farsi UI",
-  generator: "v0.app",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "فارسی یو آی - کتابخانه کامپوننت فارسی | React RTL Components",
+    template: "%s | فارسی یو آی",
+  },
+  description: "فارسی یو آی - مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی. کامپوننت‌های مدرن، دسترس‌پذیر و قابل سفارشی‌سازی با Tailwind CSS.",
+  keywords: [
+    "React",
+    "Next.js",
+    "RTL",
+    "Persian",
+    "Farsi",
+    "UI Components",
+    "کامپوننت",
+    "فارسی",
+    "رابط کاربری",
+    "Tailwind CSS",
+    "TypeScript",
+    "راست به چپ",
+    "دسترسی‌پذیری",
+    "WCAG",
+    "Radix UI",
+    "shadcn",
+  ],
+  authors: [{ name: "احسان غفار", url: siteUrl }],
+  creator: "احسان غفار",
+  publisher: "احسان غفار",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      "fa-IR": siteUrl,
+      "en-US": `${siteUrl}/en`,
+    },
+  },
   openGraph: {
-    title: "Farsi UI - کتابخانه کامپوننت فارسی",
-    description: "مجموعه کامپوننت‌های React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی",
+    title: "فارسی یو آی - کتابخانه کامپوننت فارسی",
+    description: "مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی",
+    url: siteUrl,
+    siteName: "فارسی یو آی",
     type: "website",
     locale: "fa_IR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "فارسی یو آی - کتابخانه کامپوننت فارسی برای React",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "فارسی یو آی - کتابخانه کامپوننت فارسی",
+    description: "مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL",
+    images: ["/og-image.png"],
+    creator: "@farsiui",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: [
@@ -41,6 +104,10 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
+  category: "technology",
 }
 
 export const viewport: Viewport = {
@@ -65,6 +132,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

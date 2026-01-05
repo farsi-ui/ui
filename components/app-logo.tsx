@@ -7,7 +7,7 @@ export function FarsiUILogo() {
     <div className="flex size-8">
       <Image
         src="/icon-dark-32x32.png"
-        alt="Farsi UI Logo"
+        alt="فارسی یو آی Logo"
         width={36}
         height={36}
         className="h-4 w-4 sm:h-5 sm:w-5"

@@ -1,6 +1,40 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { allComponents } from "@/lib/components-data";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "کامپوننت‌ها",
+  description: "کتابخانه کامل کامپوننت‌های React با پشتیبانی RTL و زبان فارسی. دکمه، فرم، منو، جدول و بیشتر.",
+  keywords: [
+    "کامپوننت React",
+    "React Components",
+    "RTL Components",
+    "فارسی یو آی",
+    "دکمه فارسی",
+    "فرم RTL",
+    "UI Kit",
+    "shadcn فارسی",
+  ],
+  alternates: {
+    canonical: `${siteUrl}/docs/components`,
+  },
+  openGraph: {
+    title: "کامپوننت‌ها | فارسی یو آی",
+    description: "کتابخانه کامل کامپوننت‌های React با پشتیبانی RTL و زبان فارسی.",
+    url: `${siteUrl}/docs/components`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "کامپوننت‌ها | فارسی یو آی",
+    description: "کتابخانه کامل کامپوننت‌های React با پشتیبانی RTL و زبان فارسی.",
+  },
+};
 
 const newComponents = ["button-group", "carousel", "charts"];
 

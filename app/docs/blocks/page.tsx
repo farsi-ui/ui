@@ -1,7 +1,41 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { allBlocks, blockCategories } from "@/lib/blocks-data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "بلاک‌ها",
+  description: "بلاک‌های آماده و حرفه‌ای برای React با پشتیبانی کامل از RTL و زبان فارسی. فرم‌های ورود، داشبورد، کارت محصول و بیشتر.",
+  keywords: [
+    "بلاک React",
+    "کامپوننت آماده",
+    "فرم ورود فارسی",
+    "داشبورد RTL",
+    "UI Kit فارسی",
+    "فارسی یو آی Blocks",
+    "React Blocks",
+    "Pre-built Components",
+  ],
+  alternates: {
+    canonical: `${siteUrl}/docs/blocks`,
+  },
+  openGraph: {
+    title: "بلاک‌ها | فارسی یو آی",
+    description: "بلاک‌های آماده و حرفه‌ای برای React با پشتیبانی کامل از RTL و زبان فارسی.",
+    url: `${siteUrl}/docs/blocks`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "بلاک‌ها | فارسی یو آی",
+    description: "بلاک‌های آماده و حرفه‌ای برای React با پشتیبانی کامل از RTL و زبان فارسی.",
+  },
+};
 
 const newBlocks = ["login-01", "signup-01", "dashboard-01"];
 

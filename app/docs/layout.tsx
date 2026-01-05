@@ -1,7 +1,21 @@
 import type React from "react";
+import type { Metadata } from "next";
 import { DocsHeader } from "@/components/docs/docs-header";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
 import { MobileNav } from "@/components/docs/mobile-nav";
+
+export const metadata: Metadata = {
+  title: {
+    default: "مستندات",
+    template: "%s | مستندات فارسی یو آی",
+  },
+  description: "مستندات کامل فارسی یو آی - راهنمای نصب، تنظیمات و استفاده از کامپوننت‌ها و بلاک‌های React با پشتیبانی RTL",
+  openGraph: {
+    title: "مستندات فارسی یو آی",
+    description: "راهنمای کامل استفاده از کامپوننت‌های فارسی یو آی",
+    type: "website",
+  },
+};
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
