@@ -12,7 +12,6 @@ import {
   Code2,
   Layers,
   Check,
-  Terminal,
   Component,
   Accessibility,
   Languages,
@@ -27,6 +26,8 @@ import {
   ArrowRight,
   SunIcon,
   MoonIcon,
+
+  ExternalLink,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -34,8 +35,9 @@ import { useIsRTL } from "@/hooks/use-rtl";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ScrollIndicator } from "@/components/scroll-indicator";
-import { ModeToggle } from "@/components/theme-toggle";
 import { useTheme } from "next-themes";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 const features = [
   {
@@ -69,6 +71,24 @@ const features = [
     description: "استایل‌دهی آسان با Tailwind CSS",
   },
 ];
+
+const featuredProject = {
+  name: "مرجع تخصصی موبایل لجندز",
+  nameEn: "MLBB Hub",
+  description: "یک پلتفرم جامع برای بازیکنان و طرفداران بازی موبایل لجندز که اخبار، راهنماها، ویدیوها و تحلیل‌های تخصصی را ارائه می‌دهد. این پروژه با استفاده از فارسی یو آی ساختته شده تا تجربه کاربری بی‌نظیری را برای کاربران فارسی‌زبان فراهم کند.",
+  descriptionShort: "پلتفرمی برای اخبار و راهنماهای موبایل لجندز با پشتیبانی کامل RTL",
+  url: "https://mlbbhub.ir/?utm_source=farsi.eindev.ir&utm_medium=referral&utm_campaign=showcase",
+  category: "بازی",
+  categoryEn: "Gaming",
+  logo: "🏪",
+  image: "/mlbbhub.png", // Replace with actual image path
+  highlights: [
+    "پشتیبانی کامل از چیدمان راست به چپ (RTL) برای زبان فارسی",
+    "رابط کاربری زیبا و مدرن با استفاده از کامپوننت‌های فارسی یو آی",
+    "چیدمان کاملاً ریسپانسیو و بهینه‌شده برای همه دستگاه‌ها",
+    "دریافت پیشنهادهای هوشمند هیرو برای مقابله با انتخاب‌های حریف"
+  ],
+};
 
 export default function Home() {
   const [mounted, setMounted] = useState(true);
@@ -527,6 +547,132 @@ export default function App() {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Project Showcase - Premium Design */}
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <Badge
+              variant="outline"
+              className="mb-4 border-piccolo/30 bg-piccolo/5 text-piccolo font-semibold inline-flex items-center gap-2"
+            >
+              <Sparkles className="size-3.5" />
+              پروژه‌های برتر
+            </Badge>
+            <h2 className="text-4xl font-bold sm:text-5xl lg:text-6xl leading-tight mb-6">
+              ساخته شده با فارسی یو آی
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-trunks">
+              پروژه‌های واقعی که با قوت و استحکام فارسی ساخته شده‌اند
+            </p>
+          </div>
+
+          {/* Featured Project Card - Premium Design */}
+          <div className="relative group mb-20">
+            {/* Gradient Background */}
+            <div className="absolute -inset-1 bg-linear-to-r from-piccolo/20 via-hit/10 to-piccolo/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 -z-10" />
+
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl border border-piccolo/30 bg-card backdrop-blur-xl">
+              {/* Top Accent Line */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-linear-to-r from-piccolo via-hit to-piccolo" />
+
+              {/* Content Grid */}
+              <div className="grid lg:grid-cols-2 gap-0">
+                {/* Left Side - Text Content */}
+                <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                  {/* Category & Badge */}
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center gap-3">
+                      <Badge variant="secondary" className="font-semibold text-piccolo/80">
+                        {featuredProject.categoryEn}
+                      </Badge>
+                      <span className="text-xs text-trunks/60">پروژه برتر</span>
+                    </div>
+
+                    {/* Project Title */}
+                    <div>
+                      <h3 className="text-4xl font-bold mb-2">{featuredProject.name}</h3>
+                      <p className="text-trunks text-base">{featuredProject.nameEn}</p>
+                    </div>
+
+                    {/* Short Description */}
+                    <p className="text-sm text-trunks leading-relaxed bg-beerus/30 rounded-lg p-4 border border-beerus/20">
+                      {featuredProject.descriptionShort}
+                    </p>
+                  </div>
+
+                  {/* Full Description */}
+                  <p className="text-base leading-relaxed text-trunks/90 lg:max-w-sm">
+                    {featuredProject.description}
+                  </p>
+                  <Separator className="my-6 border-beerus/30" />
+
+                  {/* Highlights */}
+                  <div className="space-y-3">
+                    {featuredProject.highlights.map((highlight) => (
+                      <div key={highlight} className="flex items-start gap-3">
+                        <div className="shrink-0 mt-1 w-5 h-5 rounded-full bg-piccolo/20 flex items-center justify-center">
+                          <Check className="size-3 text-piccolo" />
+                        </div>
+                        <p className="text-sm text-trunks">{highlight}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA Button */}
+                  <Button asChild className="w-full mt-8 h-11 text-base font-semibold group/btn">
+                    <a href={featuredProject.url} target="_blank" className="flex items-center justify-center gap-2">
+                      <span>بازدید از پروژه</span>
+                      <ExternalLink className="size-4 transition-transform group-hover/btn:translate-x-1" style={{ transform: isRTL ? 'scaleX(-1)' : 'scaleX(1)' }} />
+                    </a>
+                  </Button>
+                </div>
+
+                {/* Right Side - Image */}
+                <div className="relative h-64 lg:h-auto min-h-96 overflow-hidden bg-linear-to-bl from-piccolo/10 to-hit/10">
+                  {/* Decorative circles */}
+                  <div className="absolute -top-20 -end-20 w-64 h-64 rounded-full bg-piccolo/5 blur-3xl" />
+                  <div className="absolute -bottom-10 -start-10 w-80 h-80 rounded-full bg-hit/5 blur-3xl" />
+
+                  {/* Image Placeholder with overlay */}
+                  <div className="relative w-full h-full flex items-center justify-center group/img">
+                    <div className="absolute inset-0 bg-linear-to-t from-card via-transparent to-transparent z-10" />
+                    <div className="text-6xl opacity-20 group-hover/img:opacity-30 transition-opacity">
+                      {featuredProject.logo}
+                    </div>
+                    <Image
+                    fill
+                      src={featuredProject.image}
+                      alt={featuredProject.name}
+                      className="w-full h-full object-cover"
+                    />
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Call to Action */}
+          <div className="text-center space-y-6">
+            <p className="text-lg text-trunks font-medium">
+              پروژه شما نیز می‌تواند اینجا نمایش داده شود
+            </p>
+            <Button
+              asChild
+              variant="outline"
+              className="inline-flex items-center gap-2"
+            >
+              <Link href="https://github.com/orgs/einlab/discussions/new?category=general&title=%D8%AF%D8%B1%D8%AE%D9%88%D8%A7%D8%B3%D8%AA%20%D9%86%D9%85%D8%A7%DB%8C%D8%B4%20%D9%BE%D8%B1%D9%88%DA%98%D9%87" target="_blank" rel="noopener noreferrer">
+                <span>درخواست نمایش پروژه</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
