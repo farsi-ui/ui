@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getComponentBySlug, allComponents, componentCategories } from "@/lib/components-data";
 import { ComponentPreview } from "@/components/docs/component-preview";
+import { SourceCodeBlock } from "@/components/docs/source-code-block";
+import { InstallationBlock } from "@/components/docs/installation-block";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -112,6 +114,7 @@ export default async function ComponentPage({ params }: PageProps) {
     keywords: `${componentData.name}, ${componentData.nameEn}, React, RTL, فارسی یو آی`,
   };
 
+
   return (
     <>
       {/* JSON-LD Schema Markup for SEO */}
@@ -133,20 +136,57 @@ export default async function ComponentPage({ params }: PageProps) {
           <p className="text-lg text-muted-foreground">{componentData.description}</p>
         </header>
 
-      {/* Examples */}
-      <div className="space-y-12">
-        {componentData.examples.map((example) => (
-          <section key={example.id} className="space-y-4">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold">{example.title}</h2>
-              {example.description && (
-                <p className="text-sm text-muted-foreground">{example.description}</p>
+        {/* Main Example Section - First example with large preview and source code below */}
+        {componentData.examples.length > 0 && (
+          <section className="">
+            {/* Main Example Title */}
+            <div className="space-y-2 mb-4">
+              <h3 className="text-xl font-semibold">{componentData.examples[0].title}</h3>
+              {componentData.examples[0].description && (
+                <p className="text-sm text-muted-foreground">{componentData.examples[0].description}</p>
               )}
             </div>
-            <ComponentPreview code={example.code}>{example.preview}</ComponentPreview>
+
+            {/* Main Preview */}
+            <div className="border rounded-t-lg p-6 sm:p-8 justify-center bg-black">
+              {componentData.examples[0].preview}
+            </div>
+
+            {/* Source Code Block */}
+            <SourceCodeBlock
+              code={componentData.examples[0].code}
+              title="Source Code"
+              language="tsx"
+              className="border rounded-b-lg border-t-0 bg-muted"
+            />
           </section>
-        ))}
-      </div>
+        )}
+
+        {/* Installation Section */}
+        <InstallationBlock
+          installation={componentData.installation}
+          componentName={componentData.nameEn}
+        />
+
+        {/* Additional Examples */}
+        {componentData.examples.length > 1 && (
+          <div className="space-y-12 border-t pt-10">
+            <h2 className="text-2xl font-bold tracking-tight">نمونه‌های بیشتر</h2>
+            <div className="space-y-12">
+              {componentData.examples.slice(1).map((example) => (
+                <section key={example.id} className="space-y-4">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-semibold">{example.title}</h3>
+                    {example.description && (
+                      <p className="text-sm text-muted-foreground">{example.description}</p>
+                    )}
+                  </div>
+                  <ComponentPreview code={example.code}>{example.preview}</ComponentPreview>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Navigation - Fixed RTL navigation with correct chevron directions */}
         <nav className="flex items-center justify-between border-t lg:mb-0 md:mb-0 mb-20 pt-6" aria-label="ناوبری کامپوننت">

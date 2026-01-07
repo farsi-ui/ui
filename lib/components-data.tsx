@@ -143,6 +143,13 @@ export const componentCategories = {
   layout: "چیدمان",
   overlay: "روکش",
 };
+
+export interface ComponentInstallation {
+  dependencies?: string[];
+  filePath: string;
+  manualInstructions?: string;
+}
+
 export interface ComponentData {
   slug: string;
   name: string;
@@ -150,6 +157,7 @@ export interface ComponentData {
   description: string;
   category: keyof typeof componentCategories;
   examples: ComponentExample[];
+  installation: ComponentInstallation;
   isNew?: boolean;
 }
 
@@ -173,6 +181,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Button",
     description: "دکمه‌های تعاملی برای انجام عملیات مختلف",
     category: "inputs",
+    installation: {
+      dependencies: ["@radix-ui/react-slot"],
+      filePath: "components/ui/button.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -313,6 +325,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Text Input",
     description: "فیلدهای ورودی متن برای دریافت اطلاعات از کاربر",
     category: "inputs",
+    installation: {
+      filePath: "components/ui/input.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -394,6 +409,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Text Area",
     description: "فیلد ورودی برای متن‌های طولانی و چندخطی",
     category: "inputs",
+    installation: {
+      filePath: "components/ui/textarea.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -450,6 +468,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Checkbox",
     description: "کنترل انتخاب چندگانه برای فرم‌ها",
     category: "inputs",
+    installation: {
+      dependencies: ["@radix-ui/react-checkbox"],
+      filePath: "components/ui/checkbox.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -536,6 +558,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Radio Button",
     description: "کنترل انتخاب تکی از میان گزینه‌ها",
     category: "inputs",
+    installation: {
+      dependencies: ["@radix-ui/react-radio-group"],
+      filePath: "components/ui/radio-group.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -646,6 +672,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Switch Button",
     description: "کلید روشن/خاموش برای تنظیمات",
     category: "inputs",
+    installation: {
+      dependencies: ["@radix-ui/react-switch"],
+      filePath: "components/ui/switch.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -736,6 +766,10 @@ export const allComponents: ComponentData[] = [
   },
   {
     slug: "select",
+    installation: {
+      dependencies: ["@radix-ui/react-select"],
+      filePath: "components/ui/select.tsx",
+    },
     name: "انتخاب",
     nameEn: "Select",
     description: "منوی کشویی برای انتخاب یک گزینه",
@@ -906,6 +940,9 @@ export const allComponents: ComponentData[] = [
 </div>`,
       },
     ],
+    installation: {
+      filePath: "components/ui/slider.tsx",
+    },
   },
   {
     slug: "search",
@@ -971,6 +1008,9 @@ export const allComponents: ComponentData[] = [
 </div>`,
       },
     ],
+    installation: {
+      filePath: "components/ui/input.tsx",
+    },
   },
   {
     slug: "multi-select",
@@ -1109,6 +1149,10 @@ export const allComponents: ComponentData[] = [
 </Popover>`,
       },
     ],
+    installation: {
+      dependencies: ["@radix-ui/react-select", "@radix-ui/react-popover"],
+      filePath: "components/ui/select.tsx",
+    },
   },
   // ===== DISPLAY =====
   {
@@ -1117,6 +1161,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Avatar",
     description: "نمایش تصویر پروفایل یا حروف اول نام",
     category: "display",
+    installation: {
+      dependencies: ["@radix-ui/react-avatar"],
+      filePath: "components/ui/avatar.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -1204,6 +1252,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Tag",
     description: "برچسب‌های کوچک برای نمایش وضعیت یا دسته‌بندی",
     category: "display",
+    installation: {
+      filePath: "components/ui/badge.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -1290,6 +1341,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Chips",
     description: "برچسب‌های انتخابی و قابل حذف",
     category: "display",
+    installation: {
+      filePath: "components/ui/badge.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -1377,6 +1431,9 @@ export const allComponents: ComponentData[] = [
   {
     slug: "card",
     name: "کارت",
+    installation: {
+      filePath: "components/ui/card.tsx",
+    },
     nameEn: "Card",
     description: "محفظه برای گروه‌بندی محتوای مرتبط",
     category: "display",
@@ -1386,7 +1443,7 @@ export const allComponents: ComponentData[] = [
         title: "پیش‌فرض",
         description: "کارت ساده با عنوان و توضیحات",
         preview: (
-          <Card className="w-full max-w-sm">
+          <Card className="w-full max-w-sm bg-muted">
             <CardHeader>
               <CardTitle>عنوان کارت</CardTitle>
               <CardDescription>توضیحات مختصر درباره محتوای کارت</CardDescription>
@@ -1475,6 +1532,9 @@ export const allComponents: ComponentData[] = [
   {
     slug: "table",
     name: "جدول",
+    installation: {
+      filePath: "components/ui/table.tsx",
+    },
     nameEn: "Table",
     description: "نمایش داده‌ها در قالب جدول",
     category: "display",
@@ -1651,6 +1711,10 @@ export const allComponents: ComponentData[] = [
   {
     slug: "tooltip",
     name: "راهنمای ابزار",
+    installation: {
+      dependencies: ["@radix-ui/react-tooltip"],
+      filePath: "components/ui/tooltip.tsx",
+    },
     nameEn: "Tooltip",
     description: "نمایش اطلاعات اضافی هنگام هاور روی عنصر",
     category: "display",
@@ -1771,6 +1835,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Progress",
     description: "نمایش میزان پیشرفت یک عملیات",
     category: "feedback",
+    installation: {
+      dependencies: ["@radix-ui/react-progress"],
+      filePath: "components/ui/progress.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -1875,6 +1943,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Loader",
     description: "نشانگر بارگذاری برای عملیات‌های در حال انجام",
     category: "feedback",
+    installation: {
+      filePath: "components/ui/spinner.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -1947,6 +2018,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Snackbar",
     description: "پیام‌های کوتاه و موقت برای بازخورد",
     category: "feedback",
+    installation: {
+      dependencies: ["sonner"],
+      filePath: "components/ui/sonner.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2028,6 +2103,9 @@ export const allComponents: ComponentData[] = [
   },
   {
     slug: "skeleton",
+    installation: {
+      filePath: "components/ui/skeleton.tsx",
+    },
     name: "اسکلت",
     nameEn: "Skeleton",
     description: "نمایش جایگزین در زمان بارگذاری محتوا",
@@ -2118,6 +2196,9 @@ export const allComponents: ComponentData[] = [
   {
     slug: "banner",
     name: "بنر",
+    installation: {
+      filePath: "components/ui/alert.tsx",
+    },
     nameEn: "Banner",
     description: "اعلان‌های برجسته برای پیام‌های مهم",
     category: "feedback",
@@ -2214,6 +2295,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Tabs",
     description: "ناوبری بین بخش‌های مختلف محتوا",
     category: "navigation",
+    installation: {
+      dependencies: ["@radix-ui/react-tabs"],
+      filePath: "components/ui/tabs.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2328,6 +2413,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Breadcrumb",
     description: "نمایش مسیر ناوبری فعلی کاربر",
     category: "navigation",
+    installation: {
+      filePath: "components/ui/breadcrumb.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2492,6 +2580,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Pagination",
     description: "ناوبری بین صفحات محتوا",
     category: "navigation",
+    installation: {
+      filePath: "components/ui/pagination.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2649,6 +2740,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Bottom Navigation",
     description: "نوار ناوبری ثابت در پایین صفحه برای موبایل",
     category: "navigation",
+    installation: {
+      filePath: "components/ui/button.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2770,6 +2864,9 @@ export const allComponents: ComponentData[] = [
     nameEn: "Menu Item",
     description: "آیتم‌های منو برای لیست‌های ناوبری",
     category: "navigation",
+    installation: {
+      filePath: "components/ui/button.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2880,6 +2977,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Accordion",
     description: "محتوای قابل باز و بسته شدن",
     category: "layout",
+    installation: {
+      dependencies: ["@radix-ui/react-accordion"],
+      filePath: "components/ui/accordion.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -2997,6 +3098,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Carousel",
     description: "نمایش اسلایدی محتوا",
     category: "layout",
+    installation: {
+      dependencies: ["embla-carousel-react"],
+      filePath: "components/ui/carousel.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -3118,6 +3223,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Dropdown Menu",
     description: "منوی کشویی با گزینه‌های مختلف",
     category: "overlay",
+    installation: {
+      dependencies: ["@radix-ui/react-dropdown-menu"],
+      filePath: "components/ui/dropdown-menu.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -3243,6 +3352,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Drawer Menu",
     description: "پنل کشویی از کنار صفحه",
     category: "overlay",
+    installation: {
+      dependencies: ["@radix-ui/react-dialog"],
+      filePath: "components/ui/sheet.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -3382,6 +3495,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Modal Dialog",
     description: "پنجره مودال برای نمایش محتوای مهم",
     category: "overlay",
+    installation: {
+      dependencies: ["@radix-ui/react-dialog"],
+      filePath: "components/ui/dialog.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -3524,6 +3641,10 @@ export const allComponents: ComponentData[] = [
     nameEn: "Alert Dialog",
     description: "دیالوگ برای تایید عملیات مهم",
     category: "overlay",
+    installation: {
+      dependencies: ["@radix-ui/react-alert-dialog"],
+      filePath: "components/ui/alert-dialog.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -3658,6 +3779,10 @@ export const allComponents: ComponentData[] = [
   },
   {
     slug: "popover",
+    installation: {
+      dependencies: ["@radix-ui/react-popover"],
+      filePath: "components/ui/popover.tsx",
+    },
     name: "پاپ‌اور",
     nameEn: "Popover",
     description: "پنجره شناور برای نمایش محتوای اضافی",
@@ -3808,6 +3933,10 @@ export const allComponents: ComponentData[] = [
   },
   {
     slug: "bottom-sheet",
+    installation: {
+      dependencies: ["@radix-ui/react-dialog"],
+      filePath: "components/ui/sheet.tsx",
+    },
     name: "صفحه پایین",
     nameEn: "Bottom Sheet",
     description: "پنل کشویی از پایین صفحه برای موبایل",
@@ -3965,6 +4094,9 @@ export const allComponents: ComponentData[] = [
     description: "کامپوننت فیلد برای ساخت فرم‌های دسترسی‌پذیر با برچسب، توضیحات و خطا",
     category: "inputs",
     isNew: true,
+    installation: {
+      filePath: "components/ui/field.tsx",
+    },
     examples: [
       {
         id: "default",
@@ -4076,6 +4208,9 @@ export const allComponents: ComponentData[] = [
     description: "نمایش حالت خالی برای زمانی که محتوایی وجود ندارد",
     category: "feedback",
     isNew: true,
+    installation: {
+      filePath: "components/ui/empty.tsx",
+    },
     examples: [
       {
         id: "default",
