@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export function LoginForm01() {
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-xs">
       <CardHeader className="space-y-1">
         <CardTitle className="text-xl">ورود به حساب کاربری</CardTitle>
         <CardDescription>

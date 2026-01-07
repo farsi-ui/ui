@@ -2,8 +2,9 @@
 
 import type { ComponentInstallation } from "@/lib/components-data";
 import { Button } from "@/components/ui/button";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { SourceCodeBlock } from "./source-code-block";
 
 interface InstallationBlockProps {
   installation: ComponentInstallation;
@@ -12,6 +13,7 @@ interface InstallationBlockProps {
 
 export function InstallationBlock({ installation, componentName }: InstallationBlockProps) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [sourceCodeExpanded, setSourceCodeExpanded] = useState(false);
 
   const handleCopy = async (text: string, index: number) => {
     try {
@@ -27,9 +29,6 @@ export function InstallationBlock({ installation, componentName }: InstallationB
     <section className="space-y-6 border-t pt-10">
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight">نصب دستی</h2>
-        <p className="text-sm text-muted-foreground">
-          کپی کامپوننت و وابستگی‌های آن را دانلود کنید.
-        </p>
       </div>
 
       {/* Dependencies Section */}
@@ -38,40 +37,15 @@ export function InstallationBlock({ installation, componentName }: InstallationB
           <div className="space-y-1">
             <h3 className="font-semibold text-sm">وابستگی‌ها</h3>
             <p className="text-xs text-muted-foreground">
-              پیش از کپی کردن کامپوننت، لطفاً وابستگی‌های زیر را نصب کنید:
+              برای استفاده از {componentName || "این کامپوننت"}، باید این بسته‌ها را نصب کنید:
             </p>
           </div>
 
-          <div className="space-y-2">
-            {installation.dependencies.map((dep, index) => (
-              <div
-                key={dep}
-                className="relative flex items-center gap-2 rounded-lg border bg-muted/50 p-3"
-              >
-                <code className="flex-1 font-mono text-sm">{dep}</code>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-7 w-7 shrink-0"
-                  onClick={() => handleCopy(`npm install ${dep}`, index)}
-                  title="کپی دستور نصب"
-                >
-                  {copiedIndex === index ? (
-                    <Check className="h-4 w-4 text-green-600" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                </Button>
-              </div>
-            ))}
-          </div>
-
           {/* Install All Command */}
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="rounded-lg border bg-muted p-2">
             <div className="space-y-2">
-              <p className="text-xs font-medium text-muted-foreground">یا نصب همه با یک دستور:</p>
               <div className="flex items-center gap-2">
-                <code className="flex-1 rounded bg-background px-3 py-2 font-mono text-sm overflow-x-auto">
+                <code className="flex-1 rounded bg-background px-3 py-2 font-mono text-sm text-left overflow-x-auto">
                   npm install {installation.dependencies.join(" ")}
                 </code>
                 <Button
@@ -98,32 +72,44 @@ export function InstallationBlock({ installation, componentName }: InstallationB
         </div>
       )}
 
-      {/* File Path Section */}
-      <div className="space-y-3">
-        <div className="space-y-1">
-          <h3 className="font-semibold text-sm">مسیر فایل</h3>
-          <p className="text-xs text-muted-foreground">
-            کامپوننت را به این مسیر کپی کنید:
+      {/* Component Source Code Section */}
+      {installation.sourceCode && (
+        <div className="space-y-3">
+          <p className="text-sm text-muted-foreground">
+            کد زیر را می‌توانید در پروژه خود کپی کنید تا {componentName || "این کامپوننت"} را به صورت دستی اضافه کنید:
           </p>
-        </div>
-
-        <div className="flex items-center gap-2 rounded-lg border bg-muted/50 p-3">
-          <code className="flex-1 font-mono text-sm">{installation.filePath}</code>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-7 w-7 shrink-0"
-            onClick={() => handleCopy(installation.filePath, -2)}
-            title="کپی مسیر"
+          <button
+            onClick={() => setSourceCodeExpanded(!sourceCodeExpanded)}
+            className="flex w-full items-center justify-between rounded-lg border bg-muted/50 p-4 hover:bg-muted"
           >
-            {copiedIndex === -2 ? (
-              <Check className="h-4 w-4 text-green-600" />
-            ) : (
-              <Copy className="h-4 w-4" />
+            <div className="flex items-center gap-3">
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  sourceCodeExpanded ? "rotate-180" : ""
+                }`}
+              />
+              <h3 className="font-semibold text-sm text-foreground">
+                کد منبع کامپوننت
+              </h3>
+            </div>
+            {!sourceCodeExpanded && (
+              <span className="text-xs text-muted-foreground">
+                برای مشاهده کد کلیک کنید
+              </span>
             )}
-          </Button>
+          </button>
+
+          {sourceCodeExpanded && (
+            <div className="rounded-lg border overflow-hidden">
+              <SourceCodeBlock
+                code={installation.sourceCode}
+                language="tsx"
+                className="border-0"
+              />
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       {/* Manual Instructions Section */}
       {installation.manualInstructions && (
@@ -139,13 +125,7 @@ export function InstallationBlock({ installation, componentName }: InstallationB
         </div>
       )}
 
-      {/* Info Message */}
-      <div className="rounded-lg border bg-amber-50 p-4 dark:bg-amber-950/30">
-        <p className="text-sm text-amber-900 dark:text-amber-100">
-          <strong>نکته:</strong> کامپوننت را می‌توانید دانلود کنید و آن را برای نیازهای خود کپی و
-          تغییر دهید. این کامپوننت فارسی یو آی بر پایه <code className="font-mono">shadcn/ui</code> است.
-        </p>
-      </div>
     </section>
   );
 }
+

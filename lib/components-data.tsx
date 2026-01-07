@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { getComponentSource } from "./get-component-source";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -148,6 +149,7 @@ export interface ComponentInstallation {
   dependencies?: string[];
   filePath: string;
   manualInstructions?: string;
+  sourceCode?: string;
 }
 
 export interface ComponentData {
@@ -182,8 +184,9 @@ export const allComponents: ComponentData[] = [
     description: "دکمه‌های تعاملی برای انجام عملیات مختلف",
     category: "inputs",
     installation: {
-      dependencies: ["@radix-ui/react-slot"],
+      dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
       filePath: "components/ui/button.tsx",
+      sourceCode: getComponentSource("components/ui/button.tsx"),
     },
     examples: [
       {
@@ -327,6 +330,7 @@ export const allComponents: ComponentData[] = [
     category: "inputs",
     installation: {
       filePath: "components/ui/input.tsx",
+      sourceCode: getComponentSource("components/ui/input.tsx"),
     },
     examples: [
       {
@@ -411,6 +415,7 @@ export const allComponents: ComponentData[] = [
     category: "inputs",
     installation: {
       filePath: "components/ui/textarea.tsx",
+      sourceCode: getComponentSource("components/ui/textarea.tsx"),
     },
     examples: [
       {
@@ -471,6 +476,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-checkbox"],
       filePath: "components/ui/checkbox.tsx",
+      sourceCode: getComponentSource("components/ui/checkbox.tsx"),
     },
     examples: [
       {
@@ -561,6 +567,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-radio-group"],
       filePath: "components/ui/radio-group.tsx",
+      sourceCode: getComponentSource("components/ui/radio-group.tsx"),
     },
     examples: [
       {
@@ -675,6 +682,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-switch"],
       filePath: "components/ui/switch.tsx",
+      sourceCode: getComponentSource("components/ui/switch.tsx"),
     },
     examples: [
       {
@@ -718,7 +726,7 @@ export const allComponents: ComponentData[] = [
         title: "گروه تنظیمات",
         description: "چندین کلید در یک کارت تنظیمات",
         preview: (
-          <Card className="w-full max-w-sm">
+          <Card className="w-xs">
             <CardHeader>
               <CardTitle className="text-base">اعلان‌ها</CardTitle>
               <CardDescription>تنظیمات اعلان‌های خود را مدیریت کنید</CardDescription>
@@ -769,6 +777,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-select"],
       filePath: "components/ui/select.tsx",
+      sourceCode: getComponentSource("components/ui/select.tsx"),
     },
     name: "انتخاب",
     nameEn: "Select",
@@ -896,7 +905,7 @@ export const allComponents: ComponentData[] = [
         title: "بازه دوتایی",
         description: "انتخاب بازه با دو نقطه",
         preview: (
-          <div className="w-full max-w-sm space-y-4">
+          <div className="w-xs space-y-4">
             <div className="flex items-center justify-between">
               <Label>بازه قیمت</Label>
               <span className="text-sm text-muted-foreground">۲۵ - ۷۵</span>
@@ -915,7 +924,7 @@ export const allComponents: ComponentData[] = [
         title: "با مقادیر مشخص",
         description: "اسلایدر با گام‌های بزرگ‌تر",
         preview: (
-          <div className="w-full max-w-sm space-y-4">
+          <div className="w-xs space-y-4">
             <div className="space-y-1">
               <Label>میزان صدا</Label>
             </div>
@@ -942,6 +951,7 @@ export const allComponents: ComponentData[] = [
     ],
     installation: {
       filePath: "components/ui/slider.tsx",
+      sourceCode: getComponentSource("components/ui/slider.tsx"),
     },
   },
   {
@@ -1010,6 +1020,7 @@ export const allComponents: ComponentData[] = [
     ],
     installation: {
       filePath: "components/ui/input.tsx",
+      sourceCode: getComponentSource("components/ui/input.tsx"),
     },
   },
   {
@@ -1059,7 +1070,7 @@ export const allComponents: ComponentData[] = [
         title: "با جستجو",
         description: "انتخاب چندگانه با قابلیت جستجو",
         preview: (
-          <div className="w-full max-w-sm space-y-2">
+          <div className="w-xs space-y-2">
             <Label>انتخاب تگ</Label>
             <div className="rounded-md border">
               <div className="flex flex-wrap gap-2 p-2">
@@ -1091,7 +1102,7 @@ export const allComponents: ComponentData[] = [
         title: "کشویی",
         description: "انتخاب چندگانه با منوی کشویی",
         preview: (
-          <div className="w-full max-w-sm">
+          <div className="w-xs">
             <Label className="mb-2 block">مهارت‌ها</Label>
             <Popover>
               <PopoverTrigger asChild>
@@ -1152,6 +1163,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-select", "@radix-ui/react-popover"],
       filePath: "components/ui/select.tsx",
+      sourceCode: getComponentSource("components/ui/select.tsx"),
     },
   },
   // ===== DISPLAY =====
@@ -1164,6 +1176,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-avatar"],
       filePath: "components/ui/avatar.tsx",
+      sourceCode: getComponentSource("components/ui/avatar.tsx"),
     },
     examples: [
       {
@@ -1254,6 +1267,7 @@ export const allComponents: ComponentData[] = [
     category: "display",
     installation: {
       filePath: "components/ui/badge.tsx",
+      sourceCode: getComponentSource("components/ui/badge.tsx"),
     },
     examples: [
       {
@@ -1343,6 +1357,7 @@ export const allComponents: ComponentData[] = [
     category: "display",
     installation: {
       filePath: "components/ui/badge.tsx",
+      sourceCode: getComponentSource("components/ui/badge.tsx"),
     },
     examples: [
       {
@@ -1433,6 +1448,7 @@ export const allComponents: ComponentData[] = [
     name: "کارت",
     installation: {
       filePath: "components/ui/card.tsx",
+      sourceCode: getComponentSource("components/ui/card.tsx"),
     },
     nameEn: "Card",
     description: "محفظه برای گروه‌بندی محتوای مرتبط",
@@ -1534,6 +1550,7 @@ export const allComponents: ComponentData[] = [
     name: "جدول",
     installation: {
       filePath: "components/ui/table.tsx",
+      sourceCode: getComponentSource("components/ui/table.tsx"),
     },
     nameEn: "Table",
     description: "نمایش داده‌ها در قالب جدول",
@@ -1714,6 +1731,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-tooltip"],
       filePath: "components/ui/tooltip.tsx",
+      sourceCode: getComponentSource("components/ui/tooltip.tsx"),
     },
     nameEn: "Tooltip",
     description: "نمایش اطلاعات اضافی هنگام هاور روی عنصر",
@@ -1838,6 +1856,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-progress"],
       filePath: "components/ui/progress.tsx",
+      sourceCode: getComponentSource("components/ui/progress.tsx"),
     },
     examples: [
       {
@@ -1945,6 +1964,7 @@ export const allComponents: ComponentData[] = [
     category: "feedback",
     installation: {
       filePath: "components/ui/spinner.tsx",
+      sourceCode: getComponentSource("components/ui/spinner.tsx"),
     },
     examples: [
       {
@@ -2021,6 +2041,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["sonner"],
       filePath: "components/ui/sonner.tsx",
+      sourceCode: getComponentSource("components/ui/sonner.tsx"),
     },
     examples: [
       {
@@ -2105,6 +2126,7 @@ export const allComponents: ComponentData[] = [
     slug: "skeleton",
     installation: {
       filePath: "components/ui/skeleton.tsx",
+      sourceCode: getComponentSource("components/ui/skeleton.tsx"),
     },
     name: "اسکلت",
     nameEn: "Skeleton",
@@ -2198,6 +2220,7 @@ export const allComponents: ComponentData[] = [
     name: "بنر",
     installation: {
       filePath: "components/ui/alert.tsx",
+      sourceCode: getComponentSource("components/ui/alert.tsx"),
     },
     nameEn: "Banner",
     description: "اعلان‌های برجسته برای پیام‌های مهم",
@@ -2298,6 +2321,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-tabs"],
       filePath: "components/ui/tabs.tsx",
+      sourceCode: getComponentSource("components/ui/tabs.tsx"),
     },
     examples: [
       {
@@ -2340,7 +2364,7 @@ export const allComponents: ComponentData[] = [
         title: "بخش‌بندی",
         description: "کنترل بخش‌بندی",
         preview: (
-          <Tabs defaultValue="opt1" className="w-full max-w-xs">
+          <Tabs defaultValue="opt1" className="w-xs">
             <TabsList className="w-full">
               <TabsTrigger value="opt1" className="flex-1">
                 عنوان
@@ -2363,7 +2387,7 @@ export const allComponents: ComponentData[] = [
         title: "با نشان",
         description: "زبانه‌ها همراه با نشان تعداد",
         preview: (
-          <Tabs defaultValue="inbox" className="w-full max-w-md">
+          <Tabs defaultValue="inbox" className="w-xs">
             <TabsList>
               <TabsTrigger value="inbox" className="gap-2">
                 <Mail className="h-4 w-4" />
@@ -2415,6 +2439,7 @@ export const allComponents: ComponentData[] = [
     category: "navigation",
     installation: {
       filePath: "components/ui/breadcrumb.tsx",
+      sourceCode: getComponentSource("components/ui/breadcrumb.tsx"),
     },
     examples: [
       {
@@ -2582,6 +2607,7 @@ export const allComponents: ComponentData[] = [
     category: "navigation",
     installation: {
       filePath: "components/ui/pagination.tsx",
+      sourceCode: getComponentSource("components/ui/pagination.tsx"),
     },
     examples: [
       {
@@ -2742,6 +2768,7 @@ export const allComponents: ComponentData[] = [
     category: "navigation",
     installation: {
       filePath: "components/ui/button.tsx",
+      sourceCode: getComponentSource("components/ui/button.tsx"),
     },
     examples: [
       {
@@ -2866,6 +2893,7 @@ export const allComponents: ComponentData[] = [
     category: "navigation",
     installation: {
       filePath: "components/ui/button.tsx",
+      sourceCode: getComponentSource("components/ui/button.tsx"),
     },
     examples: [
       {
@@ -2980,6 +3008,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-accordion"],
       filePath: "components/ui/accordion.tsx",
+      sourceCode: getComponentSource("components/ui/accordion.tsx"),
     },
     examples: [
       {
@@ -3014,7 +3043,7 @@ export const allComponents: ComponentData[] = [
         title: "چندگانه",
         description: "آکاردئون با چند بخش باز همزمان",
         preview: (
-          <Accordion type="multiple" className="w-full max-w-md">
+          <Accordion type="multiple" className="w-xs">
             <AccordionItem value="item-1">
               <AccordionTrigger>سوال اول</AccordionTrigger>
               <AccordionContent>پاسخ سوال اول در اینجا قرار می‌گیرد.</AccordionContent>
@@ -3045,7 +3074,7 @@ export const allComponents: ComponentData[] = [
         title: "با آیکون",
         description: "آکاردئون با آیکون در عنوان",
         preview: (
-          <Accordion type="single" collapsible className="w-full max-w-md">
+          <Accordion type="single" collapsible className="w-xs">
             <AccordionItem value="item-1">
               <AccordionTrigger>
                 <div className="flex items-center gap-2">
@@ -3101,6 +3130,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["embla-carousel-react"],
       filePath: "components/ui/carousel.tsx",
+      sourceCode: getComponentSource("components/ui/carousel.tsx"),
     },
     examples: [
       {
@@ -3226,6 +3256,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-dropdown-menu"],
       filePath: "components/ui/dropdown-menu.tsx",
+      sourceCode: getComponentSource("components/ui/dropdown-menu.tsx"),
     },
     examples: [
       {
@@ -3355,6 +3386,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-dialog"],
       filePath: "components/ui/sheet.tsx",
+      sourceCode: getComponentSource("components/ui/sheet.tsx"),
     },
     examples: [
       {
@@ -3498,6 +3530,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-dialog"],
       filePath: "components/ui/dialog.tsx",
+      sourceCode: getComponentSource("components/ui/dialog.tsx"),
     },
     examples: [
       {
@@ -3644,6 +3677,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-alert-dialog"],
       filePath: "components/ui/alert-dialog.tsx",
+      sourceCode: getComponentSource("components/ui/alert-dialog.tsx"),
     },
     examples: [
       {
@@ -3782,6 +3816,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-popover"],
       filePath: "components/ui/popover.tsx",
+      sourceCode: getComponentSource("components/ui/popover.tsx"),
     },
     name: "پاپ‌اور",
     nameEn: "Popover",
@@ -3868,14 +3903,14 @@ export const allComponents: ComponentData[] = [
         title: "انتخاب تاریخ",
         description: "پاپ‌اور برای انتخاب تاریخ",
         preview: (
-          <Popover>
+          <Popover >
             <PopoverTrigger asChild>
               <Button variant="outline" className="justify-start gap-2">
                 <Calendar className="h-4 w-4" />
                 انتخاب تاریخ
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent className="w-xs p-0" align="center">
               <div className="p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <Button variant="ghost" size="icon" className="h-7 w-7">
@@ -3901,6 +3936,13 @@ export const allComponents: ComponentData[] = [
                   <span className="p-1.5">۵</span>
                   <span className="p-1.5">۶</span>
                   <span className="p-1.5">۷</span>
+                  <span className="p-1.5">۸</span>
+                  <span className="p-1.5">۹</span>
+                  <span className="p-1.5">۱۰</span>
+                  <span className="p-1.5">۱۱</span>
+                  <span className="p-1.5">۱۲</span>
+                  <span className="p-1.5">۱۳</span>
+                  <span className="p-1.5">۱۴</span>
                 </div>
               </div>
             </PopoverContent>
@@ -3936,6 +3978,7 @@ export const allComponents: ComponentData[] = [
     installation: {
       dependencies: ["@radix-ui/react-dialog"],
       filePath: "components/ui/sheet.tsx",
+      sourceCode: getComponentSource("components/ui/sheet.tsx"),
     },
     name: "صفحه پایین",
     nameEn: "Bottom Sheet",
@@ -4096,6 +4139,7 @@ export const allComponents: ComponentData[] = [
     isNew: true,
     installation: {
       filePath: "components/ui/field.tsx",
+      sourceCode: getComponentSource("components/ui/field.tsx"),
     },
     examples: [
       {
@@ -4158,7 +4202,7 @@ export const allComponents: ComponentData[] = [
         title: "گروه فیلدها",
         description: "چند فیلد در یک گروه",
         preview: (
-          <div className="w-full max-w-sm">
+          <div className="w-xs">
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="firstname">نام</FieldLabel>
@@ -4210,6 +4254,7 @@ export const allComponents: ComponentData[] = [
     isNew: true,
     installation: {
       filePath: "components/ui/empty.tsx",
+      sourceCode: getComponentSource("components/ui/empty.tsx"),
     },
     examples: [
       {
