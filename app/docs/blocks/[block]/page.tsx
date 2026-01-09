@@ -4,7 +4,11 @@ import { getBlockBySlug, allBlocks, blockCategories } from "@/lib/blocks-data";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Boundary } from "@/components/boundary";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 interface PageProps {
   params: Promise<{ block: string }>;
@@ -116,7 +120,6 @@ export default async function BlockPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
       <div className="space-y-10">
         {/* Header */}
         <header className="space-y-4">
@@ -124,60 +127,43 @@ export default async function BlockPage({ params }: PageProps) {
             <Badge variant="outline" className="text-xs">
               {blockCategories[blockData.category]}
             </Badge>
-            <span className="text-xs text-muted-foreground">{blockData.nameEn}</span>
+            <span className="flex-1 text-xs text-muted-foreground">{blockData.nameEn}</span>
+            <Button asChild variant="ghost" className="text-xs">
+              <Link href="/docs/blocks">
+                همه‌ی بلاک ها
+                <ChevronLeft />
+              </Link>
+            </Button>
           </div>
           <h1 className="text-3xl font-bold tracking-tight">{blockData.name}</h1>
           <p className="text-lg text-muted-foreground">{blockData.description}</p>
         </header>
 
-      {/* Examples */}
-      <div className="space-y-12">
-        {blockData.examples.map((example) => (
-          <section key={example.id} className="space-y-4">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold">{example.title}</h2>
-              {example.description && (
-                <p className="text-sm text-muted-foreground">{example.description}</p>
-              )}
-            </div>
-            <ComponentPreview code={example.code}>{example.preview}</ComponentPreview>
-          </section>
-        ))}
-      </div>
-
-        {/* Navigation - Fixed RTL navigation with correct chevron directions */}
-        <nav className="flex items-center justify-between border-t lg:mb-0 md:mb-0 mb-20 pt-6" aria-label="ناوبری بلاک">
-          {prevBlock ? (
-            <Link
-              href={`/docs/blocks/${prevBlock.slug}`}
-              className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-              rel="prev"
-            >
-              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              <div>
-                <p className="text-xs text-muted-foreground">قبلی</p>
-                <p className="font-medium text-foreground">{prevBlock.name}</p>
-              </div>
-            </Link>
-          ) : (
-            <div />
-          )}
-          {nextBlock ? (
-            <Link
-              href={`/docs/blocks/${nextBlock.slug}`}
-              className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground text-end"
-              rel="next"
-            >
-              <div>
-                <p className="text-xs text-muted-foreground">بعدی</p>
-                <p className="font-medium text-foreground">{nextBlock.name}</p>
-              </div>
-              <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-            </Link>
-          ) : (
-            <div />
-          )}
-        </nav>
+        {/* Examples */}
+        <div className="space-y-12">
+          {blockData.examples.map((example) => (
+            <section key={example.id} className="space-y-4">
+              <ComponentPreview code={example.code}>{example.preview}</ComponentPreview>
+            </section>
+          ))}
+        </div>
+        <Boundary
+          label={"بــزودی ..."}
+          size="medium"
+          color="cyan"
+          kind="solid"
+          className="blur mt-10"
+        >
+          <Card className="h-60">
+            <CardHeader>
+              <CardTitle className="text-cyan-900">بلاک های اختصاصی کاربران ویژه</CardTitle>
+              <Separator className="my-3" />
+              <CardDescription className="text-cyan-950">
+                برای دسترسی به به بلاک‌های ویژه و اختصاصی به لینک زیر مراجعه کنید
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </Boundary>
       </div>
     </>
   );
