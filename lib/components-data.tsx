@@ -2902,7 +2902,7 @@ export const allComponents: ComponentData[] = [
         description: "آیتم منو با آیکون و میانبر",
         preview: (
           <div className="w-full max-w-xs rounded-lg border bg-background">
-            <button className="flex w-full items-center justify-between px-4 py-3 hover:bg-accent">
+            <Button variant="secondary" className="flex w-full items-center justify-between px-4 py-3 bg-black hover:bg-accent">
               <div className="flex items-center gap-3">
                 <Star className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm">عنوان</span>
@@ -2911,10 +2911,10 @@ export const allComponents: ComponentData[] = [
                 <kbd className="rounded border bg-muted px-1.5 py-0.5 text-xs">⌘K</kbd>
                 <ChevronLeft className="h-4 w-4" />
               </div>
-            </button>
+            </Button>
           </div>
         ),
-        code: `<button className="flex w-full items-center justify-between px-4 py-3 hover:bg-accent">
+        code: `<Button variant="secondary" className="flex w-full items-center justify-between px-4 py-3 hover:bg-accent">
   <div className="flex items-center gap-3">
     <Star className="h-4 w-4 text-muted-foreground" />
     <span className="text-sm">عنوان</span>
@@ -2923,7 +2923,7 @@ export const allComponents: ComponentData[] = [
     <kbd className="rounded border bg-muted px-1.5 py-0.5 text-xs">⌘K</kbd>
     <ChevronLeft className="h-4 w-4" />
   </div>
-</button>`,
+</Button>`,
       },
       {
         id: "list",
@@ -2931,18 +2931,18 @@ export const allComponents: ComponentData[] = [
         description: "چندین آیتم منو",
         preview: (
           <div className="w-full max-w-xs divide-y rounded-lg border bg-background">
-            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+            <Button variant="secondary" className="flex w-full rounded-b-none items-center gap-3 px-4 py-3 hover:bg-accent">
               <Home className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm">خانه</span>
-            </button>
+            </Button>
             <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
               <User className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm">پروفایل</span>
             </button>
-            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+            <Button variant="secondary" className="flex w-full items-center rounded-t-none gap-3 px-4 py-3 bg-white dark:bg-black hover:bg-accent dark:hover:bg-accent">
               <Settings className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm">تنظیمات</span>
-            </button>
+            </Button>
           </div>
         ),
         code: `<div className="divide-y rounded-lg border bg-background">
@@ -2963,7 +2963,7 @@ export const allComponents: ComponentData[] = [
         description: "آیتم منو با زیرعنوان",
         preview: (
           <div className="w-full max-w-xs divide-y rounded-lg border bg-background">
-            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+            <button className="flex w-full items-center gap-3 px-4 py-3 rounded-t-lg hover:bg-accent">
               <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <User className="h-5 w-5" />
               </div>
@@ -2972,7 +2972,7 @@ export const allComponents: ComponentData[] = [
                 <span className="text-xs text-muted-foreground">مدیریت اطلاعات شخصی</span>
               </div>
             </button>
-            <button className="flex w-full items-center gap-3 px-4 py-3 hover:bg-accent">
+            <button className="flex w-full items-center rounded-b-lg gap-3 px-4 py-3 hover:bg-accent">
               <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <Settings className="h-5 w-5" />
               </div>

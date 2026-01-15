@@ -1,22 +1,22 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Vazirmatn } from "next/font/google"
+// import { Vazirmatn } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const vazirmatn = Vazirmatn({
-  subsets: ["arabic"],
-  display: "swap",
-  variable: "--font-vazirmatn",
-})
+// const vazirmatn = Vazirmatn({
+//   subsets: ["arabic"],
+//   display: "swap",
+//   variable: "--font-vazirmatn",
+// })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "فارسی یو آی - کتابخانه کامپوننت فارسی | React RTL Components",
+    default: "فارسی یو آی - کتابخانه کامپوننت فارسی | React Farsi Components",
     template: "%s | فارسی یو آی",
   },
   description: "فارسی یو آی - مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی. کامپوننت‌های مدرن، دسترس‌پذیر و قابل سفارشی‌سازی با Tailwind CSS.",
@@ -128,7 +128,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
-      <body className={`${vazirmatn.className} font-sans antialiased`}>
+      {/* <body className={`${vazirmatn.className} font-sans antialiased`}> */}
+      <body className={`font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

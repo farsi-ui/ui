@@ -148,7 +148,7 @@ export default async function ComponentPage({ params }: PageProps) {
             </div>
 
             {/* Main Preview */}
-            <div className="border rounded-t-lg p-6 sm:p-8 justify-center bg-black">
+            <div className="border rounded-t-lg p-6 sm:p-8 justify-center dark:bg-black">
               {componentData.examples[0].preview}
             </div>
 
