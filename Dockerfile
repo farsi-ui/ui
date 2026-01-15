@@ -60,8 +60,6 @@ COPY --chown=nodejs:nodejs . .
 
 RUN npm config set registry "https://mirror-npm.runflare.com/"
 
-RUN npm config ls -l
-
 # Install pnpm globally
 RUN npm install -g pnpm@10.27.0
 

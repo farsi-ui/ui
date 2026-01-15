@@ -2902,7 +2902,7 @@ export const allComponents: ComponentData[] = [
         description: "آیتم منو با آیکون و میانبر",
         preview: (
           <div className="w-full max-w-xs rounded-lg border bg-background">
-            <Button variant="secondary" className="flex w-full items-center justify-between px-4 py-3 bg-black hover:bg-accent">
+            <Button variant="secondary" className="flex w-full items-center justify-between px-4 py-3 bg-white dark:bg-black hover:bg-accent">
               <div className="flex items-center gap-3">
                 <Star className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm">عنوان</span>
