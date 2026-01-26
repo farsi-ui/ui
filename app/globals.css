@@ -4,7 +4,7 @@
 
 
 @font-face {
-  font-family: "IRANSans";
+  font-family: "Vazir";
   src: url("/fonts/Vazir.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -12,7 +12,7 @@
 }
 
 @font-face {
-  font-family: "IRANSans";
+  font-family: "Vazir";
   src: url("/fonts/Vazir-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
@@ -146,7 +146,7 @@
 }
 
 @theme inline {
-  --font-sans: "Vazirmatn", "Vazirmatn Fallback", system-ui, sans-serif;
+  --font-sans: "Vazir", "Vazirmatn Fallback", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "Geist Mono", monospace;
 
   /* Moon Design System Color Tokens */
