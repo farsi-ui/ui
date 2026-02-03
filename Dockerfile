@@ -3,7 +3,7 @@
 # ========================================
 
 ARG NODE_VERSION=20-alpine
-FROM docker.arvancloud.ir/node:20-alpine AS base
+FROM node:20-alpine AS base
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ FROM base AS deps
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
+# RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
 
 # Install pnpm globally
 RUN npm install -g pnpm@10.27.0
@@ -38,7 +38,7 @@ FROM base AS build-deps
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
+# RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
 
 # Install pnpm globally
 RUN npm install -g pnpm@10.27.0
@@ -58,7 +58,7 @@ FROM build-deps AS build
 # Copy application source files
 COPY --chown=nodejs:nodejs . .
 
-RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
+# RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
 
 # Install pnpm globally
 RUN npm install -g pnpm@10.27.0
