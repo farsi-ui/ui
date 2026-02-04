@@ -89,7 +89,7 @@ export function ContactForm01() {
         </form>
       </CardContent>
       <CardFooter>
-        <Button type="submit" className="w-full">
+        <Button type="button" className="w-full">
           ارسال پیام
         </Button>
       </CardFooter>
