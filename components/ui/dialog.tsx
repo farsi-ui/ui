@@ -5,6 +5,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useIsRTL } from "@/hooks/use-rtl"
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
@@ -80,7 +81,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
-  const isRTL = typeof document !== 'undefined' && document.documentElement?.dir === 'rtl'
+  const isRTL = useIsRTL()
   return (
     <div
       data-slot="dialog-footer"

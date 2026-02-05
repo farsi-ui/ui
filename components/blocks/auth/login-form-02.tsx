@@ -84,7 +84,7 @@ export function LoginForm02() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-3">
-        <Button type="submit" className="w-full">
+        <Button type="button" className="w-full">
           ورود به حساب
         </Button>
         <div className="flex items-center justify-between w-full text-xs text-muted-foreground">

@@ -57,7 +57,7 @@ export function LoginForm01() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-3">
-        <Button type="submit" className="w-full">
+        <Button type="button" className="w-full">
           ورود
         </Button>
         <p className="text-center text-sm text-muted-foreground">

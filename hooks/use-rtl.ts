@@ -7,8 +7,10 @@ export function useIsRTL() {
 
   useEffect(() => {
     try {
-      setIsRTL(typeof document !== 'undefined' && document.documentElement?.dir === 'rtl')
-    } catch {
+      const direction = document.documentElement?.dir
+      setIsRTL(direction === 'rtl')
+    } catch (error) {
+      console.error('[v0] Failed to detect RTL direction:', error)
       setIsRTL(false)
     }
   }, [])
