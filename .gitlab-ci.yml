@@ -1,0 +1,59 @@
+image: node:18-bullseye
+
+variables:
+  NODE_ENV: 'production'
+  PNPM_STORE_PATH: '$CI_PROJECT_DIR/.pnpm-store'
+
+cache:
+  key: "${CI_COMMIT_REF_SLUG}"
+  paths:
+    - .pnpm-store/
+    - node_modules/
+
+stages:
+  - install
+  - lint
+  - test
+  - build
+
+.before_script: &before_script
+  - corepack enable
+  - corepack prepare pnpm@latest --activate
+  - pnpm install --frozen-lockfile --store-dir .pnpm-store
+
+install:
+  stage: install
+  script:
+    - *before_script
+  artifacts:
+    paths:
+      - .pnpm-store
+      - node_modules
+    expire_in: 1h
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+
+lint:
+  stage: lint
+  script:
+    - pnpm dlx eslint . --max-warnings=0
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+
+test:
+  stage: test
+  script:
+    - pnpm test
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+
+build:
+  stage: build
+  script:
+    - pnpm build
+  artifacts:
+    paths:
+      - .next
+      - out
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
