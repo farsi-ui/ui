@@ -8,9 +8,9 @@ FROM node:20-alpine AS base
 WORKDIR /app
 
 # Create non-root user for security
-RUN addgroup -g 1001 -S nodejs && \
-  adduser -S nodejs -u 1001 -G nodejs && \
-  chown -R nodejs:nodejs /app
+# RUN addgroup -g 1001 -S nodejs && \
+#   adduser -S nodejs -u 1001 -G nodejs && \
+#   chown -R nodejs:nodejs /app
 
 # ========================================
 # Dependencies Stage - Production Dependencies
@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/root/.pnpm-store,sharing=locked \
   pnpm install --prod --frozen-lockfile && \
   pnpm store prune
 
-RUN chown -R nodejs:nodejs /app
+# RUN chown -R nodejs:nodejs /app
 
 # ========================================
 # Build Dependencies Stage - All Dependencies
@@ -48,7 +48,7 @@ RUN --mount=type=cache,target=/root/.pnpm-store,sharing=locked \
   pnpm install --frozen-lockfile && \
   pnpm store prune
 
-RUN chown -R nodejs:nodejs /app
+# RUN chown -R nodejs:nodejs /app
 
 # ========================================
 # Build Stage
@@ -56,7 +56,8 @@ RUN chown -R nodejs:nodejs /app
 FROM build-deps AS build
 
 # Copy application source files
-COPY --chown=nodejs:nodejs . .
+# COPY --chown=nodejs:nodejs . .
+COPY . .
 
 # RUN npm config set registry "https://mirrors.kubarcloud.com/npm"
 
@@ -66,7 +67,7 @@ RUN npm install -g pnpm@10.27.0
 # Build the Next.js application
 RUN pnpm run build
 
-RUN chown -R nodejs:nodejs /app
+# RUN chown -R nodejs:nodejs /app
 
 # ========================================
 # Production Stage
@@ -79,18 +80,23 @@ ENV NODE_ENV=production \
   NEXT_TELEMETRY_DISABLED=1
 
 # Copy all node_modules from build stage (includes TypeScript needed for config loading)
-COPY --from=build --chown=nodejs:nodejs /app/node_modules ./node_modules
-
+# COPY --from=build --chown=nodejs:nodejs /app/node_modules ./node_modules
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/certs ./certs
 # Copy package files
-COPY --from=build --chown=nodejs:nodejs /app/package.json ./
+# COPY --from=build --chown=nodejs:nodejs /app/package.json ./
+COPY --from=build /app/package.json ./
 
 # Copy built application from build stage
-COPY --from=build --chown=nodejs:nodejs /app/.next ./.next
-COPY --from=build --chown=nodejs:nodejs /app/public ./public
-COPY --from=build --chown=nodejs:nodejs /app/next.config.mjs ./
+# COPY --from=build --chown=nodejs:nodejs /app/.next ./.next
+# COPY --from=build --chown=nodejs:nodejs /app/public ./public
+# COPY --from=build --chown=nodejs:nodejs /app/next.config.mjs ./
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/next.config.mjs ./
 
 # Switch to non-root user for security
-USER nodejs
+# USER nodejs
 
 # Expose port
 EXPOSE 3000
