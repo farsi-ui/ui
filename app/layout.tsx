@@ -1,9 +1,10 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
+import type React from "react";
+import type { Metadata, Viewport } from "next";
 // import { Vazirmatn } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+import Script from "next/script";
 
 // const vazirmatn = Vazirmatn({
 //   subsets: ["arabic"],
@@ -11,7 +12,7 @@ import "./globals.css"
 //   variable: "--font-vazirmatn",
 // })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
     default: "فارسی یو آی - کتابخانه کامپوننت فارسی | React Farsi Components",
     template: "%s | فارسی یو آی",
   },
-  description: "فارسی یو آی - مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی. کامپوننت‌های مدرن، دسترس‌پذیر و قابل سفارشی‌سازی با Tailwind CSS.",
+  description:
+    "فارسی یو آی - مجموعه کامپوننت‌های آماده React با پشتیبانی کامل RTL برای توسعه‌دهندگان ایرانی. کامپوننت‌های مدرن، دسترس‌پذیر و قابل سفارشی‌سازی با Tailwind CSS.",
   keywords: [
     "React",
     "Next.js",
@@ -108,7 +110,7 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   category: "technology",
-}
+};
 
 export const viewport: Viewport = {
   themeColor: [
@@ -119,15 +121,23 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
+      <head>
+        <Script
+          id="yektanet-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `!function(e,t,n){e.yektanetAnalyticsObject=n,e[n]=e[n]||function(){e[n].q.push(arguments)},e[n].q=e[n].q||[];var a=t.getElementsByTagName("head")[0],r=new Date,c="https://cdn.yektanet.com/superscript/v3V27HsM/native-farsi.eindev.ir-47366/yn_pub.js?v="+r.getFullYear().toString()+"0"+r.getMonth()+"0"+r.getDate()+"0"+r.getHours(),s=t.createElement("link");s.rel="preload",s.as="script",s.href=c,a.appendChild(s);var l=t.createElement("script");l.async=!0,l.src=c,a.appendChild(l)}(window,document,"yektanet");`,
+          }}
+        />
+      </head>
       {/* <body className={`${vazirmatn.className} font-sans antialiased`}> */}
       <body className={`font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
@@ -136,5 +146,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
