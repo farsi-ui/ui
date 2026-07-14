@@ -138,7 +138,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      {/* <body className={`${vazirmatn.className} font-sans antialiased`}> */}
+
       <body className={`font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
