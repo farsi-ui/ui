@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  transpilePackages: ['@farsi-ui/react', '@farsi-ui/tokens'],
 }
 
 export default nextConfig

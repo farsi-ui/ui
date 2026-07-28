@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Input } from "@/components/ui/input";
 import { allComponents, componentCategories } from "@/lib/components-data";
 import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 export function MobileNav() {
   const pathname = usePathname();

@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/docs/*": ["./components/docs/*"],
+      "@/components/blocks/*": ["./components/blocks/*"],
+      "@/components/ui/*": ["../../packages/react/src/components/ui/*"],
+      "@/components/*": ["./components/*"],
+      "@/hooks/*": ["../../packages/react/src/hooks/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/*": ["./*"],
+      "@farsi-ui/react": ["../../packages/react/src"],
+      "@farsi-ui/tokens": ["../../packages/tokens/src"]
+    },
+    "types": ["node"]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

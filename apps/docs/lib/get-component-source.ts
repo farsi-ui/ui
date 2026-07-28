@@ -6,19 +6,21 @@
 export function getComponentSource(filePath: string): string {
   // Only run on server side
   if (typeof window !== "undefined") {
-    // Client-side: return empty string
     return "";
   }
 
   try {
-    // Lazy load fs module only when needed (server-side)
     const { readFileSync } = require("fs");
     const { join } = require("path");
 
-    // Construct absolute path to the component file
-    const absolutePath = join(process.cwd(), filePath);
-    const content = readFileSync(absolutePath, "utf-8");
-    return content;
+    const cwd = process.cwd();
+    const isDocsApp = cwd.includes(`${join("apps", "docs")}`);
+    const workspaceRoot = isDocsApp ? join(cwd, "..", "..") : cwd;
+    const sourcePath = filePath.startsWith("components/ui/")
+      ? join(workspaceRoot, "packages", "react", "src", filePath)
+      : join(cwd, filePath);
+
+    return readFileSync(sourcePath, "utf-8");
   } catch (error) {
     console.warn(`Failed to read component source from ${filePath}:`, error);
     return "";
