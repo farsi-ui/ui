@@ -1,14 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules
+
+# turborepo
+.turbo
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
-/build
+build/
+dist/
 
 # debug
 npm-debug.log*
@@ -24,12 +28,11 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
+# misc
 .DS_Store
 .idea
 .vscode
 
 notion.instructions.md
-
 .wakatime-project

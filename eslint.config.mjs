@@ -31,9 +31,12 @@ const eslintConfig = defineConfig([
     },
   },
 
-  // Optional: make UI kit stricter than rest of app
+  // Make UI kit stricter than rest of app (targets library package)
   {
-    files: ['components/ui/**/*.{ts,tsx}'],
+    files: [
+      'packages/react/src/components/ui/**/*.{ts,tsx}',
+      'apps/docs/components/**/*.{ts,tsx}',
+    ],
     rules: {
       'no-restricted-syntax': 'error',
     },
@@ -41,10 +44,13 @@ const eslintConfig = defineConfig([
 
   // Override default ignores of eslint-config-next
   globalIgnores([
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
+    '**/node_modules/**',
+    '**/.next/**',
+    '**/out/**',
+    '**/build/**',
+    '**/dist/**',
+    '**/.turbo/**',
+    '**/next-env.d.ts',
   ]),
 ])
 
