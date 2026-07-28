@@ -25,6 +25,7 @@
     "@vitejs/plugin-react": "^6.0.4",
     "jsdom": "^30.0.0",
     "turbo": "^2.8.7",
+    "turbo-ignore": "^1.1.0",
     "vitest": "^4.1.10"
   }
 }

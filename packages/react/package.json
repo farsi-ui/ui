@@ -16,7 +16,7 @@
   "scripts": {
     "build": "tsup --no-dts && tsc -p tsconfig.json --emitDeclarationOnly",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint .",
     "test": "cd ../.. && vitest run",
     "test:watch": "cd ../.. && vitest"
   },

@@ -7,12 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@farsi-ui/react": "workspace:0.0.1",
-    "@farsi-ui/tokens": "workspace:0.0.1",
+    "@farsi-ui/react": "workspace:*",
+    "@farsi-ui/tokens": "workspace:*",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-alert-dialog": "1.1.4",
