@@ -1,4 +1,30 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "سیستم رنگی - طراحی رنگ‌ها",
+  description:
+    "راهنمای سیستم رنگی فارسی یو آی شامل رنگ‌های پایه تم روشن و تیره، رنگ‌های معنایی و نحوه استفاده از متغیرهای CSS و Tailwind.",
+  keywords: ["سیستم رنگی", "رنگ", "تم روشن", "تم تیره", "CSS variables", "Tailwind colors", "پالت رنگی"],
+  alternates: {
+    canonical: `${siteUrl}/docs/foundations/colors`,
+  },
+  openGraph: {
+    title: "سیستم رنگی | فارسی یو آی",
+    description: "راهنمای سیستم رنگی فارسی یو آی با پشتیبانی کامل از تم روشن و تاریک",
+    url: `${siteUrl}/docs/foundations/colors`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "سیستم رنگی | فارسی یو آی",
+    description: "راهنمای سیستم رنگی فارسی یو آی با پشتیبانی کامل از تم روشن و تاریک",
+  },
+};
 
 const lightColors = [
   { name: "Piccolo", nameEn: "piccolo", hex: "#4e46e5", description: "رنگ اولیه" },

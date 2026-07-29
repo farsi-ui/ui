@@ -1,3 +1,39 @@
+import type { Metadata } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "نصب و راه‌اندازی",
+  description:
+    "راهنمای نصب و راه‌اندازی فارسی یو آی در پروژه React. آموزش نصب وابستگی‌ها، پیکربندی فونت Vazirmatn و افزودن کامپوننت‌ها.",
+  keywords: [
+    "نصب فارسی یو آی",
+    "راه‌اندازی",
+    "React RTL",
+    "Vazirmatn",
+    "Tailwind CSS",
+    "نصب کامپوننت فارسی",
+  ],
+  alternates: {
+    canonical: `${siteUrl}/docs/installation`,
+  },
+  openGraph: {
+    title: "نصب و راه‌اندازی | فارسی یو آی",
+    description:
+      "راهنمای گام به گام نصب فارسی یو آی در پروژه React با پشتیبانی کامل RTL",
+    url: `${siteUrl}/docs/installation`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "نصب و راه‌اندازی | فارسی یو آی",
+    description:
+      "راهنمای گام به گام نصب فارسی یو آی در پروژه React با پشتیبانی کامل RTL",
+  },
+};
+
 export default function InstallationPage() {
   return (
     <div className="space-y-8">

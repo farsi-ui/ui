@@ -1,4 +1,39 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "تنظیمات و پیکربندی",
+  description:
+    "راهنمای تنظیمات فارسی یو آی شامل پیکربندی Tailwind CSS، پشتیبانی RTL، تم تیره و روشن و فونت فارسی Vazirmatn.",
+  keywords: [
+    "تنظیمات فارسی یو آی",
+    "پیکربندی",
+    "Tailwind CSS config",
+    "RTL setup",
+    "theme dark light",
+    "Vazirmatn font",
+  ],
+  alternates: {
+    canonical: `${siteUrl}/docs/configuration`,
+  },
+  openGraph: {
+    title: "تنظیمات و پیکربندی | فارسی یو آی",
+    description:
+      "راهنمای کامل پیکربندی فارسی یو آی برای پروژه React با پشتیبانی RTL",
+    url: `${siteUrl}/docs/configuration`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "تنظیمات و پیکربندی | فارسی یو آی",
+    description:
+      "راهنمای کامل پیکربندی فارسی یو آی برای پروژه React با پشتیبانی RTL",
+  },
+};
 
 export default function ConfigurationPage() {
   return (

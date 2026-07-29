@@ -1,4 +1,30 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "تایپوگرافی",
+  description:
+    "راهنمای تایپوگرافی فارسی یو آی شامل فونت Vazirmatn، اندازه‌ها، وزن‌ها، سرتیترها و ارتفاع خط برای طراحی رابط کاربری فارسی.",
+  keywords: ["تایپوگرافی", "فونت فارسی", "Vazirmatn", "وزیرمتن", "اندازه فونت", "وزن فونت", "typography"],
+  alternates: {
+    canonical: `${siteUrl}/docs/foundations/typography`,
+  },
+  openGraph: {
+    title: "تایپوگرافی | فارسی یو آی",
+    description: "راهنمای تایپوگرافی فارسی یو آی با فونت Vazirmatn",
+    url: `${siteUrl}/docs/foundations/typography`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "تایپوگرافی | فارسی یو آی",
+    description: "راهنمای تایپوگرافی فارسی یو آی با فونت Vazirmatn",
+  },
+};
 
 const fontSizes = [
   { name: "text-xs", size: "12px", lineHeight: "16px", sample: "متن نمونه فارسی" },

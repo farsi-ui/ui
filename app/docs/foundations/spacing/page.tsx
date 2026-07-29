@@ -1,4 +1,30 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
+
+export const metadata: Metadata = {
+  title: "فاصله‌گذاری و گرید",
+  description:
+    "راهنمای فاصله‌گذاری و سیستم گرید در فارسی یو آی با پشتیبانی کامل از RTL. مقیاس فاصله، کلاس‌های منطقی و سیستم گرید ۱۲ ستونه.",
+  keywords: ["فاصله‌گذاری", "spacing", "گرید", "RTL", "grid system", "منطقی", "logical properties"],
+  alternates: {
+    canonical: `${siteUrl}/docs/foundations/spacing`,
+  },
+  openGraph: {
+    title: "فاصله‌گذاری و گرید | فارسی یو آی",
+    description: "راهنمای فاصله‌گذاری و سیستم گرید در فارسی یو آی با پشتیبانی RTL",
+    url: `${siteUrl}/docs/foundations/spacing`,
+    siteName: "فارسی یو آی",
+    locale: "fa_IR",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "فاصله‌گذاری و گرید | فارسی یو آی",
+    description: "راهنمای فاصله‌گذاری و سیستم گرید در فارسی یو آی با پشتیبانی RTL",
+  },
+};
 
 const spacingScale = [
   { name: "0", value: "0px", rem: "0rem" },
