@@ -113,7 +113,7 @@ export default function App() {
     "@type": "Organization",
     name: "فارسی یو آی",
     url: "https://farsi.eindev.ir/",
-    logo: "https://farsi.eindev.ir//logo.png",
+    logo: "https://farsi.eindev.ir/logo.png",
     description: "سیستم طراحی RTL-First برای React با پشتیبانی کامل از زبان فارسی",
     sameAs: [
       "https://github.com/ehsanghaffar/farsi-ui",
