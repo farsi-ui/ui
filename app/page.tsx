@@ -222,7 +222,7 @@ export default function App() {
                   {mobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72 p-6">
+              <SheetContent side={"right"} className="w-72 p-6">
                 <nav className="flex flex-col gap-4">
                   <Link
                     href="/docs"
