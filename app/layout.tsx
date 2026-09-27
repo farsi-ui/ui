@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import Script from "next/script";
 
 // const vazirmatn = Vazirmatn({
 //   subsets: ["arabic"],
@@ -131,12 +130,6 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
-        <Script
-          id="yektanet-analytics"
-          dangerouslySetInnerHTML={{
-            __html: `!function(e,t,n){e.yektanetAnalyticsObject=n,e[n]=e[n]||function(){e[n].q.push(arguments)},e[n].q=e[n].q||[];var a=t.getElementsByTagName("head")[0],r=new Date,c="https://cdn.yektanet.com/superscript/v3V27HsM/native-farsi.eindev.ir-47366/yn_pub.js?v="+r.getFullYear().toString()+"0"+r.getMonth()+"0"+r.getDate()+"0"+r.getHours(),s=t.createElement("link");s.rel="preload",s.as="script",s.href=c,a.appendChild(s);var l=t.createElement("script");l.async=!0,l.src=c,a.appendChild(l)}(window,document,"yektanet");`,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

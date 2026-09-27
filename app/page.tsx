@@ -17,7 +17,6 @@ import {
   Languages,
   Menu,
   X,
-  MousePointerClick,
   Blocks,
   LayoutDashboard,
   KeyRound,
@@ -38,6 +37,7 @@ import { ScrollIndicator } from "@/components/scroll-indicator";
 import { useTheme } from "next-themes";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import { FarsiUILogo } from "@/components/app-logo";
 
 const features = [
   {
@@ -154,11 +154,8 @@ export default function App() {
             href="/"
             className="flex items-center gap-2 text-base font-bold tracking-tight transition-all hover:opacity-80 focus-visible:ring-2 focus-visible:ring-ring rounded px-2 py-1 sm:text-lg"
             aria-label="فارسی یو آی - صفحه اصلی"
-          >
-            <div className="flex items-center justify-center">
-              <MousePointerClick />
-            </div>
-            <span className="hidden sm:inline">فارسی یو آی</span>
+            >
+              <FarsiUILogo />
           </Link>
 
           {/* Desktop Navigation */}
