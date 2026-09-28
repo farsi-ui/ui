@@ -1,0 +1,352 @@
+/*
+ * Farsi UI — Material System
+ *
+ * Framework-agnostic CSS primitives built on material-tokens.css.
+ * Import this file after material-tokens.css.
+ *
+ * The implementation approximates the web-visible aspects of a dynamic
+ * material system: translucent surfaces, backdrop sampling, saturation,
+ * tonal tinting, edge highlights, shadows, interaction and accessibility.
+ * It does not attempt to reproduce Apple's private rendering/lensing engine.
+ */
+
+/* -------------------------------------------------------------------------
+ * Base material primitive
+ * ----------------------------------------------------------------------- */
+
+.material,
+.material-surface,
+.material-solid,
+.material-muted,
+.material-elevated,
+.material-glass,
+.material-glass-clear {
+  position: relative;
+  box-sizing: border-box;
+  border: var(--material-border-width) solid var(--material-border, transparent);
+  border-radius: var(--material-radius-md);
+  color: var(--material-content-primary);
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.material > img,
+.material > picture,
+.material > svg,
+.material > canvas,
+.material-surface > img,
+.material-surface > picture,
+.material-surface > svg,
+.material-surface > canvas,
+.material-solid > img,
+.material-solid > picture,
+.material-solid > svg,
+.material-solid > canvas,
+.material-muted > img,
+.material-muted > picture,
+.material-muted > svg,
+.material-muted > canvas,
+.material-elevated > img,
+.material-elevated > picture,
+.material-elevated > svg,
+.material-elevated > canvas,
+.material-glass > img,
+.material-glass > picture,
+.material-glass > svg,
+.material-glass > canvas,
+.material-glass-clear > img,
+.material-glass-clear > picture,
+.material-glass-clear > svg,
+.material-glass-clear > canvas {
+  border-radius: inherit;
+}
+
+/* -------------------------------------------------------------------------
+ * Standard/content-layer materials
+ * ----------------------------------------------------------------------- */
+
+.material-solid {
+  --material-fill: var(--material-solid-fill);
+  --material-border: var(--material-solid-border);
+  --material-shadow: var(--material-solid-shadow);
+  background: var(--material-fill);
+  box-shadow: var(--material-shadow);
+}
+
+.material-muted {
+  --material-fill: var(--material-muted-fill);
+  --material-border: var(--material-muted-border);
+  --material-shadow: var(--material-muted-shadow);
+  background: var(--material-fill);
+  box-shadow: var(--material-shadow);
+}
+
+.material-elevated {
+  --material-fill: var(--material-elevated-fill);
+  --material-border: var(--material-elevated-border);
+  --material-shadow: var(--material-elevated-shadow);
+  background: var(--material-fill);
+  box-shadow: var(--material-shadow);
+}
+
+/* -------------------------------------------------------------------------
+ * Liquid Glass material
+ * ----------------------------------------------------------------------- */
+
+.material-glass,
+.material-glass-clear {
+  --material-border: var(--material-glass-border);
+
+  /* Fallback first: translucent solid color. The following declarations
+   * replace it when the browser supports color-mix(). */
+  background-color: var(--material-glass-fallback-regular);
+  background-image:
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 0.12) 0%,
+      transparent 34%,
+      transparent 66%,
+      rgb(255 255 255 / 0.04) 100%
+    );
+
+  -webkit-backdrop-filter:
+    blur(var(--material-glass-blur))
+    saturate(var(--material-glass-saturation))
+    brightness(var(--material-glass-brightness));
+  backdrop-filter:
+    blur(var(--material-glass-blur))
+    saturate(var(--material-glass-saturation))
+    brightness(var(--material-glass-brightness));
+
+  box-shadow: var(--material-glass-shadow);
+}
+
+@supports (color: color-mix(in oklab, white, black)) {
+  .material-glass {
+    background-color: var(--material-glass-fill);
+  }
+
+  .material-glass-clear {
+    background-color: var(--material-glass-clear-fill);
+  }
+}
+
+.material-glass-clear {
+  --material-border: color-mix(
+    in oklab,
+    var(--material-glass-border) 78%,
+    var(--material-current-tint) 22%
+  );
+
+  background-color: var(--material-glass-fallback-clear);
+  -webkit-backdrop-filter:
+    blur(var(--material-glass-clear-blur))
+    saturate(var(--material-glass-clear-saturation))
+    brightness(var(--material-glass-clear-brightness));
+  backdrop-filter:
+    blur(var(--material-glass-clear-blur))
+    saturate(var(--material-glass-clear-saturation))
+    brightness(var(--material-glass-clear-brightness));
+  box-shadow: var(--material-glass-clear-shadow);
+}
+
+@supports (color: color-mix(in oklab, white, black)) {
+  .material-glass,
+  .material-glass-clear {
+    /* Tint the edge without forcing every component to know about color. */
+    border-color: color-mix(
+      in oklab,
+      var(--material-glass-border) 88%,
+      var(--material-current-tint) 12%
+    );
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * Tint system
+ * ----------------------------------------------------------------------- */
+
+.material-tint-primary {
+  --material-current-tint: var(--material-tint-primary);
+  --material-tint-strength: 14%;
+}
+
+.material-tint-success {
+  --material-current-tint: var(--material-tint-success);
+  --material-tint-strength: 14%;
+}
+
+.material-tint-warning {
+  --material-current-tint: var(--material-tint-warning);
+  --material-tint-strength: 13%;
+}
+
+.material-tint-danger {
+  --material-current-tint: var(--material-tint-danger);
+  --material-tint-strength: 14%;
+}
+
+.material-tint-info {
+  --material-current-tint: var(--material-tint-info);
+  --material-tint-strength: 14%;
+}
+
+/* More visible tint for prominent functional controls. */
+.material-tint-strong {
+  --material-tint-strength: 24%;
+}
+
+/* -------------------------------------------------------------------------
+ * Interactive behavior
+ * ----------------------------------------------------------------------- */
+
+.material-interactive {
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform var(--material-motion-normal) var(--material-motion-spring),
+    box-shadow var(--material-motion-normal) var(--material-motion-ease),
+    border-color var(--material-motion-normal) var(--material-motion-ease),
+    background-color var(--material-motion-normal) var(--material-motion-ease),
+    color var(--material-motion-fast) var(--material-motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .material-interactive:hover {
+    transform: translateY(var(--material-interactive-hover-lift));
+    border-color: var(--material-glass-border-hover);
+    box-shadow:
+      0 24px 64px rgb(0 0 0 / 0.12),
+      0 8px 24px rgb(0 0 0 / 0.08),
+      inset 0 1px 0 var(--material-glass-highlight),
+      inset 0 -1px 0 var(--material-glass-lowlight);
+  }
+}
+
+.material-interactive:active {
+  transform: scale(var(--material-interactive-active-scale));
+  border-color: var(--material-glass-border-active);
+}
+
+.material-interactive:focus-visible {
+  outline: var(--material-interactive-ring-width) solid
+    var(--material-interactive-ring-color);
+  outline-offset: 2px;
+}
+
+.material-interactive:disabled,
+.material-interactive[aria-disabled="true"],
+.material-interactive[data-disabled="true"] {
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.56;
+  filter: saturate(0.72);
+}
+
+/* Stateful controls can opt into a more energetic active material. */
+.material-interactive[data-state="on"],
+.material-interactive[aria-pressed="true"],
+.material-interactive[aria-selected="true"] {
+  border-color: color-mix(
+    in oklab,
+    var(--material-glass-border-active) 75%,
+    var(--material-current-tint) 25%
+  );
+  box-shadow:
+    0 12px 30px rgb(0 0 0 / 0.10),
+    0 0 0 1px color-mix(in oklab, var(--material-current-tint) 16%, transparent),
+    inset 0 1px 0 var(--material-glass-highlight);
+}
+
+/* -------------------------------------------------------------------------
+ * Geometry helpers
+ * ----------------------------------------------------------------------- */
+
+.material-radius-sm { border-radius: var(--material-radius-sm); }
+.material-radius-md { border-radius: var(--material-radius-md); }
+.material-radius-lg { border-radius: var(--material-radius-lg); }
+.material-radius-xl { border-radius: var(--material-radius-xl); }
+.material-radius-pill { border-radius: var(--material-radius-pill); }
+
+/* -------------------------------------------------------------------------
+ * Grouping helper
+ * ----------------------------------------------------------------------- */
+
+.material-group {
+  position: relative;
+  isolation: isolate;
+}
+
+.material-group > .material-glass,
+.material-group > .material-glass-clear {
+  /* Keep adjacent glass surfaces visually related. Actual shape morphing
+   * requires a rendering engine; this class provides the web equivalent
+   * grouping boundary and avoids accidental stacking-context surprises. */
+  z-index: 0;
+}
+
+/* -------------------------------------------------------------------------
+ * Backdrop fallback
+ * ----------------------------------------------------------------------- */
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .material-glass,
+  .material-glass-clear {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* User preference: reduce transparency. This media feature is not available
+ * in every browser, so unsupported browsers simply ignore the block. */
+@media (prefers-reduced-transparency: reduce) {
+  .material-glass,
+  .material-glass-clear {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-image: none;
+    box-shadow: var(--material-elevated-shadow);
+  }
+
+  .material-glass {
+    background-color: var(--material-solid-fill);
+  }
+
+  .material-glass-clear {
+    background-color: var(--material-solid-fill);
+  }
+}
+
+/* User preference: reduce non-essential motion. */
+@media (prefers-reduced-motion: reduce) {
+  .material-interactive,
+  .material-interactive:hover,
+  .material-interactive:active {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Windows High Contrast / forced colors: remove effects that can interfere
+ * with system colors and retain clear boundaries. */
+@media (forced-colors: active) {
+  .material,
+  .material-surface,
+  .material-solid,
+  .material-muted,
+  .material-elevated,
+  .material-glass,
+  .material-glass-clear {
+    forced-color-adjust: auto;
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .material-interactive:focus-visible {
+    outline-color: Highlight;
+  }
+}

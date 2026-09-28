@@ -1,0 +1,245 @@
+/*
+ * Farsi UI — Material System Tokens
+ *
+ * Design basis:
+ * - Apple Human Interface Guidelines: Materials / Liquid Glass
+ * - Apple SwiftUI Glass: regular, clear, tint, interactive
+ * - Web platform primitives: backdrop-filter, color-mix(), OKLCH
+ *
+ * This file contains tokens only. It intentionally does not define
+ * component classes so the material system can be reused independently.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* -----------------------------------------------------------------------
+   * Primitive color references
+   * --------------------------------------------------------------------- */
+  --material-white: oklch(100% 0 0);
+  --material-black: oklch(0% 0 0);
+
+  /* Integrate with an existing design system when available. */
+  --material-tint-primary: var(--primary, oklch(62% 0.20 265));
+  --material-tint-success: var(--success, oklch(68% 0.18 145));
+  --material-tint-warning: var(--warning, oklch(78% 0.18 85));
+  --material-tint-danger: var(--destructive, oklch(62% 0.22 25));
+  --material-tint-info: var(--info, oklch(68% 0.16 230));
+
+  /* Fallbacks used when color-mix() is unavailable. */
+  --material-glass-fallback-regular: rgb(255 255 255 / 0.68);
+  --material-glass-fallback-clear: rgb(255 255 255 / 0.38);
+
+  /* -----------------------------------------------------------------------
+   * Semantic surfaces
+   * --------------------------------------------------------------------- */
+  --material-background: var(--background, oklch(100% 0 0));
+  --material-foreground: var(--foreground, oklch(22% 0.01 260));
+  --material-muted-foreground: var(--muted-foreground, oklch(52% 0.01 260));
+
+  --material-surface-1: oklch(99% 0.002 260);
+  --material-surface-2: oklch(97% 0.004 260);
+  --material-surface-3: oklch(94% 0.006 260);
+
+  /* Standard/content-layer materials. */
+  --material-solid-fill: var(--material-surface-1);
+  --material-solid-border: oklch(86% 0.006 260);
+  --material-solid-shadow: 0 1px 2px rgb(0 0 0 / 0.04),
+    0 8px 24px rgb(0 0 0 / 0.05);
+
+  --material-muted-fill: var(--material-surface-2);
+  --material-muted-border: oklch(89% 0.005 260);
+  --material-muted-shadow: none;
+
+  --material-elevated-fill: var(--material-surface-1);
+  --material-elevated-border: oklch(88% 0.006 260);
+  --material-elevated-shadow: 0 10px 30px rgb(0 0 0 / 0.08),
+    0 2px 8px rgb(0 0 0 / 0.05);
+
+  /* -----------------------------------------------------------------------
+   * Liquid Glass / glass material
+   * --------------------------------------------------------------------- */
+  --material-glass-base: var(--material-white);
+  --material-glass-opacity: 0.68;
+  --material-glass-clear-opacity: 0.38;
+
+  --material-glass-blur: 22px;
+  --material-glass-clear-blur: 28px;
+  --material-glass-saturation: 165%;
+  --material-glass-clear-saturation: 180%;
+  --material-glass-brightness: 1.02;
+  --material-glass-clear-brightness: 1.04;
+
+  --material-glass-border: rgb(255 255 255 / 0.52);
+  --material-glass-border-hover: rgb(255 255 255 / 0.72);
+  --material-glass-border-active: rgb(255 255 255 / 0.82);
+  --material-glass-highlight: rgb(255 255 255 / 0.58);
+  --material-glass-lowlight: rgb(255 255 255 / 0.16);
+
+  --material-glass-shadow:
+    0 20px 55px rgb(0 0 0 / 0.10),
+    0 6px 20px rgb(0 0 0 / 0.07),
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 -1px 0 rgb(255 255 255 / 0.08);
+
+  --material-glass-clear-shadow:
+    0 18px 48px rgb(0 0 0 / 0.09),
+    0 4px 16px rgb(0 0 0 / 0.06),
+    inset 0 1px 0 rgb(255 255 255 / 0.34),
+    inset 0 -1px 0 rgb(255 255 255 / 0.07);
+
+  /* Tint is intentionally separate from the material base. */
+  --material-current-tint: transparent;
+  --material-tint-strength: 0%;
+
+  /* Glass fill is computed from base + tint and then made translucent. */
+  --material-glass-mixed:
+    color-mix(
+      in oklab,
+      var(--material-glass-base) calc(100% - var(--material-tint-strength)),
+      var(--material-current-tint) var(--material-tint-strength)
+    );
+
+  --material-glass-fill:
+    color-mix(in oklab, var(--material-glass-mixed) var(--material-glass-opacity), transparent);
+
+  --material-glass-clear-fill:
+    color-mix(
+      in oklab,
+      var(--material-glass-mixed) var(--material-glass-clear-opacity),
+      transparent
+    );
+
+  /* -----------------------------------------------------------------------
+   * Interaction / motion
+   * --------------------------------------------------------------------- */
+  --material-interactive-hover-opacity-step: 0.06;
+  --material-interactive-active-opacity-step: 0.10;
+  --material-interactive-hover-lift: -0.5px;
+  --material-interactive-active-scale: 0.985;
+  --material-interactive-ring-width: 3px;
+  --material-interactive-ring-color: color-mix(
+    in oklab,
+    var(--material-tint-primary) 65%,
+    transparent
+  );
+
+  --material-motion-fast: 140ms;
+  --material-motion-normal: 180ms;
+  --material-motion-slow: 260ms;
+  --material-motion-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --material-motion-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* -----------------------------------------------------------------------
+   * Shape / geometry
+   * --------------------------------------------------------------------- */
+  --material-radius-sm: 0.75rem;
+  --material-radius-md: 1rem;
+  --material-radius-lg: 1.25rem;
+  --material-radius-xl: 1.5rem;
+  --material-radius-pill: 999px;
+
+  --material-border-width: 1px;
+
+  /* -----------------------------------------------------------------------
+   * Content hierarchy
+   * --------------------------------------------------------------------- */
+  --material-content-primary: var(--material-foreground);
+  --material-content-secondary: var(--material-muted-foreground);
+  --material-content-disabled: color-mix(
+    in oklab,
+    var(--material-muted-foreground) 55%,
+    transparent
+  );
+
+  /* -----------------------------------------------------------------------
+   * Robustness / fallback
+   * --------------------------------------------------------------------- */
+  --material-backdrop-fallback-filter: none;
+
+  /* -----------------------------------------------------------------------
+   * Dark theme defaults
+   * --------------------------------------------------------------------- */
+  --material-dark-background: oklch(15% 0.018 260);
+  --material-dark-foreground: oklch(96% 0.006 260);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --material-background: var(--background, var(--material-dark-background));
+  --material-foreground: var(--foreground, var(--material-dark-foreground));
+  --material-muted-foreground: var(--muted-foreground, oklch(70% 0.012 260));
+
+  --material-surface-1: oklch(19% 0.018 260);
+  --material-surface-2: oklch(16.5% 0.018 260);
+  --material-surface-3: oklch(14% 0.02 260);
+
+  --material-solid-fill: var(--material-surface-1);
+  --material-solid-border: oklch(29% 0.02 260);
+  --material-solid-shadow: 0 1px 2px rgb(0 0 0 / 0.25),
+    0 10px 28px rgb(0 0 0 / 0.25);
+
+  --material-muted-fill: var(--material-surface-2);
+  --material-muted-border: oklch(26% 0.018 260);
+  --material-muted-shadow: none;
+
+  --material-elevated-fill: var(--material-surface-1);
+  --material-elevated-border: oklch(30% 0.022 260);
+  --material-elevated-shadow: 0 18px 48px rgb(0 0 0 / 0.38),
+    0 4px 14px rgb(0 0 0 / 0.24);
+
+  /* The glass remains light-reactive, but uses lower opacity and stronger
+   * edge definition against dark content. */
+  --material-glass-base: var(--material-white);
+  --material-glass-opacity: 0.17;
+  --material-glass-clear-opacity: 0.10;
+
+  --material-glass-blur: 22px;
+  --material-glass-clear-blur: 30px;
+  --material-glass-saturation: 175%;
+  --material-glass-clear-saturation: 190%;
+  --material-glass-brightness: 1.06;
+  --material-glass-clear-brightness: 1.08;
+
+  --material-glass-border: rgb(255 255 255 / 0.18);
+  --material-glass-border-hover: rgb(255 255 255 / 0.28);
+  --material-glass-border-active: rgb(255 255 255 / 0.34);
+  --material-glass-highlight: rgb(255 255 255 / 0.20);
+  --material-glass-lowlight: rgb(0 0 0 / 0.18);
+
+  --material-glass-shadow:
+    0 24px 64px rgb(0 0 0 / 0.34),
+    0 8px 24px rgb(0 0 0 / 0.22),
+    inset 0 1px 0 rgb(255 255 255 / 0.10),
+    inset 0 -1px 0 rgb(0 0 0 / 0.12);
+
+  --material-glass-clear-shadow:
+    0 22px 56px rgb(0 0 0 / 0.32),
+    0 6px 20px rgb(0 0 0 / 0.18),
+    inset 0 1px 0 rgb(255 255 255 / 0.13),
+    inset 0 -1px 0 rgb(0 0 0 / 0.10);
+
+  --material-glass-fallback-regular: rgb(30 34 42 / 0.88);
+  --material-glass-fallback-clear: rgb(30 34 42 / 0.94);
+}
+
+/* Explicit high-contrast mode: strengthen material edges and reduce
+ * dependence on translucency for legibility. */
+@media (prefers-contrast: more) {
+  :root {
+    --material-glass-opacity: 0.82;
+    --material-glass-clear-opacity: 0.68;
+    --material-glass-border: rgb(40 45 55 / 0.38);
+    --material-glass-border-hover: rgb(30 35 45 / 0.60);
+  }
+
+  .dark,
+  [data-theme="dark"] {
+    --material-glass-opacity: 0.38;
+    --material-glass-clear-opacity: 0.26;
+    --material-glass-border: rgb(255 255 255 / 0.40);
+    --material-glass-border-hover: rgb(255 255 255 / 0.56);
+  }
+}

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@import "./material-tailwind.css";
+@import "./material-tokens.css";
+@import "./material-system.css";
+
 @import "tw-animate-css";
 
 @font-face {

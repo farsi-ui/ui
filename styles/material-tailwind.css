@@ -1,0 +1,61 @@
+/*
+ * Farsi UI — Material System / Tailwind CSS v4 bridge
+ *
+ * Import after material-tokens.css and material-system.css in a Tailwind v4
+ * stylesheet. The system itself remains framework-agnostic; this file simply
+ * exposes the material tokens through Tailwind's CSS-first theme system.
+ */
+
+@theme inline {
+  --color-material-background: var(--material-background);
+  --color-material-foreground: var(--material-foreground);
+  --color-material-muted-foreground: var(--material-muted-foreground);
+  --color-material-glass: var(--material-glass-fallback-regular);
+  --color-material-glass-clear: var(--material-glass-fallback-clear);
+
+  --radius-material-sm: var(--material-radius-sm);
+  --radius-material-md: var(--material-radius-md);
+  --radius-material-lg: var(--material-radius-lg);
+  --radius-material-xl: var(--material-radius-xl);
+  --radius-material-pill: var(--material-radius-pill);
+
+  --shadow-material-solid: var(--material-solid-shadow);
+  --shadow-material-elevated: var(--material-elevated-shadow);
+  --shadow-material-glass: var(--material-glass-shadow);
+  --shadow-material-glass-clear: var(--material-glass-clear-shadow);
+
+  --blur-material-glass: var(--material-glass-blur);
+  --blur-material-glass-clear: var(--material-glass-clear-blur);
+
+  --ease-material: var(--material-motion-ease);
+  --ease-material-spring: var(--material-motion-spring);
+}
+
+/* Optional functional utilities. These are intentionally thin aliases; the
+ * full material recipes remain in material-system.css. */
+
+@utility material-surface {
+  background: var(--material-surface-1);
+  color: var(--material-content-primary);
+}
+
+@utility material-solid {
+  background: var(--material-solid-fill);
+  border: var(--material-border-width) solid var(--material-solid-border);
+  box-shadow: var(--material-solid-shadow);
+  color: var(--material-content-primary);
+}
+
+@utility material-muted {
+  background: var(--material-muted-fill);
+  border: var(--material-border-width) solid var(--material-muted-border);
+  box-shadow: var(--material-muted-shadow);
+  color: var(--material-content-primary);
+}
+
+@utility material-elevated {
+  background: var(--material-elevated-fill);
+  border: var(--material-border-width) solid var(--material-elevated-border);
+  box-shadow: var(--material-elevated-shadow);
+  color: var(--material-content-primary);
+}
