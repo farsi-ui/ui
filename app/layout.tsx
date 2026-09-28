@@ -1,15 +1,8 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-// import { Vazirmatn } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
-import "./globals.css";
-
-// const vazirmatn = Vazirmatn({
-//   subsets: ["arabic"],
-//   display: "swap",
-//   variable: "--font-vazirmatn",
-// })
+import "../styles/globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farsi.eindev.ir/";
 
