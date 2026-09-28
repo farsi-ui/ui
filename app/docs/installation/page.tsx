@@ -25,12 +25,14 @@ export const metadata: Metadata = {
     siteName: "فارسی یو آی",
     locale: "fa_IR",
     type: "article",
+    images: ["https://farsi.eindev.ir/farsi-ui-og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "نصب و راه‌اندازی | فارسی یو آی",
     description:
       "راهنمای گام به گام نصب فارسی یو آی در پروژه React با پشتیبانی کامل RTL",
+    images: ["https://farsi.eindev.ir/farsi-ui-og.png"],
   },
 };
 

@@ -14,7 +14,24 @@ export const metadata: Metadata = {
     title: "مستندات فارسی یو آی",
     description: "راهنمای کامل استفاده از کامپوننت‌های فارسی یو آی",
     type: "website",
+    url: "https://farsi.eindev.ir",
+    siteName: "مستندات فارسی یو آی",
+    images: [
+      {
+        url: "https://farsi.eindev.ir/farsi-ui-og.png",
+        width: 1200,
+        height: 630,
+        alt: "مستندات فارسی یو آی",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "مستندات فارسی یو آی",
+    description: "راهنمای کامل استفاده از کامپوننت‌های فارسی یو آی",
+    images: ["https://farsi.eindev.ir/farsi-ui-og.png"],
+  },
+  
 };
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
